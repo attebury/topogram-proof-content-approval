@@ -1,0 +1,27 @@
+{
+  "type": "proof_path_hygiene_audit",
+  "version": "1",
+  "repository": "topogram-proof-content-approval",
+  "checkedDate": "2026-05-15",
+  "topogramCliVersion": "0.3.91",
+  "scope": {
+    "trackedFilesOnCurrentBranch": true,
+    "localBranchesAndTags": true
+  },
+  "checks": [
+    {
+      "id": "tracked_files_current_branch",
+      "command": "npm run proof:check-paths",
+      "status": "passed",
+      "summary": "No local absolute paths found in tracked files."
+    },
+    {
+      "id": "local_branches_and_tags",
+      "command": "git grep -I -n -E <local-path-pattern> <local branches and tags>",
+      "status": "passed",
+      "refsChecked": 15,
+      "summary": "No local absolute paths found across local branches and tags."
+    }
+  ],
+  "publicPathExpectation": "Committed proof artifacts should use relative paths or placeholders such as <repo>, <workspace>, and <external> instead of machine-local absolute paths."
+}
