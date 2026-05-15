@@ -1,0 +1,14 @@
+task task_graduated_maintained_output {
+  name "Graduated Maintained Output"
+  description "Switch app output to maintained ownership, capture generation refusal evidence, and verify the existing app directly."
+  satisfies [req_graduated_maintained_output]
+  acceptance_refs [ac_graduated_maintained_output]
+  verification_refs [verification_graduated_maintained_output]
+  affects [cap_list_submissions, cap_get_submission, cap_submit_content, cap_approve_submission, cap_request_changes]
+  blocked_by []
+  disposition active
+  priority medium
+  work_type implementation
+  claimed_by [actor_operator]
+  status done
+}

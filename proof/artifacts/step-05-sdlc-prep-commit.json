@@ -1,0 +1,48 @@
+{
+  "changedFiles": [
+    "README.md",
+    "app/.topogram-generated.json",
+    "proof/STEP.md",
+    "topo/sdlc/.topogram-sdlc-history.json",
+    "topogram.project.json",
+    "proof/artifacts/step-05-agent-brief.json",
+    "proof/artifacts/step-05-check.json",
+    "proof/artifacts/step-05-generate-refusal.txt",
+    "proof/artifacts/step-05-sdlc-complete-task-graduated-maintained-output.json",
+    "proof/artifacts/step-05-sdlc-prep-commit.json",
+    "proof/artifacts/step-05-sdlc-start-task-graduated-maintained-output.json",
+    "proof/artifacts/step-05-task-slice.json",
+    "proof/artifacts/step-05-ui-surface-contract.json",
+    "topo/sdlc/acceptance_criteria/graduated-maintained-output.tg",
+    "topo/sdlc/requirements/graduated-maintained-output.tg",
+    "topo/sdlc/tasks/graduated-maintained-output.tg",
+    "topo/verifications/graduated-maintained-output.tg"
+  ],
+  "changedTasks": [
+    {
+      "disposition": "active",
+      "explicitDisposition": true,
+      "file": "topo/sdlc/tasks/graduated-maintained-output.tg",
+      "id": "task_graduated_maintained_output",
+      "priority": "medium",
+      "requiresDisposition": false,
+      "status": "done"
+    }
+  ],
+  "errors": [],
+  "nextCommands": [
+    "topogram sdlc explain <task-id> --json",
+    "topogram query slice ./topo --task <task-id> --json",
+    "topogram sdlc gate . --base <ref> --head <ref> --require-adopted"
+  ],
+  "ok": true,
+  "openTasks": [],
+  "projectRoot": "<repo>",
+  "taskFiles": [
+    "topo/sdlc/tasks/graduated-maintained-output.tg"
+  ],
+  "topogramRoot": "<repo>/topo",
+  "type": "sdlc_commit_prep",
+  "version": "1",
+  "warnings": []
+}

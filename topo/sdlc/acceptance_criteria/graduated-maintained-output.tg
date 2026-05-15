@@ -1,0 +1,6 @@
+acceptance_criterion ac_graduated_maintained_output {
+  name "Graduated Maintained Output"
+  description "Given the proof app output is changed from generated to maintained ownership, when an operator runs Topogram validation and attempts app generation, then validation passes, the existing app still verifies, and generation refuses to overwrite maintained app files."
+  requirement req_graduated_maintained_output
+  status approved
+}

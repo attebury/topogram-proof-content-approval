@@ -1,0 +1,42 @@
+{
+  "dryRun": false,
+  "link": {
+    "after": [
+      "verification_graduated_maintained_output"
+    ],
+    "before": [
+      "verification_graduated_maintained_output"
+    ],
+    "dryRun": false,
+    "field": "verification_refs",
+    "file": "<repo>/topo/sdlc/tasks/graduated-maintained-output.tg",
+    "from": {
+      "id": "task_graduated_maintained_output",
+      "kind": "task"
+    },
+    "ok": true,
+    "to": {
+      "id": "verification_graduated_maintained_output",
+      "kind": "verification"
+    },
+    "written": true
+  },
+  "ok": true,
+  "taskId": "task_graduated_maintained_output",
+  "transition": {
+    "archivable": true,
+    "dod": {
+      "errors": [],
+      "satisfied": true,
+      "warnings": []
+    },
+    "dryRun": false,
+    "file": "<repo>/topo/sdlc/tasks/graduated-maintained-output.tg",
+    "from": "in-progress",
+    "id": "task_graduated_maintained_output",
+    "kind": "task",
+    "ok": true,
+    "to": "done"
+  },
+  "verificationId": "verification_graduated_maintained_output"
+}

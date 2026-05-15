@@ -1,0 +1,3 @@
+Refusing to write generated output to maintained output 'app': <repo>/app
+
+exit_code=1

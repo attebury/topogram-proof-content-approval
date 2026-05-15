@@ -90,5 +90,28 @@
       "by": "actor_operator",
       "note": null
     }
+  ],
+  "task_graduated_maintained_output": [
+    {
+      "from": "unclaimed",
+      "to": "claimed",
+      "at": "2026-05-15T06:19:05.379Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "claimed",
+      "to": "in-progress",
+      "at": "2026-05-15T06:19:05.385Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "in-progress",
+      "to": "done",
+      "at": "2026-05-15T06:28:31.721Z",
+      "by": "actor_operator",
+      "note": null
+    }
   ]
 }

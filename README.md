@@ -13,18 +13,18 @@ See [`proof/README.md`](proof/README.md) for the checkpoint map.
 
 ## Current Step
 
-This branch is `step/04-generated-db-migration`. It adds generated-owned DB
-contract fields for priority and reviewer assignment, captures migration
-artifacts, regenerates output, and verifies the generated app.
+This branch is `step/05-graduate-maintained`. The generated app has graduated
+to maintained ownership. Topogram contracts and query packets guide future work,
+but `topogram generate` must not overwrite `app/`.
 
 ## Workflow
 
 ```bash
 npm install
 npm run check
-npm run generate
 npm run verify
 ```
 
-Use `topogram emit <target>` to inspect DB snapshots, migration plans,
-contracts, and reports without regenerating the app.
+Use `topogram emit <target>` to inspect contracts, reports, snapshots, and
+plans. Edit maintained app code directly after reviewing focused Topogram
+packets.
