@@ -94,6 +94,18 @@
         ]
       },
       {
+        "id": "verification_generated_db_migration",
+        "name": "Generated DB Migration Verification",
+        "method": "runtime",
+        "validates": [
+          "cap_list_submissions",
+          "cap_get_submission",
+          "cap_submit_content",
+          "cap_approve_submission",
+          "cap_request_changes"
+        ]
+      },
+      {
         "id": "verification_review_workflow_ui",
         "name": "Review Workflow UI Verification",
         "method": "runtime",
@@ -142,6 +154,10 @@
       {
         "id": "topogram_check_generate_verify",
         "label": "topogram check generate verify"
+      },
+      {
+        "id": "topogram_db_snapshot_migration_generate_verify",
+        "label": "topogram db snapshot migration generate verify"
       },
       {
         "id": "topogram_check_widget_reports_generate_verify",

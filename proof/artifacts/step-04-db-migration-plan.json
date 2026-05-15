@@ -1,0 +1,45 @@
+{
+  "engine": "postgres",
+  "from": {
+    "snapshotPath": "<repo>/proof/artifacts/step-04-before-db-schema-snapshot.json",
+    "tableCount": 1
+  },
+  "manual": [],
+  "manualInterventionRequired": false,
+  "operations": [
+    {
+      "column": "assigned_reviewer",
+      "table": "content_submissions",
+      "type": "add_column"
+    },
+    {
+      "column": "review_priority",
+      "table": "content_submissions",
+      "type": "add_column"
+    },
+    {
+      "fields": [
+        "assigned_reviewer"
+      ],
+      "table": "content_submissions",
+      "type": "add_index"
+    },
+    {
+      "fields": [
+        "review_priority"
+      ],
+      "table": "content_submissions",
+      "type": "add_index"
+    }
+  ],
+  "projection": {
+    "id": "proj_db_postgres",
+    "name": "Content Approval Postgres DB",
+    "type": "db_contract"
+  },
+  "supported": true,
+  "to": {
+    "tableCount": 1
+  },
+  "type": "db_migration_plan"
+}

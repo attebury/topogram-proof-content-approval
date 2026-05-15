@@ -187,6 +187,30 @@ export const serverContract = {
             }
           },
           {
+            "name": "review_priority",
+            "sourceName": "review_priority",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "review_priority"
+            }
+          },
+          {
+            "name": "assigned_reviewer",
+            "sourceName": "assigned_reviewer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "assigned_reviewer"
+            }
+          },
+          {
             "name": "author_name",
             "sourceName": "author_name",
             "required": true,
@@ -263,6 +287,12 @@ export const serverContract = {
               "type": "string"
             },
             "status": {
+              "type": "string"
+            },
+            "review_priority": {
+              "type": "string"
+            },
+            "assigned_reviewer": {
               "type": "string"
             },
             "author_name": {
@@ -346,6 +376,30 @@ export const serverContract = {
               "transport": {
                 "location": "body",
                 "wireName": "status"
+              }
+            },
+            {
+              "name": "review_priority",
+              "sourceName": "review_priority",
+              "required": false,
+              "schema": {
+                "type": "string"
+              },
+              "transport": {
+                "location": "body",
+                "wireName": "review_priority"
+              }
+            },
+            {
+              "name": "assigned_reviewer",
+              "sourceName": "assigned_reviewer",
+              "required": false,
+              "schema": {
+                "type": "string"
+              },
+              "transport": {
+                "location": "body",
+                "wireName": "assigned_reviewer"
               }
             },
             {
@@ -546,6 +600,30 @@ export const serverContract = {
             }
           },
           {
+            "name": "review_priority",
+            "sourceName": "review_priority",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "review_priority"
+            }
+          },
+          {
+            "name": "assigned_reviewer",
+            "sourceName": "assigned_reviewer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "assigned_reviewer"
+            }
+          },
+          {
             "name": "author_name",
             "sourceName": "author_name",
             "required": true,
@@ -622,6 +700,12 @@ export const serverContract = {
               "type": "string"
             },
             "status": {
+              "type": "string"
+            },
+            "review_priority": {
+              "type": "string"
+            },
+            "assigned_reviewer": {
               "type": "string"
             },
             "author_name": {
@@ -705,6 +789,30 @@ export const serverContract = {
               "transport": {
                 "location": "body",
                 "wireName": "status"
+              }
+            },
+            {
+              "name": "review_priority",
+              "sourceName": "review_priority",
+              "required": false,
+              "schema": {
+                "type": "string"
+              },
+              "transport": {
+                "location": "body",
+                "wireName": "review_priority"
+              }
+            },
+            {
+              "name": "assigned_reviewer",
+              "sourceName": "assigned_reviewer",
+              "required": false,
+              "schema": {
+                "type": "string"
+              },
+              "transport": {
+                "location": "body",
+                "wireName": "assigned_reviewer"
               }
             },
             {
@@ -951,6 +1059,30 @@ export const serverContract = {
             }
           },
           {
+            "name": "review_priority",
+            "sourceName": "review_priority",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "review_priority"
+            }
+          },
+          {
+            "name": "assigned_reviewer",
+            "sourceName": "assigned_reviewer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "assigned_reviewer"
+            }
+          },
+          {
             "name": "author_name",
             "sourceName": "author_name",
             "required": true,
@@ -1039,6 +1171,12 @@ export const serverContract = {
                   "status": {
                     "type": "string"
                   },
+                  "review_priority": {
+                    "type": "string"
+                  },
+                  "assigned_reviewer": {
+                    "type": "string"
+                  },
                   "author_name": {
                     "type": "string"
                   },
@@ -1090,6 +1228,12 @@ export const serverContract = {
               "type": "string"
             },
             "status": {
+              "type": "string"
+            },
+            "review_priority": {
+              "type": "string"
+            },
+            "assigned_reviewer": {
               "type": "string"
             },
             "author_name": {
@@ -1191,6 +1335,30 @@ export const serverContract = {
               "transport": {
                 "location": "body",
                 "wireName": "status"
+              }
+            },
+            {
+              "name": "review_priority",
+              "sourceName": "review_priority",
+              "required": false,
+              "schema": {
+                "type": "string"
+              },
+              "transport": {
+                "location": "body",
+                "wireName": "review_priority"
+              }
+            },
+            {
+              "name": "assigned_reviewer",
+              "sourceName": "assigned_reviewer",
+              "required": false,
+              "schema": {
+                "type": "string"
+              },
+              "transport": {
+                "location": "body",
+                "wireName": "assigned_reviewer"
               }
             },
             {
@@ -1431,6 +1599,30 @@ export const serverContract = {
             }
           },
           {
+            "name": "review_priority",
+            "sourceName": "review_priority",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "review_priority"
+            }
+          },
+          {
+            "name": "assigned_reviewer",
+            "sourceName": "assigned_reviewer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "assigned_reviewer"
+            }
+          },
+          {
             "name": "author_name",
             "sourceName": "author_name",
             "required": true,
@@ -1507,6 +1699,12 @@ export const serverContract = {
               "type": "string"
             },
             "status": {
+              "type": "string"
+            },
+            "review_priority": {
+              "type": "string"
+            },
+            "assigned_reviewer": {
               "type": "string"
             },
             "author_name": {
@@ -1590,6 +1788,30 @@ export const serverContract = {
               "transport": {
                 "location": "body",
                 "wireName": "status"
+              }
+            },
+            {
+              "name": "review_priority",
+              "sourceName": "review_priority",
+              "required": false,
+              "schema": {
+                "type": "string"
+              },
+              "transport": {
+                "location": "body",
+                "wireName": "review_priority"
+              }
+            },
+            {
+              "name": "assigned_reviewer",
+              "sourceName": "assigned_reviewer",
+              "required": false,
+              "schema": {
+                "type": "string"
+              },
+              "transport": {
+                "location": "body",
+                "wireName": "assigned_reviewer"
               }
             },
             {
@@ -1820,6 +2042,30 @@ export const serverContract = {
             }
           },
           {
+            "name": "review_priority",
+            "sourceName": "review_priority",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "review_priority"
+            }
+          },
+          {
+            "name": "assigned_reviewer",
+            "sourceName": "assigned_reviewer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "assigned_reviewer"
+            }
+          },
+          {
             "name": "author_name",
             "sourceName": "author_name",
             "required": true,
@@ -1896,6 +2142,12 @@ export const serverContract = {
               "type": "string"
             },
             "status": {
+              "type": "string"
+            },
+            "review_priority": {
+              "type": "string"
+            },
+            "assigned_reviewer": {
               "type": "string"
             },
             "author_name": {
@@ -1979,6 +2231,30 @@ export const serverContract = {
               "transport": {
                 "location": "body",
                 "wireName": "status"
+              }
+            },
+            {
+              "name": "review_priority",
+              "sourceName": "review_priority",
+              "required": false,
+              "schema": {
+                "type": "string"
+              },
+              "transport": {
+                "location": "body",
+                "wireName": "review_priority"
+              }
+            },
+            {
+              "name": "assigned_reviewer",
+              "sourceName": "assigned_reviewer",
+              "required": false,
+              "schema": {
+                "type": "string"
+              },
+              "transport": {
+                "location": "body",
+                "wireName": "assigned_reviewer"
               }
             },
             {

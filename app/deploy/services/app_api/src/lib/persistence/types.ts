@@ -9,6 +9,8 @@ export interface SubmitContentResult {
   title: string;
   body: string;
   status: string;
+  review_priority?: string;
+  assigned_reviewer?: string;
   author_name: string;
   submitted_at: string;
   reviewed_at?: string;
@@ -24,6 +26,8 @@ export interface GetSubmissionResult {
   title: string;
   body: string;
   status: string;
+  review_priority?: string;
+  assigned_reviewer?: string;
   author_name: string;
   submitted_at: string;
   reviewed_at?: string;
@@ -41,6 +45,8 @@ export interface ListSubmissionsResultItem {
   title: string;
   body: string;
   status: string;
+  review_priority?: string;
+  assigned_reviewer?: string;
   author_name: string;
   submitted_at: string;
   reviewed_at?: string;
@@ -62,6 +68,8 @@ export interface ApproveSubmissionResult {
   title: string;
   body: string;
   status: string;
+  review_priority?: string;
+  assigned_reviewer?: string;
   author_name: string;
   submitted_at: string;
   reviewed_at?: string;
@@ -78,6 +86,8 @@ export interface RequestChangesResult {
   title: string;
   body: string;
   status: string;
+  review_priority?: string;
+  assigned_reviewer?: string;
   author_name: string;
   submitted_at: string;
   reviewed_at?: string;

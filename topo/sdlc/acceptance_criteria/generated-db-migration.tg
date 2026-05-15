@@ -1,0 +1,6 @@
+acceptance_criterion ac_generated_db_migration {
+  name "Generated DB Migration"
+  description "Given the proof app still owns generated app and DB output, when the content submission schema gains reviewer assignment and priority fields, then Topogram emits before/after DB snapshots, migration plan artifacts, regenerated DB lifecycle output, and the generated app compile gate passes."
+  requirement req_generated_db_migration
+  status approved
+}

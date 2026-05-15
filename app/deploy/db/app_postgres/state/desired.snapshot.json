@@ -38,6 +38,20 @@
           "defaultValue": null
         },
         {
+          "name": "review_priority",
+          "sourceField": "review_priority",
+          "fieldType": "text",
+          "requiredness": "optional",
+          "defaultValue": null
+        },
+        {
+          "name": "assigned_reviewer",
+          "sourceField": "assigned_reviewer",
+          "fieldType": "text",
+          "requiredness": "optional",
+          "defaultValue": null
+        },
+        {
           "name": "author_name",
           "sourceField": "author_name",
           "fieldType": "text",
@@ -82,6 +96,18 @@
           "type": "index",
           "fields": [
             "status"
+          ]
+        },
+        {
+          "type": "index",
+          "fields": [
+            "review_priority"
+          ]
+        },
+        {
+          "type": "index",
+          "fields": [
+            "assigned_reviewer"
           ]
         },
         {

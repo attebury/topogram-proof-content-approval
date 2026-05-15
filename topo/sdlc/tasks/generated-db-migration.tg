@@ -1,0 +1,14 @@
+task task_generated_db_migration {
+  name "Generated DB Migration"
+  description "Add generated-owned database contract fields for priority and reviewer assignment, capture migration artifacts, regenerate output, and verify the generated app."
+  satisfies [req_generated_db_migration]
+  acceptance_refs [ac_generated_db_migration]
+  verification_refs [verification_generated_db_migration]
+  affects [cap_list_submissions, cap_get_submission, cap_submit_content, cap_approve_submission, cap_request_changes]
+  blocked_by []
+  disposition active
+  priority medium
+  work_type implementation
+  claimed_by [actor_operator]
+  status done
+}

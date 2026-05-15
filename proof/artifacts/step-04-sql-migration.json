@@ -1,0 +1,8 @@
+alter table content_submissions add column assigned_reviewer text;
+
+alter table content_submissions add column review_priority text;
+
+create index content_submissions_assigned_reviewer_index on content_submissions (assigned_reviewer);
+
+create index content_submissions_review_priority_index on content_submissions (review_priority);
+

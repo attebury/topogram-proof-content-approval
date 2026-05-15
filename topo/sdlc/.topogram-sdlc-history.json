@@ -67,5 +67,28 @@
       "by": "actor_operator",
       "note": null
     }
+  ],
+  "task_generated_db_migration": [
+    {
+      "from": "unclaimed",
+      "to": "claimed",
+      "at": "2026-05-15T06:01:58.873Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "claimed",
+      "to": "in-progress",
+      "at": "2026-05-15T06:01:58.879Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "in-progress",
+      "to": "done",
+      "at": "2026-05-15T06:03:00.356Z",
+      "by": "actor_operator",
+      "note": null
+    }
   ]
 }

@@ -16,6 +16,8 @@ projection proj_db_postgres {
 
   indexes {
     entity_content_submission index [status]
+    entity_content_submission index [review_priority]
+    entity_content_submission index [assigned_reviewer]
     entity_content_submission index [submitted_at]
   }
 

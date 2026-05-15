@@ -1,0 +1,122 @@
+{
+  "errors": [],
+  "inputPath": "<repo>/topo",
+  "ok": true,
+  "project": {
+    "compatibility": false,
+    "configPath": "<repo>/topogram.project.json",
+    "resolvedTopology": {
+      "edges": [
+        {
+          "from": "app_api",
+          "to": "app_postgres",
+          "type": "uses_database"
+        },
+        {
+          "from": "app_sveltekit",
+          "to": "app_api",
+          "type": "calls_api"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "app",
+          "ownership": "generated",
+          "path": "./app"
+        }
+      ],
+      "runtimes": [
+        {
+          "generator": {
+            "id": "@topogram/generator-hono-api",
+            "version": "1"
+          },
+          "id": "app_api",
+          "kind": "api_service",
+          "migration": null,
+          "port": 3000,
+          "projection": "proj_api",
+          "references": {
+            "uses_api": null,
+            "uses_database": "app_postgres"
+          }
+        },
+        {
+          "generator": {
+            "id": "@topogram/generator-postgres-db",
+            "version": "1"
+          },
+          "id": "app_postgres",
+          "kind": "database",
+          "migration": null,
+          "port": 5432,
+          "projection": "proj_db_postgres",
+          "references": {
+            "uses_api": null,
+            "uses_database": null
+          }
+        },
+        {
+          "generator": {
+            "id": "@topogram/generator-sveltekit-web",
+            "version": "1"
+          },
+          "id": "app_sveltekit",
+          "kind": "web_surface",
+          "migration": null,
+          "port": 5173,
+          "projection": "proj_web_surface",
+          "references": {
+            "uses_api": "app_api",
+            "uses_database": null
+          }
+        }
+      ]
+    },
+    "topology": {
+      "runtimes": [
+        {
+          "generator": {
+            "id": "@topogram/generator-hono-api",
+            "package": "@topogram/generator-hono-api",
+            "version": "1"
+          },
+          "id": "app_api",
+          "kind": "api_service",
+          "port": 3000,
+          "projection": "proj_api",
+          "uses_database": "app_postgres"
+        },
+        {
+          "generator": {
+            "id": "@topogram/generator-sveltekit-web",
+            "package": "@topogram/generator-sveltekit-web",
+            "version": "1"
+          },
+          "id": "app_sveltekit",
+          "kind": "web_surface",
+          "port": 5173,
+          "projection": "proj_web_surface",
+          "uses_api": "app_api"
+        },
+        {
+          "generator": {
+            "id": "@topogram/generator-postgres-db",
+            "package": "@topogram/generator-postgres-db",
+            "version": "1"
+          },
+          "id": "app_postgres",
+          "kind": "database",
+          "port": 5432,
+          "projection": "proj_db_postgres"
+        }
+      ]
+    },
+    "valid": true
+  },
+  "topogram": {
+    "files": 40,
+    "statements": 40,
+    "valid": true
+  }
+}

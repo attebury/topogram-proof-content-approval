@@ -7,6 +7,8 @@ entity entity_content_submission {
     title text required
     body text required
     status text required
+    review_priority text optional
+    assigned_reviewer text optional
     author_name text required
     created_at datetime required
     submitted_at datetime required
@@ -17,6 +19,8 @@ entity entity_content_submission {
   keys {
     primary [id]
     index [status]
+    index [review_priority]
+    index [assigned_reviewer]
     index [submitted_at]
   }
 
