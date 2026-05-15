@@ -1,0 +1,14 @@
+task task_maintained_db_review_due_at {
+  name "Maintained Review Due Date Migration"
+  description "Add review_due_at to the maintained DB contract, emit migration proposal artifacts, and manually adapt maintained app DB files without regenerating app output."
+  satisfies [req_maintained_db_review_due_at]
+  acceptance_refs [ac_maintained_db_review_due_at]
+  verification_refs [verification_maintained_db_review_due_at]
+  affects [cap_list_submissions, cap_get_submission]
+  blocked_by []
+  disposition active
+  priority medium
+  work_type implementation
+  claimed_by [actor_operator]
+  status done
+}

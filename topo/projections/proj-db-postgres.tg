@@ -19,6 +19,7 @@ projection proj_db_postgres {
     entity_content_submission index [review_priority]
     entity_content_submission index [assigned_reviewer]
     entity_content_submission index [submitted_at]
+    entity_content_submission index [review_due_at]
   }
 
   lifecycle {

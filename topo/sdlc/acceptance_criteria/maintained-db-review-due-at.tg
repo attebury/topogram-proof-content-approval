@@ -1,0 +1,6 @@
+acceptance_criterion ac_maintained_db_review_due_at {
+  name "Maintained Review Due Date Migration"
+  description "Given the app output is maintained-owned, when review_due_at is added to the Topogram DB contract and migration artifacts are emitted, then the app DB files are manually adapted, generation remains refused, and the maintained compile gate passes."
+  requirement req_maintained_db_review_due_at
+  status approved
+}

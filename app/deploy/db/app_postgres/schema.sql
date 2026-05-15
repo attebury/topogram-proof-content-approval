@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS "content_submissions" (
   "author_name" TEXT NOT NULL,
   "created_at" TIMESTAMPTZ NOT NULL,
   "submitted_at" TIMESTAMPTZ NOT NULL,
+  "review_due_at" TIMESTAMPTZ,
   "reviewed_at" TIMESTAMPTZ,
   "reviewer_note" TEXT,
   PRIMARY KEY ("id")
@@ -20,3 +21,5 @@ CREATE INDEX IF NOT EXISTS "content_submissions_review_priority_idx" ON "content
 CREATE INDEX IF NOT EXISTS "content_submissions_assigned_reviewer_idx" ON "content_submissions" ("assigned_reviewer");
 
 CREATE INDEX IF NOT EXISTS "content_submissions_submitted_at_idx" ON "content_submissions" ("submitted_at");
+
+CREATE INDEX IF NOT EXISTS "content_submissions_review_due_at_idx" ON "content_submissions" ("review_due_at");

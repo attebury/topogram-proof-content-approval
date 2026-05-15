@@ -12,6 +12,7 @@ entity entity_content_submission {
     author_name text required
     created_at datetime required
     submitted_at datetime required
+    review_due_at datetime optional
     reviewed_at datetime optional
     reviewer_note text optional
   }
@@ -22,6 +23,7 @@ entity entity_content_submission {
     index [review_priority]
     index [assigned_reviewer]
     index [submitted_at]
+    index [review_due_at]
   }
 
   invariants {

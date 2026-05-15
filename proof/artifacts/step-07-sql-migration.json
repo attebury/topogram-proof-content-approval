@@ -1,0 +1,4 @@
+alter table content_submissions add column review_due_at timestamptz;
+
+create index content_submissions_review_due_at_index on content_submissions (review_due_at);
+

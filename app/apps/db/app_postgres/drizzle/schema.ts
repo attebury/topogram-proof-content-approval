@@ -10,6 +10,7 @@ export const content_submissionsTable = pgTable("content_submissions", {
   author_name: text("author_name").notNull(),
   created_at: timestamp("created_at", { withTimezone: true, mode: "string" }).notNull(),
   submitted_at: timestamp("submitted_at", { withTimezone: true, mode: "string" }).notNull(),
+  review_due_at: timestamp("review_due_at", { withTimezone: true, mode: "string" }),
   reviewed_at: timestamp("reviewed_at", { withTimezone: true, mode: "string" }),
   reviewer_note: text("reviewer_note"),
 }, (table) => ({
@@ -17,4 +18,5 @@ export const content_submissionsTable = pgTable("content_submissions", {
   content_submissions_review_priority_idx: index("content_submissions_review_priority_idx").on(table.review_priority),
   content_submissions_assigned_reviewer_idx: index("content_submissions_assigned_reviewer_idx").on(table.assigned_reviewer),
   content_submissions_submitted_at_idx: index("content_submissions_submitted_at_idx").on(table.submitted_at),
+  content_submissions_review_due_at_idx: index("content_submissions_review_due_at_idx").on(table.review_due_at),
 }));

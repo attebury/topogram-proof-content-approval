@@ -1,0 +1,9 @@
+requirement req_maintained_db_review_due_at {
+  name "Maintained Review Due Date Migration"
+  description "The maintained proof app must add a review due date persistence change using Topogram migration proposals as guidance, then manually adapt maintained app DB files."
+  affects [cap_list_submissions, cap_get_submission]
+  introduces_rules []
+  respects_rules []
+  priority medium
+  status approved
+}

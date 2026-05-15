@@ -13,6 +13,7 @@ export interface SubmitContentResult {
   assigned_reviewer?: string;
   author_name: string;
   submitted_at: string;
+  review_due_at?: string;
   reviewed_at?: string;
   reviewer_note?: string;
 }
@@ -30,6 +31,7 @@ export interface GetSubmissionResult {
   assigned_reviewer?: string;
   author_name: string;
   submitted_at: string;
+  review_due_at?: string;
   reviewed_at?: string;
   reviewer_note?: string;
 }
@@ -49,6 +51,7 @@ export interface ListSubmissionsResultItem {
   assigned_reviewer?: string;
   author_name: string;
   submitted_at: string;
+  review_due_at?: string;
   reviewed_at?: string;
   reviewer_note?: string;
 }
@@ -72,6 +75,7 @@ export interface ApproveSubmissionResult {
   assigned_reviewer?: string;
   author_name: string;
   submitted_at: string;
+  review_due_at?: string;
   reviewed_at?: string;
   reviewer_note?: string;
 }
@@ -90,6 +94,7 @@ export interface RequestChangesResult {
   assigned_reviewer?: string;
   author_name: string;
   submitted_at: string;
+  review_due_at?: string;
   reviewed_at?: string;
   reviewer_note?: string;
 }

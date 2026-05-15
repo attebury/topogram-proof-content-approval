@@ -1,0 +1,8 @@
+verification verification_maintained_db_review_due_at {
+  name "Maintained DB Review Due Date Verification"
+  description "Runs Topogram check, DB snapshot and migration proposal emission, maintained app compile verification, and generation refusal proof for the maintained DB migration checkpoint."
+  validates [cap_list_submissions, cap_get_submission]
+  method runtime
+  scenarios [topogram_db_migration_proposal_maintained_compile_generation_refusal]
+  status active
+}

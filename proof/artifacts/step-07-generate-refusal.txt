@@ -1,0 +1,8 @@
+$ npx topogram generate
+exit_code=1
+
+## stdout
+
+
+## stderr
+Refusing to write generated output to maintained output 'app': <repo>/app

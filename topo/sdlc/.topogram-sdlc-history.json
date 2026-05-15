@@ -136,5 +136,28 @@
       "by": "actor_operator",
       "note": null
     }
+  ],
+  "task_maintained_db_review_due_at": [
+    {
+      "from": "unclaimed",
+      "to": "claimed",
+      "at": "2026-05-15T07:11:19.358Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "claimed",
+      "to": "in-progress",
+      "at": "2026-05-15T07:11:19.368Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "in-progress",
+      "to": "done",
+      "at": "2026-05-15T07:11:26.104Z",
+      "by": "actor_operator",
+      "note": null
+    }
   ]
 }

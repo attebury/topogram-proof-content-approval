@@ -1,0 +1,42 @@
+{
+  "dryRun": false,
+  "link": {
+    "after": [
+      "verification_maintained_db_review_due_at"
+    ],
+    "before": [
+      "verification_maintained_db_review_due_at"
+    ],
+    "dryRun": false,
+    "field": "verification_refs",
+    "file": "<repo>/topo/sdlc/tasks/maintained-db-review-due-at.tg",
+    "from": {
+      "id": "task_maintained_db_review_due_at",
+      "kind": "task"
+    },
+    "ok": true,
+    "to": {
+      "id": "verification_maintained_db_review_due_at",
+      "kind": "verification"
+    },
+    "written": true
+  },
+  "ok": true,
+  "taskId": "task_maintained_db_review_due_at",
+  "transition": {
+    "archivable": true,
+    "dod": {
+      "errors": [],
+      "satisfied": true,
+      "warnings": []
+    },
+    "dryRun": false,
+    "file": "<repo>/topo/sdlc/tasks/maintained-db-review-due-at.tg",
+    "from": "in-progress",
+    "id": "task_maintained_db_review_due_at",
+    "kind": "task",
+    "ok": true,
+    "to": "done"
+  },
+  "verificationId": "verification_maintained_db_review_due_at"
+}

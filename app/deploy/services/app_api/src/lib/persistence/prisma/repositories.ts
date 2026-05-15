@@ -32,6 +32,7 @@ function mapSubmissionRecord(submission: {
   status: string;
   author_name: string;
   submitted_at: Date | string;
+  review_due_at?: Date | string | null;
   reviewed_at?: Date | string | null;
   reviewer_note?: string | null;
 }): GetSubmissionResult {
@@ -42,6 +43,7 @@ function mapSubmissionRecord(submission: {
     status: submission.status,
     author_name: submission.author_name,
     submitted_at: iso(submission.submitted_at)!,
+    ...(submission.review_due_at ? { review_due_at: iso(submission.review_due_at) } : {}),
     ...(submission.reviewed_at ? { reviewed_at: iso(submission.reviewed_at) } : {}),
     ...(submission.reviewer_note ? { reviewer_note: submission.reviewer_note } : {})
   };

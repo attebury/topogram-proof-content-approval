@@ -1,0 +1,610 @@
+{
+  "depends_on": {
+    "acceptance_refs": [
+      "ac_maintained_db_review_due_at"
+    ],
+    "affects": [
+      "cap_get_submission",
+      "cap_list_submissions"
+    ],
+    "blocked_by": [],
+    "blocks": [],
+    "plans": [],
+    "satisfies": [
+      "req_maintained_db_review_due_at"
+    ],
+    "verification_refs": [
+      "verification_maintained_db_review_due_at"
+    ],
+    "verifications": [
+      "ver_runtime_flow",
+      "ver_runtime_smoke",
+      "verification_content_approval_domain",
+      "verification_generated_baseline",
+      "verification_generated_db_migration",
+      "verification_graduated_maintained_output",
+      "verification_maintained_bulk_review",
+      "verification_maintained_db_review_due_at",
+      "verification_review_workflow_ui"
+    ]
+  },
+  "focus": {
+    "id": "task_maintained_db_review_due_at",
+    "kind": "task"
+  },
+  "ownership_boundary": {
+    "canonical_topogram": {
+      "agent_mode": "propose_review_adopt",
+      "owner": "human"
+    },
+    "generated_artifacts": {
+      "agent_mode": "regenerate_or_compare",
+      "owner": "engine"
+    },
+    "maintained_code": {
+      "agent_mode": "bounded_edit_only",
+      "owner": "human"
+    },
+    "proposal_surfaces": {
+      "agent_mode": "stage_map_customize_reject",
+      "owner": "human"
+    }
+  },
+  "related": {
+    "acceptance_refs": [
+      {
+        "description": "Given the app output is maintained-owned, when review_due_at is added to the Topogram DB contract and migration artifacts are emitted, then the app DB files are manually adapted, generation remains refused, and the maintained compile gate passes.",
+        "id": "ac_maintained_db_review_due_at",
+        "kind": "acceptance_criterion",
+        "name": "Maintained Review Due Date Migration",
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        }
+      }
+    ],
+    "affects": [
+      {
+        "actors": [
+          "actor_operator"
+        ],
+        "creates": [],
+        "deletes": [],
+        "description": "Fetches one content submission for review.",
+        "id": "cap_get_submission",
+        "input": [
+          "shape_input_get_submission"
+        ],
+        "kind": "capability",
+        "name": "Get Submission",
+        "output": [
+          "shape_output_submission_detail"
+        ],
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        },
+        "reads": [
+          "entity_content_submission"
+        ],
+        "reviewBoundary": {
+          "automation_class": "safe",
+          "reasons": [
+            "read_only_surface"
+          ]
+        },
+        "roles": [],
+        "updates": []
+      },
+      {
+        "actors": [
+          "actor_operator"
+        ],
+        "creates": [],
+        "deletes": [],
+        "description": "Lists submitted content in review order.",
+        "id": "cap_list_submissions",
+        "input": [
+          "shape_input_list_submissions"
+        ],
+        "kind": "capability",
+        "name": "List Submissions",
+        "output": [
+          "shape_output_submission_card"
+        ],
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        },
+        "reads": [
+          "entity_content_submission"
+        ],
+        "reviewBoundary": {
+          "automation_class": "safe",
+          "reasons": [
+            "read_only_surface"
+          ]
+        },
+        "roles": [],
+        "updates": []
+      }
+    ],
+    "blocked_by": [],
+    "plans": [],
+    "satisfies": [
+      {
+        "description": "The maintained proof app must add a review due date persistence change using Topogram migration proposals as guidance, then manually adapt maintained app DB files.",
+        "id": "req_maintained_db_review_due_at",
+        "kind": "requirement",
+        "name": "Maintained Review Due Date Migration",
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        }
+      }
+    ],
+    "verification_refs": [
+      {
+        "description": "Runs Topogram check, DB snapshot and migration proposal emission, maintained app compile verification, and generation refusal proof for the maintained DB migration checkpoint.",
+        "id": "verification_maintained_db_review_due_at",
+        "kind": "verification",
+        "method": "runtime",
+        "name": "Maintained DB Review Due Date Verification",
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        },
+        "scenarios": [
+          "topogram_db_migration_proposal_maintained_compile_generation_refusal"
+        ],
+        "validates": [
+          "cap_get_submission",
+          "cap_list_submissions"
+        ]
+      }
+    ]
+  },
+  "review_boundary": {
+    "automation_class": "review_required",
+    "reasons": [
+      "task_scope"
+    ]
+  },
+  "summary": {
+    "claimed_by": [
+      "actor_operator"
+    ],
+    "disposition": "active",
+    "domain": null,
+    "id": "task_maintained_db_review_due_at",
+    "name": "Maintained Review Due Date Migration",
+    "priority": "medium",
+    "status": "in-progress",
+    "work_type": "implementation"
+  },
+  "type": "context_slice",
+  "verification": [
+    {
+      "description": "Verifies the core content approval runtime behavior.",
+      "id": "ver_runtime_flow",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Content approval runtime flow",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "approve_submission_runtime",
+        "get_created_submission_runtime",
+        "list_submissions_runtime",
+        "request_changes_runtime",
+        "submit_content_runtime"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_get_submission",
+        "cap_list_submissions",
+        "cap_request_changes",
+        "cap_submit_content"
+      ]
+    },
+    {
+      "description": "Verifies the generated content approval service through runtime smoke checks.",
+      "id": "ver_runtime_smoke",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Starter runtime smoke",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "get_submission_smoke",
+        "list_submissions_smoke",
+        "submit_content_smoke"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_get_submission",
+        "cap_list_submissions",
+        "cap_request_changes",
+        "cap_submit_content"
+      ]
+    },
+    {
+      "description": "Runs Topogram check, app generation, generated app compile verification, and captures proof artifacts for the content approval domain checkpoint.",
+      "id": "verification_content_approval_domain",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Content Approval Domain Verification",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "topogram_check_generate_verify"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_get_submission",
+        "cap_list_submissions",
+        "cap_request_changes",
+        "cap_submit_content"
+      ]
+    },
+    {
+      "description": "Runs Topogram check, app generation, generated app compile verification, and captures proof artifacts for the first generated checkpoint.",
+      "id": "verification_generated_baseline",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Generated Baseline Verification",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "topogram_check_generate_verify"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_get_submission",
+        "cap_list_submissions",
+        "cap_request_changes",
+        "cap_submit_content"
+      ]
+    },
+    {
+      "description": "Runs Topogram check, DB snapshot emission, DB migration planning, SQL migration emission, app regeneration, and generated app compile verification for the generated-owned DB migration checkpoint.",
+      "id": "verification_generated_db_migration",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Generated DB Migration Verification",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "topogram_db_snapshot_migration_generate_verify"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_get_submission",
+        "cap_list_submissions",
+        "cap_request_changes",
+        "cap_submit_content"
+      ]
+    },
+    {
+      "description": "Runs Topogram check, generated-app compile verification, and a negative generation attempt proving maintained app output is not overwritten.",
+      "id": "verification_graduated_maintained_output",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Graduated Maintained Output Verification",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "topogram_check_verify_generation_refusal"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_get_submission",
+        "cap_list_submissions",
+        "cap_request_changes",
+        "cap_submit_content"
+      ]
+    },
+    {
+      "description": "Runs Topogram check, widget behavior reporting, maintained app compile verification, and generation refusal proof for the maintained bulk review checkpoint.",
+      "id": "verification_maintained_bulk_review",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Maintained Bulk Review Verification",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "topogram_widget_packets_maintained_compile_generation_refusal"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_list_submissions"
+      ]
+    },
+    {
+      "description": "Runs Topogram check, DB snapshot and migration proposal emission, maintained app compile verification, and generation refusal proof for the maintained DB migration checkpoint.",
+      "id": "verification_maintained_db_review_due_at",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Maintained DB Review Due Date Verification",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "topogram_db_migration_proposal_maintained_compile_generation_refusal"
+      ],
+      "validates": [
+        "cap_get_submission",
+        "cap_list_submissions"
+      ]
+    },
+    {
+      "description": "Runs Topogram check, widget contract emission, widget conformance, widget behavior reporting, app generation, and generated app compile verification for the review workflow UI checkpoint.",
+      "id": "verification_review_workflow_ui",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Review Workflow UI Verification",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "topogram_check_widget_reports_generate_verify"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_get_submission",
+        "cap_list_submissions",
+        "cap_request_changes",
+        "cap_submit_content"
+      ]
+    }
+  ],
+  "verification_targets": {
+    "generated_checks": [
+      "compile-check",
+      "runtime-check"
+    ],
+    "maintained_app_checks": [],
+    "rationale": "Task slice points at verification covering the surfaces this task touches.",
+    "verification_ids": [
+      "ver_runtime_flow",
+      "ver_runtime_smoke",
+      "verification_content_approval_domain",
+      "verification_generated_baseline",
+      "verification_generated_db_migration",
+      "verification_graduated_maintained_output",
+      "verification_maintained_bulk_review",
+      "verification_maintained_db_review_due_at",
+      "verification_review_workflow_ui"
+    ]
+  },
+  "version": 1,
+  "write_scope": {
+    "generator_owned": [
+      "artifacts/**",
+      "apps/**"
+    ],
+    "human_owned_review_required": [
+      "examples/maintained/proof-app/**"
+    ],
+    "out_of_bounds": [
+      ".git/**",
+      "node_modules/**"
+    ],
+    "safe_to_edit": [
+      "topo/**",
+      "candidates/**"
+    ]
+  }
+}
