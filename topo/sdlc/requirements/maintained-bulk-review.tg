@@ -1,0 +1,9 @@
+requirement req_maintained_bulk_review {
+  name "Maintained Bulk Review"
+  description "The maintained proof app must add a review queue bulk action using Topogram widget/query packets as guidance without regenerating app output."
+  affects [cap_list_submissions, cap_approve_submission]
+  introduces_rules []
+  respects_rules []
+  priority medium
+  status approved
+}

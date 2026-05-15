@@ -1,36 +1,39 @@
-# Step 05: Graduate To Maintained
+# Step 06: Maintained Feature
 
 ## What This Proves
 
-The proof app can graduate from generated-owned output to maintained ownership.
-After this step, `topogram generate` is intentionally not the app update path:
-Topogram refuses to overwrite the maintained `app/` directory, while
-`topogram emit` and query packets remain available for contracts and guidance.
+The proof app can add a maintained UI feature from Topogram packets without
+regenerating over maintained app code. This step adds bulk review selection to
+the maintained SvelteKit queue page and updates the widget behavior contract as
+guidance.
 
 ## Commands
 
 ```bash
-topogram sdlc start task_graduated_maintained_output . --actor actor_operator --write --json
+topogram sdlc start task_maintained_bulk_review . --actor actor_operator --write --json
 topogram check . --json
 topogram agent brief . --json
-topogram query slice ./topo --task task_graduated_maintained_output --json
+topogram query slice ./topo --task task_maintained_bulk_review --json
+topogram query single-agent-plan ./topo --mode implementation --task task_maintained_bulk_review --json
+topogram widget behavior ./topo --projection proj_web_surface --widget widget_submission_queue --json
 npm run verify
 topogram generate
-topogram sdlc complete task_graduated_maintained_output . --verification verification_graduated_maintained_output --actor actor_operator --write
+topogram sdlc complete task_maintained_bulk_review . --verification verification_maintained_bulk_review --actor actor_operator --write
 topogram sdlc prep commit . --json
 ```
 
 ## Evidence
 
-- `proof/artifacts/step-05-check.json`
-- `proof/artifacts/step-05-agent-brief.json`
-- `proof/artifacts/step-05-task-slice.json`
-- `proof/artifacts/step-05-generate-refusal.txt`
-- `proof/artifacts/step-05-sdlc-start-task-graduated-maintained-output.json`
-- `proof/artifacts/step-05-sdlc-complete-task-graduated-maintained-output.json`
-- `proof/artifacts/step-05-sdlc-prep-commit.json`
+- `proof/artifacts/step-06-check.json`
+- `proof/artifacts/step-06-agent-brief.json`
+- `proof/artifacts/step-06-task-slice.json`
+- `proof/artifacts/step-06-single-agent-plan.json`
+- `proof/artifacts/step-06-widget-behavior-report.json`
+- `proof/artifacts/step-06-generate-refusal.txt`
+- `proof/artifacts/step-06-sdlc-start-task-maintained-bulk-review.json`
+- `proof/artifacts/step-06-sdlc-complete-task-maintained-bulk-review.json`
+- `proof/artifacts/step-06-sdlc-prep-commit.json`
 
 ## Next Step
 
-Add a maintained feature by editing app source directly with Topogram packets as
-guidance, without regenerating over maintained app output.
+Add a maintained DB migration proposal and manually adapt maintained app code.

@@ -1,0 +1,53 @@
+{
+  "changedFiles": [
+    "README.md",
+    "app/apps/web/app_sveltekit/src/routes/submissions/+page.svelte",
+    "app/compile/web/app_sveltekit/src/routes/submissions/+page.svelte",
+    "app/deploy/web/app_sveltekit/src/routes/submissions/+page.svelte",
+    "proof/STEP.md",
+    "topo/projections/proj-ui-contract.tg",
+    "topo/sdlc/.topogram-sdlc-history.json",
+    "topo/widgets/widget-submission-queue.tg",
+    "proof/artifacts/step-06-agent-brief.json",
+    "proof/artifacts/step-06-check.json",
+    "proof/artifacts/step-06-generate-refusal.txt",
+    "proof/artifacts/step-06-sdlc-complete-task-maintained-bulk-review.json",
+    "proof/artifacts/step-06-sdlc-prep-commit.json",
+    "proof/artifacts/step-06-sdlc-start-task-maintained-bulk-review.json",
+    "proof/artifacts/step-06-single-agent-plan.json",
+    "proof/artifacts/step-06-task-slice.json",
+    "proof/artifacts/step-06-widget-behavior-report.json",
+    "topo/sdlc/acceptance_criteria/maintained-bulk-review.tg",
+    "topo/sdlc/requirements/maintained-bulk-review.tg",
+    "topo/sdlc/tasks/maintained-bulk-review.tg",
+    "topo/shapes/shape-input-bulk-review.tg",
+    "topo/verifications/maintained-bulk-review.tg"
+  ],
+  "changedTasks": [
+    {
+      "disposition": "active",
+      "explicitDisposition": true,
+      "file": "topo/sdlc/tasks/maintained-bulk-review.tg",
+      "id": "task_maintained_bulk_review",
+      "priority": "medium",
+      "requiresDisposition": false,
+      "status": "done"
+    }
+  ],
+  "errors": [],
+  "nextCommands": [
+    "topogram sdlc explain <task-id> --json",
+    "topogram query slice ./topo --task <task-id> --json",
+    "topogram sdlc gate . --base <ref> --head <ref> --require-adopted"
+  ],
+  "ok": true,
+  "openTasks": [],
+  "projectRoot": "<repo>",
+  "taskFiles": [
+    "topo/sdlc/tasks/maintained-bulk-review.tg"
+  ],
+  "topogramRoot": "<repo>/topo",
+  "type": "sdlc_commit_prep",
+  "version": "1",
+  "warnings": []
+}

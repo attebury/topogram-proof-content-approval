@@ -113,5 +113,28 @@
       "by": "actor_operator",
       "note": null
     }
+  ],
+  "task_maintained_bulk_review": [
+    {
+      "from": "unclaimed",
+      "to": "claimed",
+      "at": "2026-05-15T07:02:48.341Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "claimed",
+      "to": "in-progress",
+      "at": "2026-05-15T07:02:48.348Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "in-progress",
+      "to": "done",
+      "at": "2026-05-15T07:04:36.388Z",
+      "by": "actor_operator",
+      "note": null
+    }
   ]
 }

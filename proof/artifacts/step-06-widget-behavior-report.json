@@ -1,0 +1,559 @@
+{
+  "behaviors": [
+    {
+      "actions": [],
+      "behavior": {
+        "directives": {
+          "emits": "row_select",
+          "mode": "multi",
+          "state": "selected_ids"
+        },
+        "kind": "selection",
+        "source": "structured",
+        "status": "realized"
+      },
+      "capabilities": [
+        "cap_list_submissions"
+      ],
+      "check_codes": [],
+      "data_dependencies": [
+        {
+          "prop": "rows",
+          "source": {
+            "id": "cap_list_submissions",
+            "kind": "capability"
+          }
+        }
+      ],
+      "diagnostics": [],
+      "effect_types": [
+        "navigation"
+      ],
+      "effects": [
+        {
+          "event": "row_select",
+          "target": {
+            "id": "submission_detail",
+            "kind": "screen"
+          },
+          "type": "navigation"
+        }
+      ],
+      "emits": [
+        {
+          "bindings": [
+            {
+              "action": "navigate",
+              "event": "row_select",
+              "target": {
+                "id": "submission_detail",
+                "kind": "screen"
+              }
+            }
+          ],
+          "bound": true,
+          "effects": [
+            {
+              "event": "row_select",
+              "target": {
+                "id": "submission_detail",
+                "kind": "screen"
+              },
+              "type": "navigation"
+            }
+          ],
+          "event": "row_select"
+        }
+      ],
+      "key": "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:selection:0",
+      "projection": {
+        "id": "proj_web_surface",
+        "name": "Content Approval Web UI",
+        "source_path": "<repo>/topo/projections/proj-web-surface.tg",
+        "status": "active",
+        "type": "web_surface"
+      },
+      "region": "results",
+      "screen": {
+        "id": "submission_queue",
+        "kind": "list",
+        "title": "Review Queue"
+      },
+      "source_projection": {
+        "id": "proj_ui_contract",
+        "name": "Content Approval UI Contract",
+        "source_path": "<repo>/topo/projections/proj-ui-contract.tg",
+        "status": "active",
+        "type": "ui_contract"
+      },
+      "widget": {
+        "category": "collection",
+        "id": "widget_submission_queue",
+        "name": "Submission Queue",
+        "source_path": "<repo>/topo/widgets/widget-submission-queue.tg",
+        "status": "active",
+        "version": "1.1"
+      }
+    },
+    {
+      "actions": [],
+      "behavior": {
+        "directives": {
+          "default": [
+            "submitted_at",
+            "desc"
+          ],
+          "fields": [
+            "submitted_at",
+            "status",
+            "title"
+          ]
+        },
+        "kind": "sorting",
+        "source": "structured",
+        "status": "realized"
+      },
+      "capabilities": [
+        "cap_list_submissions"
+      ],
+      "check_codes": [],
+      "data_dependencies": [
+        {
+          "prop": "rows",
+          "source": {
+            "id": "cap_list_submissions",
+            "kind": "capability"
+          }
+        }
+      ],
+      "diagnostics": [],
+      "effect_types": [
+        "none"
+      ],
+      "effects": [],
+      "emits": [],
+      "key": "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:sorting:1",
+      "projection": {
+        "id": "proj_web_surface",
+        "name": "Content Approval Web UI",
+        "source_path": "<repo>/topo/projections/proj-web-surface.tg",
+        "status": "active",
+        "type": "web_surface"
+      },
+      "region": "results",
+      "screen": {
+        "id": "submission_queue",
+        "kind": "list",
+        "title": "Review Queue"
+      },
+      "source_projection": {
+        "id": "proj_ui_contract",
+        "name": "Content Approval UI Contract",
+        "source_path": "<repo>/topo/projections/proj-ui-contract.tg",
+        "status": "active",
+        "type": "ui_contract"
+      },
+      "widget": {
+        "category": "collection",
+        "id": "widget_submission_queue",
+        "name": "Submission Queue",
+        "source_path": "<repo>/topo/widgets/widget-submission-queue.tg",
+        "status": "active",
+        "version": "1.1"
+      }
+    },
+    {
+      "actions": [],
+      "behavior": {
+        "directives": {
+          "fields": [
+            "status"
+          ]
+        },
+        "kind": "filtering",
+        "source": "structured",
+        "status": "realized"
+      },
+      "capabilities": [
+        "cap_list_submissions"
+      ],
+      "check_codes": [],
+      "data_dependencies": [
+        {
+          "prop": "rows",
+          "source": {
+            "id": "cap_list_submissions",
+            "kind": "capability"
+          }
+        }
+      ],
+      "diagnostics": [],
+      "effect_types": [
+        "none"
+      ],
+      "effects": [],
+      "emits": [],
+      "key": "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:filtering:2",
+      "projection": {
+        "id": "proj_web_surface",
+        "name": "Content Approval Web UI",
+        "source_path": "<repo>/topo/projections/proj-web-surface.tg",
+        "status": "active",
+        "type": "web_surface"
+      },
+      "region": "results",
+      "screen": {
+        "id": "submission_queue",
+        "kind": "list",
+        "title": "Review Queue"
+      },
+      "source_projection": {
+        "id": "proj_ui_contract",
+        "name": "Content Approval UI Contract",
+        "source_path": "<repo>/topo/projections/proj-ui-contract.tg",
+        "status": "active",
+        "type": "ui_contract"
+      },
+      "widget": {
+        "category": "collection",
+        "id": "widget_submission_queue",
+        "name": "Submission Queue",
+        "source_path": "<repo>/topo/widgets/widget-submission-queue.tg",
+        "status": "active",
+        "version": "1.1"
+      }
+    },
+    {
+      "actions": [],
+      "behavior": {
+        "directives": {
+          "mode": "cursor",
+          "page_size": 25
+        },
+        "kind": "pagination",
+        "source": "structured",
+        "status": "realized"
+      },
+      "capabilities": [
+        "cap_list_submissions"
+      ],
+      "check_codes": [],
+      "data_dependencies": [
+        {
+          "prop": "rows",
+          "source": {
+            "id": "cap_list_submissions",
+            "kind": "capability"
+          }
+        }
+      ],
+      "diagnostics": [],
+      "effect_types": [
+        "none"
+      ],
+      "effects": [],
+      "emits": [],
+      "key": "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:pagination:3",
+      "projection": {
+        "id": "proj_web_surface",
+        "name": "Content Approval Web UI",
+        "source_path": "<repo>/topo/projections/proj-web-surface.tg",
+        "status": "active",
+        "type": "web_surface"
+      },
+      "region": "results",
+      "screen": {
+        "id": "submission_queue",
+        "kind": "list",
+        "title": "Review Queue"
+      },
+      "source_projection": {
+        "id": "proj_ui_contract",
+        "name": "Content Approval UI Contract",
+        "source_path": "<repo>/topo/projections/proj-ui-contract.tg",
+        "status": "active",
+        "type": "ui_contract"
+      },
+      "widget": {
+        "category": "collection",
+        "id": "widget_submission_queue",
+        "name": "Submission Queue",
+        "source_path": "<repo>/topo/widgets/widget-submission-queue.tg",
+        "status": "active",
+        "version": "1.1"
+      }
+    },
+    {
+      "actions": [
+        {
+          "bindings": [
+            {
+              "action": "action",
+              "event": "approve_selected",
+              "target": {
+                "id": "cap_approve_submission",
+                "kind": "capability"
+              }
+            }
+          ],
+          "bound": true,
+          "effects": [
+            {
+              "capability": {
+                "id": "cap_approve_submission",
+                "kind": "capability"
+              },
+              "event": "approve_selected",
+              "type": "command"
+            }
+          ],
+          "event": "approve_selected"
+        }
+      ],
+      "behavior": {
+        "directives": {
+          "actions": [
+            "approve_selected"
+          ],
+          "emits": "approve_selected",
+          "state": "selected_ids"
+        },
+        "kind": "bulk_action",
+        "source": "structured",
+        "status": "realized"
+      },
+      "capabilities": [
+        "cap_approve_submission",
+        "cap_list_submissions"
+      ],
+      "check_codes": [],
+      "data_dependencies": [
+        {
+          "prop": "rows",
+          "source": {
+            "id": "cap_list_submissions",
+            "kind": "capability"
+          }
+        }
+      ],
+      "diagnostics": [],
+      "effect_types": [
+        "command"
+      ],
+      "effects": [
+        {
+          "capability": {
+            "id": "cap_approve_submission",
+            "kind": "capability"
+          },
+          "event": "approve_selected",
+          "type": "command"
+        }
+      ],
+      "emits": [
+        {
+          "bindings": [
+            {
+              "action": "action",
+              "event": "approve_selected",
+              "target": {
+                "id": "cap_approve_submission",
+                "kind": "capability"
+              }
+            }
+          ],
+          "bound": true,
+          "effects": [
+            {
+              "capability": {
+                "id": "cap_approve_submission",
+                "kind": "capability"
+              },
+              "event": "approve_selected",
+              "type": "command"
+            }
+          ],
+          "event": "approve_selected"
+        }
+      ],
+      "key": "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:bulk_action:4",
+      "projection": {
+        "id": "proj_web_surface",
+        "name": "Content Approval Web UI",
+        "source_path": "<repo>/topo/projections/proj-web-surface.tg",
+        "status": "active",
+        "type": "web_surface"
+      },
+      "region": "results",
+      "screen": {
+        "id": "submission_queue",
+        "kind": "list",
+        "title": "Review Queue"
+      },
+      "source_projection": {
+        "id": "proj_ui_contract",
+        "name": "Content Approval UI Contract",
+        "source_path": "<repo>/topo/projections/proj-ui-contract.tg",
+        "status": "active",
+        "type": "ui_contract"
+      },
+      "widget": {
+        "category": "collection",
+        "id": "widget_submission_queue",
+        "name": "Submission Queue",
+        "source_path": "<repo>/topo/widgets/widget-submission-queue.tg",
+        "status": "active",
+        "version": "1.1"
+      }
+    }
+  ],
+  "checks": [],
+  "filters": {
+    "projection": "proj_web_surface",
+    "widget": "widget_submission_queue"
+  },
+  "groups": {
+    "capabilities": [
+      {
+        "behaviors": [
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:bulk_action:4"
+        ],
+        "declared": 0,
+        "id": "cap_approve_submission",
+        "partial": 0,
+        "realized": 1,
+        "total_behaviors": 1
+      },
+      {
+        "behaviors": [
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:bulk_action:4",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:filtering:2",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:pagination:3",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:selection:0",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:sorting:1"
+        ],
+        "declared": 0,
+        "id": "cap_list_submissions",
+        "partial": 0,
+        "realized": 5,
+        "total_behaviors": 5
+      }
+    ],
+    "effects": [
+      {
+        "behaviors": [
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:bulk_action:4"
+        ],
+        "declared": 0,
+        "id": "command",
+        "partial": 0,
+        "realized": 1,
+        "total_behaviors": 1
+      },
+      {
+        "behaviors": [
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:selection:0"
+        ],
+        "declared": 0,
+        "id": "navigation",
+        "partial": 0,
+        "realized": 1,
+        "total_behaviors": 1
+      },
+      {
+        "behaviors": [
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:filtering:2",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:pagination:3",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:sorting:1"
+        ],
+        "declared": 0,
+        "id": "none",
+        "partial": 0,
+        "realized": 3,
+        "total_behaviors": 3
+      }
+    ],
+    "screens": [
+      {
+        "behaviors": [
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:bulk_action:4",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:filtering:2",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:pagination:3",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:selection:0",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:sorting:1"
+        ],
+        "declared": 0,
+        "id": "submission_queue",
+        "partial": 0,
+        "realized": 5,
+        "total_behaviors": 5
+      }
+    ],
+    "widgets": [
+      {
+        "behaviors": [
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:bulk_action:4",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:filtering:2",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:pagination:3",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:selection:0",
+          "proj_web_surface:proj_ui_contract:submission_queue:results:widget_submission_queue:1:sorting:1"
+        ],
+        "declared": 0,
+        "id": "widget_submission_queue",
+        "partial": 0,
+        "realized": 5,
+        "total_behaviors": 5
+      }
+    ]
+  },
+  "highlights": [],
+  "impact": {
+    "capabilities": [
+      "cap_approve_submission",
+      "cap_list_submissions"
+    ],
+    "projections": [
+      "proj_ui_contract",
+      "proj_web_surface"
+    ],
+    "widgets": [
+      "widget_submission_queue"
+    ]
+  },
+  "summary": {
+    "affected_capabilities": [
+      "cap_approve_submission",
+      "cap_list_submissions"
+    ],
+    "affected_projections": [
+      "proj_ui_contract",
+      "proj_web_surface"
+    ],
+    "affected_widgets": [
+      "widget_submission_queue"
+    ],
+    "declared": 0,
+    "errors": 0,
+    "partial": 0,
+    "realized": 5,
+    "total_behaviors": 5,
+    "total_usages": 1,
+    "warnings": 0
+  },
+  "type": "widget_behavior_report",
+  "write_scope": {
+    "paths": [
+      "<repo>/topo/projections/proj-ui-contract.tg",
+      "<repo>/topo/projections/proj-web-surface.tg",
+      "<repo>/topo/widgets/widget-submission-queue.tg"
+    ],
+    "projection_files": [
+      "<repo>/topo/projections/proj-ui-contract.tg",
+      "<repo>/topo/projections/proj-web-surface.tg"
+    ],
+    "verification_files": [],
+    "widget_files": [
+      "<repo>/topo/widgets/widget-submission-queue.tg"
+    ]
+  }
+}

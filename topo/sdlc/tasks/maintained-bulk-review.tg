@@ -1,0 +1,14 @@
+task task_maintained_bulk_review {
+  name "Maintained Bulk Review"
+  description "Add bulk review behavior to the Topogram widget contract and maintained SvelteKit queue page without regenerating app output."
+  satisfies [req_maintained_bulk_review]
+  acceptance_refs [ac_maintained_bulk_review]
+  verification_refs [verification_maintained_bulk_review]
+  affects [cap_list_submissions, cap_approve_submission]
+  blocked_by []
+  disposition active
+  priority medium
+  work_type implementation
+  claimed_by [actor_operator]
+  status done
+}

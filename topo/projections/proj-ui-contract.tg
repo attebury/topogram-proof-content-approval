@@ -66,7 +66,7 @@ projection proj_ui_contract {
 
   widget_bindings {
     screen submission_queue region hero widget widget_submission_summary data rows from cap_list_submissions
-    screen submission_queue region results widget widget_submission_queue data rows from cap_list_submissions event row_select navigate submission_detail
+    screen submission_queue region results widget widget_submission_queue data rows from cap_list_submissions event row_select navigate submission_detail event approve_selected action cap_approve_submission
     screen submission_detail region summary widget widget_review_actions data submission from cap_get_submission event approve action cap_approve_submission event request_changes action cap_request_changes
     screen submission_create region summary widget widget_submission_form event submit action cap_submit_content
   }

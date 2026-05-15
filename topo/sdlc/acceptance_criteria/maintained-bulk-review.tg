@@ -1,0 +1,6 @@
+acceptance_criterion ac_maintained_bulk_review {
+  name "Maintained Bulk Review"
+  description "Given the app output is maintained-owned, when bulk review behavior is added to the queue widget contract and maintained SvelteKit page directly, then Topogram validates the updated packets, generation remains refused, and the maintained app compile gate passes."
+  requirement req_maintained_bulk_review
+  status approved
+}

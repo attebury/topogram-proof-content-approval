@@ -1,0 +1,8 @@
+verification verification_maintained_bulk_review {
+  name "Maintained Bulk Review Verification"
+  description "Runs Topogram check, widget behavior reporting, maintained app compile verification, and generation refusal proof for the maintained bulk review checkpoint."
+  validates [cap_list_submissions, cap_approve_submission]
+  method runtime
+  scenarios [topogram_widget_packets_maintained_compile_generation_refusal]
+  status active
+}
