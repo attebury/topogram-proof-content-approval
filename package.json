@@ -29,7 +29,7 @@
     "template:update:apply": "topogram template update --apply",
     "trust:status": "topogram trust status",
     "trust:diff": "topogram trust diff",
-    "verify": "npm run app:compile",
+    "verify": "npm run proof:check-paths && npm run app:compile",
     "bootstrap": "npm run app:bootstrap",
     "dev": "npm run app:dev",
     "app:bootstrap": "npm --prefix ./app run bootstrap",
@@ -39,7 +39,8 @@
     "app:runtime-check": "npm --prefix ./app run runtime-check",
     "app:check": "npm run app:compile",
     "app:probe": "npm run app:smoke && npm run app:runtime-check",
-    "app:runtime": "npm --prefix ./app run runtime"
+    "app:runtime": "npm --prefix ./app run runtime",
+    "proof:check-paths": "node ./scripts/check-no-local-paths.mjs"
   },
   "devDependencies": {
     "@topogram/cli": "0.3.90",
