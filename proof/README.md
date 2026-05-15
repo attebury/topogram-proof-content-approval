@@ -7,6 +7,21 @@ required to use Topogram; smaller projects can omit `--with-sdlc` and use
 `topogram check`, `topogram emit`, `topogram generate`, and
 `topogram extract`/`topogram adopt` directly.
 
+## How To Inspect A Checkpoint
+
+```bash
+git fetch --tags
+git checkout proof-04-generated-db-migration
+cat proof/STEP.md
+npm install
+npm run check
+npm run verify
+```
+
+Generated-owned checkpoints use `npm run generate`. Maintained-owned checkpoints
+use `topogram emit`, `topogram query ...`, and direct app verification; they keep
+generation-refusal artifacts under `proof/artifacts/`.
+
 ## Checkpoints
 
 | Step | Branch | Tag | Purpose |
