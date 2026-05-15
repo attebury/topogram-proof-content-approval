@@ -1,0 +1,42 @@
+{
+  "dryRun": false,
+  "link": {
+    "after": [
+      "verification_generated_baseline"
+    ],
+    "before": [
+      "verification_generated_baseline"
+    ],
+    "dryRun": false,
+    "field": "verification_refs",
+    "file": "<repo>/topo/sdlc/tasks/generated_baseline.tg",
+    "from": {
+      "id": "task_generated_baseline",
+      "kind": "task"
+    },
+    "ok": true,
+    "to": {
+      "id": "verification_generated_baseline",
+      "kind": "verification"
+    },
+    "written": true
+  },
+  "ok": true,
+  "taskId": "task_generated_baseline",
+  "transition": {
+    "archivable": true,
+    "dod": {
+      "errors": [],
+      "satisfied": true,
+      "warnings": []
+    },
+    "dryRun": false,
+    "file": "<repo>/topo/sdlc/tasks/generated_baseline.tg",
+    "from": "in-progress",
+    "id": "task_generated_baseline",
+    "kind": "task",
+    "ok": true,
+    "to": "done"
+  },
+  "verificationId": "verification_generated_baseline"
+}

@@ -1,0 +1,6 @@
+acceptance_criterion ac_generated_baseline {
+  name "Generated Baseline"
+  description "Given the proof project has been copied from the web-api-db template, when a maintainer runs check, generate, and verify, then Topogram validates the workspace, writes generated-owned app outputs, and the generated app compile gate passes."
+  requirement req_generated_baseline
+  status approved
+}

@@ -1,0 +1,111 @@
+{
+  "type": "runtime_smoke_plan",
+  "name": "Starter Runtime Smoke Plan",
+  "projections": {
+    "api": "proj_api",
+    "ui": "proj_web_surface"
+  },
+  "topology": {
+    "runtimes": [
+      {
+        "id": "app_api",
+        "kind": "api_service",
+        "projection": "proj_api",
+        "generator": {
+          "id": "@topogram/generator-hono-api",
+          "package": "@topogram/generator-hono-api",
+          "version": "1"
+        }
+      },
+      {
+        "id": "app_sveltekit",
+        "kind": "web_surface",
+        "projection": "proj_web_surface",
+        "generator": {
+          "id": "@topogram/generator-sveltekit-web",
+          "package": "@topogram/generator-sveltekit-web",
+          "version": "1"
+        }
+      },
+      {
+        "id": "app_postgres",
+        "kind": "database",
+        "projection": "proj_db_postgres",
+        "generator": {
+          "id": "@topogram/generator-postgres-db",
+          "package": "@topogram/generator-postgres-db",
+          "version": "1"
+        }
+      }
+    ]
+  },
+  "verification": {
+    "methods": [
+      "smoke"
+    ],
+    "sources": [
+      {
+        "id": "ver_runtime_smoke",
+        "name": "Starter runtime smoke",
+        "method": "smoke",
+        "validates": [
+          "cap_create_greeting",
+          "cap_get_greeting",
+          "cap_list_greetings"
+        ]
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "home_page_responds",
+        "label": "home page responds"
+      },
+      {
+        "id": "create_greeting_smoke",
+        "label": "create greeting smoke"
+      },
+      {
+        "id": "get_created_greeting_smoke",
+        "label": "get created greeting smoke"
+      },
+      {
+        "id": "list_greetings_smoke",
+        "label": "list greetings smoke"
+      }
+    ]
+  },
+  "env": {
+    "apiBase": "TOPOGRAM_API_BASE_URL",
+    "webBase": "TOPOGRAM_WEB_BASE_URL"
+  },
+  "checks": [
+    {
+      "id": "web_home_page",
+      "type": "web_get",
+      "path": "/",
+      "expectStatus": 200,
+      "expectText": "Topogram Starter"
+    },
+    {
+      "id": "create_greeting",
+      "type": "api_post",
+      "path": "/greetings",
+      "expectStatus": 201,
+      "capabilityId": "cap_create_greeting"
+    },
+    {
+      "id": "get_greeting",
+      "type": "api_get",
+      "path": "/greetings/:id",
+      "expectStatus": 200,
+      "capabilityId": "cap_get_greeting"
+    },
+    {
+      "id": "list_greetings",
+      "type": "api_get",
+      "path": "/greetings",
+      "expectStatus": 200,
+      "capabilityId": "cap_list_greetings"
+    }
+  ]
+}

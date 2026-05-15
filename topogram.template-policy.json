@@ -1,0 +1,15 @@
+{
+  "allowedPackageScopes": [
+    "@topogram"
+  ],
+  "allowedSources": [
+    "local",
+    "package"
+  ],
+  "allowedTemplateIds": [
+    "@topogram/starter-web-api-db"
+  ],
+  "executableImplementation": "allow",
+  "pinnedVersions": {},
+  "version": "0.1"
+}

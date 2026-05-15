@@ -1,0 +1,436 @@
+{
+  "queries": [
+    {
+      "args": [
+        "[path]",
+        "[selectors]",
+        "[--json]"
+      ],
+      "description": "Return a focused semantic context slice for one selected surface.",
+      "example": "topogram query slice ./topo --task task_implement_audit_writer",
+      "name": "slice",
+      "output": "context_slice",
+      "purpose": "Give an agent the smallest graph slice needed to reason about one selected semantic surface.",
+      "selectors": [
+        "capability",
+        "workflow",
+        "projection",
+        "widget",
+        "entity",
+        "journey",
+        "domain",
+        "pitch",
+        "requirement",
+        "acceptance",
+        "task",
+        "plan",
+        "bug",
+        "document"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[selectors]",
+        "[--from-topogram <path>]",
+        "[--json]"
+      ],
+      "description": "Return the smallest verification target set for a mode, selector, or diff.",
+      "example": "topogram query verification-targets ./topo --widget widget_data_grid",
+      "name": "verification-targets",
+      "output": "verification_targets",
+      "purpose": "Map a selected change or mode to the smallest verification set worth running.",
+      "selectors": [
+        "mode",
+        "capability",
+        "workflow",
+        "projection",
+        "widget",
+        "entity",
+        "journey",
+        "task",
+        "from-topogram"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[--projection <id>]",
+        "[--widget <id>]",
+        "[--json]"
+      ],
+      "description": "Return widget behavior realization data grouped by widget, screen, capability, and effect.",
+      "example": "topogram query widget-behavior ./topo --projection proj_web_surface --widget widget_data_grid --json",
+      "name": "widget-behavior",
+      "output": "widget_behavior_report",
+      "purpose": "Show how reusable widget behavior is realized by projection usage.",
+      "selectors": [
+        "projection",
+        "widget"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[selectors]",
+        "[--from-topogram <path>]",
+        "[--json]"
+      ],
+      "description": "Return the semantic change plan, generator targets, risk, and alignment recommendations.",
+      "example": "topogram query change-plan ./topo --widget widget_data_grid",
+      "name": "change-plan",
+      "output": "change_plan_query",
+      "purpose": "Summarize what a selected change affects before code or Topogram edits start.",
+      "selectors": [
+        "mode",
+        "capability",
+        "workflow",
+        "projection",
+        "widget",
+        "entity",
+        "journey",
+        "surface",
+        "domain",
+        "pitch",
+        "requirement",
+        "acceptance",
+        "task",
+        "plan",
+        "bug",
+        "document",
+        "from-topogram"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[selectors]",
+        "[--from-topogram <path>]",
+        "[--json]"
+      ],
+      "description": "Return the review packet for a selected change or diff.",
+      "example": "topogram query review-packet ./topo --widget widget_data_grid",
+      "name": "review-packet",
+      "output": "review_packet_query",
+      "purpose": "Bundle the context a human or agent needs to review a selected semantic change.",
+      "selectors": [
+        "mode",
+        "capability",
+        "workflow",
+        "projection",
+        "widget",
+        "entity",
+        "journey",
+        "surface",
+        "domain",
+        "pitch",
+        "requirement",
+        "acceptance",
+        "task",
+        "plan",
+        "bug",
+        "document",
+        "from-topogram"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[--mode <id>]",
+        "[selectors]",
+        "[--from-topogram <path>]",
+        "[--json]"
+      ],
+      "description": "Return resolved workflow guidance, artifact load order, preset policy, and recommended artifact queries.",
+      "example": "topogram query resolved-workflow-context ./topo --mode modeling --widget widget_data_grid --json",
+      "name": "resolved-workflow-context",
+      "output": "resolved_workflow_context_query",
+      "purpose": "Resolve workflow guidance and artifact load order for a selected mode or change.",
+      "selectors": [
+        "mode",
+        "capability",
+        "workflow",
+        "projection",
+        "widget",
+        "entity",
+        "journey",
+        "surface",
+        "domain",
+        "pitch",
+        "requirement",
+        "acceptance",
+        "task",
+        "plan",
+        "bug",
+        "from-topogram",
+        "provider",
+        "preset"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[--mode <id>]",
+        "[selectors]",
+        "[--from-topogram <path>]",
+        "[--json]"
+      ],
+      "description": "Return a single-agent operating plan for a mode and optional selector.",
+      "example": "topogram query single-agent-plan ./topo --mode modeling --widget widget_data_grid --json",
+      "name": "single-agent-plan",
+      "output": "single_agent_plan_query",
+      "purpose": "Give one coding agent a bounded plan, artifact set, and write guidance.",
+      "selectors": [
+        "mode",
+        "capability",
+        "workflow",
+        "projection",
+        "widget",
+        "entity",
+        "journey",
+        "surface",
+        "domain",
+        "pitch",
+        "requirement",
+        "acceptance",
+        "task",
+        "plan",
+        "bug",
+        "from-topogram"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[--json]"
+      ],
+      "description": "Return the extract/adopt plan for an extracted workspace, including trusted extraction provenance and next review commands.",
+      "example": "topogram query extract-plan ./extracted-topogram --json",
+      "name": "extract-plan",
+      "output": "extract_plan_query",
+      "purpose": "Summarize brownfield extraction candidates, package extractor context, and adoption review state.",
+      "selectors": [
+        "provider",
+        "preset"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "--mode extract-adopt",
+        "[--json]"
+      ],
+      "description": "Return lane ownership, handoff packets, overlap rules, and package extractor context for extract/adopt mode.",
+      "example": "topogram query multi-agent-plan ./extracted-topogram --mode extract-adopt --json",
+      "name": "multi-agent-plan",
+      "output": "multi_agent_plan",
+      "purpose": "Split extract/adopt review into serialized and parallel agent lanes.",
+      "selectors": [
+        "mode",
+        "provider",
+        "preset"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "--mode extract-adopt",
+        "--lane <id>",
+        "[--json]"
+      ],
+      "description": "Return a lane-scoped work packet for extract/adopt mode.",
+      "example": "topogram query work-packet ./extracted-topogram --mode extract-adopt --lane adoption_operator --json",
+      "name": "work-packet",
+      "output": "work_packet",
+      "purpose": "Give one extract/adopt lane its allowed inputs, write scope, blockers, and handoff packet.",
+      "selectors": [
+        "mode",
+        "lane"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "--mode extract-adopt",
+        "[--json]"
+      ],
+      "description": "Return artifact-derived lane status for extract/adopt mode.",
+      "example": "topogram query lane-status ./extracted-topogram --mode extract-adopt --json",
+      "name": "lane-status",
+      "output": "lane_status_query",
+      "purpose": "Show which extract/adopt lanes are ready, blocked, or complete.",
+      "selectors": [
+        "mode"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "--mode extract-adopt",
+        "[--json]"
+      ],
+      "description": "Return handoff readiness and blockers for extract/adopt mode.",
+      "example": "topogram query handoff-status ./extracted-topogram --mode extract-adopt --json",
+      "name": "handoff-status",
+      "output": "handoff_status_query",
+      "purpose": "Show extract/adopt handoff packet status across lanes.",
+      "selectors": [
+        "mode"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[--json]"
+      ],
+      "description": "Return unclaimed active tasks, unresolved bugs, and approved requirements without active tasks.",
+      "example": "topogram query sdlc-available ./topo --json",
+      "name": "sdlc-available",
+      "output": "sdlc_available_query",
+      "purpose": "Show SDLC work that is ready to be claimed or shaped.",
+      "selectors": []
+    },
+    {
+      "args": [
+        "[path]",
+        "[--actor <id>]",
+        "[--json]"
+      ],
+      "description": "Return claimed work, optionally filtered by --actor.",
+      "example": "topogram query sdlc-claimed ./topo --actor actor_coding_agent --json",
+      "name": "sdlc-claimed",
+      "output": "sdlc_claimed_query",
+      "purpose": "Show claimed and in-progress SDLC tasks grouped by actor.",
+      "selectors": [
+        "actor"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[--task <id>]",
+        "[--json]"
+      ],
+      "description": "Return blocked tasks, unmet blockers, and block/blocked_by reciprocity problems.",
+      "example": "topogram query sdlc-blockers ./topo --task task_implement_audit_writer --json",
+      "name": "sdlc-blockers",
+      "output": "sdlc_blockers_query",
+      "purpose": "Show SDLC task blockers and reciprocal block issues.",
+      "selectors": [
+        "task"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[--task <id>]",
+        "[--json]"
+      ],
+      "description": "Return missing requirement, acceptance, verification, or DoD proof for one task or all open tasks.",
+      "example": "topogram query sdlc-proof-gaps ./topo --task task_implement_audit_writer --json",
+      "name": "sdlc-proof-gaps",
+      "output": "sdlc_proof_gaps_query",
+      "purpose": "Show missing proof before a task can be completed.",
+      "selectors": [
+        "task"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[selectors]",
+        "[--from-topogram <path>]",
+        "[--json]"
+      ],
+      "description": "Return the risk summary for a selected change, mode, or diff.",
+      "example": "topogram query risk-summary ./topo --widget widget_data_grid",
+      "name": "risk-summary",
+      "output": "risk_summary_query",
+      "purpose": "Surface behavioral, ownership, and verification risks for a selected change.",
+      "selectors": [
+        "mode",
+        "capability",
+        "workflow",
+        "projection",
+        "widget",
+        "entity",
+        "journey",
+        "surface",
+        "domain",
+        "pitch",
+        "requirement",
+        "acceptance",
+        "task",
+        "plan",
+        "bug",
+        "document",
+        "from-topogram"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[--mode <id>]",
+        "[selectors]",
+        "[--from-topogram <path>]",
+        "[--json]"
+      ],
+      "description": "Return a proceed/no-go decision for the current selected work.",
+      "example": "topogram query proceed-decision ./topo --mode verification",
+      "name": "proceed-decision",
+      "output": "proceed_decision_query",
+      "purpose": "Tell a human or agent whether enough context and proof exist to proceed.",
+      "selectors": [
+        "mode",
+        "capability",
+        "workflow",
+        "projection",
+        "widget",
+        "entity",
+        "journey",
+        "surface",
+        "domain",
+        "pitch",
+        "requirement",
+        "acceptance",
+        "task",
+        "plan",
+        "bug",
+        "document",
+        "from-topogram"
+      ]
+    },
+    {
+      "args": [
+        "[path]",
+        "[selectors]",
+        "[--from-topogram <path>]",
+        "[--json]"
+      ],
+      "description": "Return safe edit boundaries for a selected mode or semantic surface.",
+      "example": "topogram query write-scope ./topo --widget widget_data_grid",
+      "name": "write-scope",
+      "output": "write_scope_query",
+      "purpose": "Define where an agent may edit for a selected semantic surface.",
+      "selectors": [
+        "mode",
+        "capability",
+        "workflow",
+        "projection",
+        "widget",
+        "entity",
+        "journey",
+        "domain",
+        "pitch",
+        "requirement",
+        "acceptance",
+        "task",
+        "plan",
+        "bug",
+        "from-topogram"
+      ]
+    }
+  ],
+  "type": "query_list",
+  "version": 1
+}

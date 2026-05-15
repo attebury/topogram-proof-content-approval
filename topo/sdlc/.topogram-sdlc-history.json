@@ -1,0 +1,25 @@
+{
+  "task_generated_baseline": [
+    {
+      "from": "unclaimed",
+      "to": "claimed",
+      "at": "2026-05-15T01:56:18.695Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "claimed",
+      "to": "in-progress",
+      "at": "2026-05-15T01:56:18.709Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "in-progress",
+      "to": "done",
+      "at": "2026-05-15T01:57:29.915Z",
+      "by": "actor_operator",
+      "note": null
+    }
+  ]
+}

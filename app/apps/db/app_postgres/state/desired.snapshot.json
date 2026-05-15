@@ -1,0 +1,56 @@
+{
+  "engine": "postgres",
+  "tables": [
+    {
+      "type": "db_table_contract",
+      "entity": {
+        "id": "entity_greeting",
+        "name": "Greeting"
+      },
+      "table": "greetings",
+      "columns": [
+        {
+          "name": "id",
+          "sourceField": "id",
+          "fieldType": "uuid",
+          "requiredness": "required",
+          "defaultValue": null
+        },
+        {
+          "name": "message",
+          "sourceField": "message",
+          "fieldType": "text",
+          "requiredness": "required",
+          "defaultValue": null
+        },
+        {
+          "name": "created_at",
+          "sourceField": "created_at",
+          "fieldType": "datetime",
+          "requiredness": "required",
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        "id"
+      ],
+      "uniques": [],
+      "indexes": [
+        {
+          "type": "index",
+          "fields": [
+            "created_at"
+          ]
+        }
+      ],
+      "relations": [],
+      "lifecycle": {
+        "softDelete": null,
+        "timestamps": {
+          "createdAt": "created_at",
+          "updatedAt": "created_at"
+        }
+      }
+    }
+  ]
+}

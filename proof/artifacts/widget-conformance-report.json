@@ -1,0 +1,30 @@
+{
+  "checks": [],
+  "filters": {
+    "projection": "proj_web_surface",
+    "widget": null
+  },
+  "impact": {
+    "projections": [],
+    "widgets": []
+  },
+  "projection_usages": [],
+  "summary": {
+    "affected_projections": [],
+    "affected_widgets": [],
+    "error_usages": 0,
+    "errors": 0,
+    "passed_usages": 0,
+    "total_usages": 0,
+    "warning_usages": 0,
+    "warnings": 0
+  },
+  "type": "widget_conformance_report",
+  "widget_contracts": [],
+  "write_scope": {
+    "paths": [],
+    "projection_files": [],
+    "verification_files": [],
+    "widget_files": []
+  }
+}

@@ -1,0 +1,14 @@
+task task_generated_baseline {
+  name "Generated Baseline"
+  description "Create the first proof checkpoint for the generated content approval line: template copy, SDLC adoption, generated app output, proof artifacts, and verification."
+  satisfies [req_generated_baseline]
+  acceptance_refs [ac_generated_baseline]
+  verification_refs [verification_generated_baseline]
+  affects [cap_list_greetings, cap_get_greeting, cap_create_greeting, cap_update_greeting]
+  blocked_by []
+  disposition active
+  priority medium
+  work_type implementation
+  claimed_by [actor_operator]
+  status done
+}

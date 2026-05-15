@@ -1,0 +1,9 @@
+requirement req_generated_baseline {
+  name "Generated Baseline"
+  description "The proof project must show that a copied web-api-db Topogram can validate, generate an app bundle, and verify the generated output from a clean first checkpoint."
+  affects [cap_list_greetings, cap_get_greeting, cap_create_greeting, cap_update_greeting]
+  introduces_rules []
+  respects_rules []
+  priority medium
+  status approved
+}

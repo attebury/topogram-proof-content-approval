@@ -1,0 +1,364 @@
+{
+  "type": "ui_surface_contract",
+  "projection": {
+    "id": "proj_web_surface",
+    "name": "Starter Web UI",
+    "type": "web_surface"
+  },
+  "uiContract": {
+    "id": "proj_ui_contract",
+    "name": "Starter Shared UI",
+    "type": "ui_contract"
+  },
+  "generatorDefaults": {
+    "profile": "sveltekit",
+    "language": "typescript",
+    "styling": "css"
+  },
+  "outputs": [
+    "ui_contract",
+    "web_app"
+  ],
+  "widgets": {},
+  "designTokens": {
+    "density": "compact",
+    "tone": "operational",
+    "radiusScale": "medium",
+    "colorRoles": {
+      "primary": "accent",
+      "danger": "critical"
+    },
+    "typographyRoles": {
+      "body": "readable",
+      "heading": "prominent"
+    },
+    "actionRoles": {
+      "primary": "prominent",
+      "destructive": "danger"
+    },
+    "accessibility": {
+      "contrast": "aa",
+      "focus": "visible"
+    }
+  },
+  "appShell": {
+    "brand": "Topogram Starter",
+    "shell": "topbar",
+    "primaryNav": "primary",
+    "secondaryNav": "secondary",
+    "utilityNav": "utility",
+    "footer": "none",
+    "globalSearch": false,
+    "notifications": false,
+    "accountMenu": false,
+    "workspaceSwitcher": false,
+    "windowing": "single_window"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "id": "starter",
+        "label": "Starter",
+        "placement": "primary",
+        "pattern": "primary",
+        "icon": null,
+        "order": null
+      }
+    ],
+    "patterns": [
+      "primary",
+      "stack_navigation"
+    ],
+    "defaultScreenId": "greeting_list",
+    "items": [
+      {
+        "screenId": "greeting_list",
+        "route": "/greetings",
+        "label": "Greetings",
+        "groupId": "starter",
+        "placement": "primary",
+        "pattern": "primary",
+        "visible": true,
+        "default": true,
+        "breadcrumb": null,
+        "sitemap": "include",
+        "order": "10"
+      },
+      {
+        "screenId": "greeting_detail",
+        "route": "/greetings/:id",
+        "label": "Greeting Details",
+        "groupId": "starter",
+        "placement": "primary",
+        "pattern": "stack_navigation",
+        "visible": false,
+        "default": false,
+        "breadcrumb": "greeting_list",
+        "sitemap": "exclude",
+        "order": null
+      },
+      {
+        "screenId": "greeting_create",
+        "route": "/greetings/new",
+        "label": "Create",
+        "groupId": "starter",
+        "placement": "primary",
+        "pattern": "primary",
+        "visible": true,
+        "default": false,
+        "breadcrumb": null,
+        "sitemap": "include",
+        "order": "20"
+      }
+    ]
+  },
+  "screens": [
+    {
+      "type": "ui_screen_contract",
+      "id": "greeting_list",
+      "kind": "list",
+      "title": "Greetings",
+      "loadCapability": {
+        "id": "cap_list_greetings",
+        "kind": "capability"
+      },
+      "submitCapability": null,
+      "detailCapability": {
+        "id": "cap_get_greeting",
+        "kind": "capability"
+      },
+      "inputShape": null,
+      "viewShape": null,
+      "itemShape": {
+        "id": "shape_output_greeting_card",
+        "kind": "shape"
+      },
+      "emptyState": {
+        "title": "No greetings yet",
+        "body": "Create a greeting to verify the generated stack"
+      },
+      "navigation": {
+        "successNavigate": null,
+        "successRefresh": null
+      },
+      "states": {
+        "loading": "skeleton",
+        "empty": "empty_state_panel",
+        "error": "inline",
+        "unauthorized": "auto",
+        "notFound": "auto",
+        "success": "auto"
+      },
+      "actions": {
+        "primary": {
+          "id": "cap_create_greeting",
+          "kind": "capability"
+        },
+        "secondary": null,
+        "destructive": null,
+        "terminal": null,
+        "screen": []
+      },
+      "collection": {
+        "filters": [],
+        "search": [],
+        "pagination": null,
+        "views": [],
+        "refresh": "manual",
+        "groupBy": [],
+        "sort": []
+      },
+      "visibility": [],
+      "lookups": [],
+      "regions": [
+        {
+          "region": "hero",
+          "pattern": "summary_stats",
+          "placement": "primary",
+          "title": null,
+          "state": null,
+          "variant": null
+        },
+        {
+          "region": "results",
+          "pattern": "resource_table",
+          "placement": "primary",
+          "title": null,
+          "state": null,
+          "variant": null
+        }
+      ],
+      "widgets": [],
+      "patterns": [
+        "summary_stats",
+        "resource_table"
+      ],
+      "route": "/greetings",
+      "surfaceHints": {
+        "shell": "topbar",
+        "layout": "responsive_collection",
+        "desktop_variant": "table",
+        "mobile_variant": "cards",
+        "collection": "table"
+      },
+      "actionSurfaceHints": {
+        "cap_create_greeting": {
+          "present": "button",
+          "placement": "toolbar"
+        }
+      }
+    },
+    {
+      "type": "ui_screen_contract",
+      "id": "greeting_detail",
+      "kind": "detail",
+      "title": "Greeting Details",
+      "loadCapability": {
+        "id": "cap_get_greeting",
+        "kind": "capability"
+      },
+      "submitCapability": null,
+      "detailCapability": null,
+      "inputShape": null,
+      "viewShape": {
+        "id": "shape_output_greeting_detail",
+        "kind": "shape"
+      },
+      "itemShape": null,
+      "emptyState": null,
+      "navigation": {
+        "successNavigate": null,
+        "successRefresh": null
+      },
+      "states": {
+        "loading": "skeleton",
+        "empty": "auto",
+        "error": "auto",
+        "unauthorized": "auto",
+        "notFound": "auto",
+        "success": "auto"
+      },
+      "actions": {
+        "primary": {
+          "id": "cap_update_greeting",
+          "kind": "capability"
+        },
+        "secondary": null,
+        "destructive": null,
+        "terminal": null,
+        "screen": []
+      },
+      "collection": {
+        "filters": [],
+        "search": [],
+        "pagination": null,
+        "views": [],
+        "refresh": "manual",
+        "groupBy": [],
+        "sort": []
+      },
+      "visibility": [],
+      "lookups": [],
+      "regions": [
+        {
+          "region": "summary",
+          "pattern": "detail_panel",
+          "placement": "primary",
+          "title": null,
+          "state": null,
+          "variant": null
+        }
+      ],
+      "widgets": [],
+      "patterns": [
+        "detail_panel"
+      ],
+      "route": "/greetings/:id",
+      "surfaceHints": {
+        "layout": "detail_page"
+      },
+      "actionSurfaceHints": {
+        "cap_update_greeting": {}
+      }
+    },
+    {
+      "type": "ui_screen_contract",
+      "id": "greeting_create",
+      "kind": "form",
+      "title": "Create Greeting",
+      "loadCapability": null,
+      "submitCapability": {
+        "id": "cap_create_greeting",
+        "kind": "capability"
+      },
+      "detailCapability": null,
+      "inputShape": {
+        "id": "shape_input_create_greeting",
+        "kind": "shape"
+      },
+      "viewShape": null,
+      "itemShape": null,
+      "emptyState": null,
+      "navigation": {
+        "successNavigate": "greeting_detail",
+        "successRefresh": null
+      },
+      "states": {
+        "loading": "auto",
+        "empty": "auto",
+        "error": "auto",
+        "unauthorized": "auto",
+        "notFound": "auto",
+        "success": "banner"
+      },
+      "actions": {
+        "primary": null,
+        "secondary": null,
+        "destructive": null,
+        "terminal": null,
+        "screen": []
+      },
+      "collection": {
+        "filters": [],
+        "search": [],
+        "pagination": null,
+        "views": [],
+        "refresh": "manual",
+        "groupBy": [],
+        "sort": []
+      },
+      "visibility": [],
+      "lookups": [],
+      "regions": [],
+      "widgets": [],
+      "patterns": [
+        "edit_form"
+      ],
+      "route": "/greetings/new",
+      "surfaceHints": {
+        "present": "page"
+      },
+      "actionSurfaceHints": {}
+    }
+  ],
+  "sitemap": [
+    {
+      "screenId": "greeting_list",
+      "label": "Greetings",
+      "route": "/greetings",
+      "include": true
+    },
+    {
+      "screenId": "greeting_detail",
+      "label": "Greeting Details",
+      "route": "/greetings/:id",
+      "include": false
+    },
+    {
+      "screenId": "greeting_create",
+      "label": "Create",
+      "route": "/greetings/new",
+      "include": true
+    }
+  ]
+}

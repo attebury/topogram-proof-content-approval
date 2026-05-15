@@ -1,0 +1,8 @@
+verification verification_generated_baseline {
+  name "Generated Baseline Verification"
+  description "Runs Topogram check, app generation, generated app compile verification, and captures proof artifacts for the first generated checkpoint."
+  validates [cap_list_greetings, cap_get_greeting, cap_create_greeting, cap_update_greeting]
+  method runtime
+  scenarios [topogram_check_generate_verify]
+  status active
+}

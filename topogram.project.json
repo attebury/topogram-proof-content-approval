@@ -1,0 +1,63 @@
+{
+  "implementation": {
+    "export": "WEB_API_DB_IMPLEMENTATION",
+    "id": "web-api-db-template",
+    "module": "./implementation/index.js"
+  },
+  "outputs": {
+    "app": {
+      "ownership": "generated",
+      "path": "./app"
+    }
+  },
+  "template": {
+    "id": "@topogram/starter-web-api-db",
+    "includesExecutableImplementation": true,
+    "requested": "@topogram/starter-web-api-db@0.1.14",
+    "source": "package",
+    "sourceRoot": null,
+    "sourceSpec": "@topogram/starter-web-api-db@0.1.14",
+    "version": "0.1.14"
+  },
+  "topology": {
+    "runtimes": [
+      {
+        "generator": {
+          "id": "@topogram/generator-hono-api",
+          "package": "@topogram/generator-hono-api",
+          "version": "1"
+        },
+        "id": "app_api",
+        "kind": "api_service",
+        "port": 3000,
+        "projection": "proj_api",
+        "uses_database": "app_postgres"
+      },
+      {
+        "generator": {
+          "id": "@topogram/generator-sveltekit-web",
+          "package": "@topogram/generator-sveltekit-web",
+          "version": "1"
+        },
+        "id": "app_sveltekit",
+        "kind": "web_surface",
+        "port": 5173,
+        "projection": "proj_web_surface",
+        "uses_api": "app_api"
+      },
+      {
+        "generator": {
+          "id": "@topogram/generator-postgres-db",
+          "package": "@topogram/generator-postgres-db",
+          "version": "1"
+        },
+        "id": "app_postgres",
+        "kind": "database",
+        "port": 5432,
+        "projection": "proj_db_postgres"
+      }
+    ]
+  },
+  "version": "0.1",
+  "workspace": "./topo"
+}

@@ -1,0 +1,213 @@
+{
+  "type": "runtime_check_plan",
+  "name": "Starter Runtime Check Plan",
+  "projections": {
+    "api": "proj_api",
+    "ui": "proj_web_surface",
+    "db": "proj_db_postgres"
+  },
+  "topology": {
+    "runtimes": [
+      {
+        "id": "app_api",
+        "kind": "api_service",
+        "projection": "proj_api",
+        "generator": {
+          "id": "@topogram/generator-hono-api",
+          "package": "@topogram/generator-hono-api",
+          "version": "1"
+        }
+      },
+      {
+        "id": "app_sveltekit",
+        "kind": "web_surface",
+        "projection": "proj_web_surface",
+        "generator": {
+          "id": "@topogram/generator-sveltekit-web",
+          "package": "@topogram/generator-sveltekit-web",
+          "version": "1"
+        }
+      },
+      {
+        "id": "app_postgres",
+        "kind": "database",
+        "projection": "proj_db_postgres",
+        "generator": {
+          "id": "@topogram/generator-postgres-db",
+          "package": "@topogram/generator-postgres-db",
+          "version": "1"
+        }
+      }
+    ]
+  },
+  "verification": {
+    "methods": [
+      "runtime"
+    ],
+    "sources": [
+      {
+        "id": "ver_runtime_flow",
+        "name": "Starter runtime flow",
+        "method": "runtime",
+        "validates": [
+          "cap_create_greeting",
+          "cap_get_greeting",
+          "cap_list_greetings",
+          "cap_update_greeting"
+        ]
+      },
+      {
+        "id": "verification_generated_baseline",
+        "name": "Generated Baseline Verification",
+        "method": "runtime",
+        "validates": [
+          "cap_list_greetings",
+          "cap_get_greeting",
+          "cap_create_greeting",
+          "cap_update_greeting"
+        ]
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "create_greeting_runtime",
+        "label": "create greeting runtime"
+      },
+      {
+        "id": "get_created_greeting_runtime",
+        "label": "get created greeting runtime"
+      },
+      {
+        "id": "list_greetings_runtime",
+        "label": "list greetings runtime"
+      },
+      {
+        "id": "update_greeting_runtime",
+        "label": "update greeting runtime"
+      },
+      {
+        "id": "topogram_check_generate_verify",
+        "label": "topogram check generate verify"
+      }
+    ]
+  },
+  "env": {
+    "required": [
+      "TOPOGRAM_API_BASE_URL",
+      "TOPOGRAM_WEB_BASE_URL",
+      "TOPOGRAM_DEMO_PRIMARY_ID"
+    ],
+    "apiBase": "TOPOGRAM_API_BASE_URL",
+    "webBase": "TOPOGRAM_WEB_BASE_URL",
+    "demoContainerId": "TOPOGRAM_DEMO_MESSAGE",
+    "demoPrimaryId": "TOPOGRAM_DEMO_PRIMARY_ID",
+    "demoUserId": "TOPOGRAM_DEMO_USER_ID"
+  },
+  "report": {
+    "outputPath": "state/runtime-check-report.json"
+  },
+  "stages": [
+    {
+      "id": "environment",
+      "name": "Environment Readiness",
+      "failFast": true,
+      "checks": [
+        {
+          "id": "required_env",
+          "kind": "env_required",
+          "mandatory": true,
+          "mutating": false
+        },
+        {
+          "id": "web_home_ready",
+          "kind": "web_contract",
+          "path": "/",
+          "expectStatus": 200,
+          "expectText": "Topogram Starter",
+          "mandatory": true,
+          "mutating": false
+        },
+        {
+          "id": "api_health_ready",
+          "kind": "api_health",
+          "path": "/health",
+          "expectStatus": 200,
+          "expectOk": true,
+          "mandatory": true,
+          "mutating": false
+        },
+        {
+          "id": "api_ready",
+          "kind": "api_ready",
+          "path": "/ready",
+          "expectStatus": 200,
+          "expectReady": true,
+          "mandatory": true,
+          "mutating": false
+        },
+        {
+          "id": "api_seed_greeting_ready",
+          "kind": "api_contract",
+          "capabilityId": "cap_get_greeting",
+          "pathParams": {
+            "greeting_id": "$env:TOPOGRAM_DEMO_PRIMARY_ID"
+          },
+          "mandatory": true,
+          "mutating": false
+        }
+      ]
+    },
+    {
+      "id": "api",
+      "name": "API Contract Checks",
+      "checks": [
+        {
+          "id": "create_greeting",
+          "kind": "api_contract",
+          "capabilityId": "cap_create_greeting",
+          "mutating": true,
+          "mandatory": true
+        },
+        {
+          "id": "get_created_greeting",
+          "kind": "api_contract",
+          "capabilityId": "cap_get_greeting",
+          "mutating": false,
+          "mandatory": true
+        },
+        {
+          "id": "list_greetings",
+          "kind": "api_contract",
+          "capabilityId": "cap_list_greetings",
+          "mutating": false,
+          "mandatory": true
+        },
+        {
+          "id": "update_greeting",
+          "kind": "api_contract",
+          "capabilityId": "cap_update_greeting",
+          "mutating": true,
+          "mandatory": true
+        },
+        {
+          "id": "invalid_create_returns_4xx",
+          "kind": "api_negative",
+          "capabilityId": "cap_create_greeting",
+          "expectStatusClass": 4,
+          "expectErrorCode": "cap_create_greeting_invalid_request",
+          "mutating": false,
+          "mandatory": true
+        },
+        {
+          "id": "get_unknown_greeting_not_found",
+          "kind": "api_negative",
+          "capabilityId": "cap_get_greeting",
+          "expectStatus": 404,
+          "expectErrorCode": "cap_get_greeting_not_found",
+          "mutating": false,
+          "mandatory": true
+        }
+      ]
+    }
+  ]
+}

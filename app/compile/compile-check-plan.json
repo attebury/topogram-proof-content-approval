@@ -1,0 +1,63 @@
+{
+  "type": "compile_check_plan",
+  "name": "Starter Generated Compile Checks",
+  "projections": {
+    "api": "proj_api",
+    "ui": "proj_web_surface",
+    "db": "proj_db_postgres"
+  },
+  "topology": {
+    "runtimes": [
+      {
+        "id": "app_api",
+        "kind": "api_service",
+        "projection": "proj_api",
+        "generator": {
+          "id": "@topogram/generator-hono-api",
+          "package": "@topogram/generator-hono-api",
+          "version": "1"
+        }
+      },
+      {
+        "id": "app_sveltekit",
+        "kind": "web_surface",
+        "projection": "proj_web_surface",
+        "generator": {
+          "id": "@topogram/generator-sveltekit-web",
+          "package": "@topogram/generator-sveltekit-web",
+          "version": "1"
+        }
+      },
+      {
+        "id": "app_postgres",
+        "kind": "database",
+        "projection": "proj_db_postgres",
+        "generator": {
+          "id": "@topogram/generator-postgres-db",
+          "package": "@topogram/generator-postgres-db",
+          "version": "1"
+        }
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "server_typecheck",
+      "cwd": "services/app_api",
+      "install": "npm install --no-audit --no-fund",
+      "command": "npm run check"
+    },
+    {
+      "id": "web_typecheck",
+      "cwd": "web/app_sveltekit",
+      "install": "npm install --no-audit --no-fund",
+      "command": "npm run check"
+    },
+    {
+      "id": "web_build",
+      "cwd": "web/app_sveltekit",
+      "install": "npm install --no-audit --no-fund",
+      "command": "npm run build"
+    }
+  ]
+}

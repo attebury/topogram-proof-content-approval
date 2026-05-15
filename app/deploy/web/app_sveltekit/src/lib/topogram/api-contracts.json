@@ -1,0 +1,209 @@
+{
+  "cap_create_greeting": {
+    "capability": {
+      "id": "cap_create_greeting"
+    },
+    "endpoint": {
+      "method": "POST",
+      "path": "/greetings",
+      "successStatus": 201
+    },
+    "requestContract": {
+      "fields": [],
+      "transport": {
+        "path": [],
+        "query": [],
+        "header": [],
+        "body": []
+      }
+    },
+    "responseContract": null
+  },
+  "cap_get_greeting": {
+    "capability": {
+      "id": "cap_get_greeting"
+    },
+    "endpoint": {
+      "method": "GET",
+      "path": "/greetings/:id",
+      "successStatus": 200
+    },
+    "requestContract": {
+      "fields": [
+        {
+          "name": "greeting_id",
+          "sourceName": "greeting_id",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "path",
+            "wireName": "id"
+          }
+        }
+      ],
+      "transport": {
+        "path": [
+          {
+            "name": "greeting_id",
+            "sourceName": "greeting_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "path",
+              "wireName": "id"
+            }
+          }
+        ],
+        "query": [],
+        "header": [],
+        "body": []
+      }
+    },
+    "responseContract": null
+  },
+  "cap_list_greetings": {
+    "capability": {
+      "id": "cap_list_greetings"
+    },
+    "endpoint": {
+      "method": "GET",
+      "path": "/greetings",
+      "successStatus": 200
+    },
+    "requestContract": {
+      "fields": [
+        {
+          "name": "after",
+          "sourceName": "after",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "query",
+            "wireName": "after"
+          }
+        },
+        {
+          "name": "limit",
+          "sourceName": "limit",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "query",
+            "wireName": "limit"
+          }
+        }
+      ],
+      "transport": {
+        "path": [],
+        "query": [
+          {
+            "name": "after",
+            "sourceName": "after",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "query",
+              "wireName": "after"
+            }
+          },
+          {
+            "name": "limit",
+            "sourceName": "limit",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "query",
+              "wireName": "limit"
+            }
+          }
+        ],
+        "header": [],
+        "body": []
+      }
+    },
+    "responseContract": null
+  },
+  "cap_update_greeting": {
+    "capability": {
+      "id": "cap_update_greeting"
+    },
+    "endpoint": {
+      "method": "PATCH",
+      "path": "/greetings/:id",
+      "successStatus": 200
+    },
+    "requestContract": {
+      "fields": [
+        {
+          "name": "greeting_id",
+          "sourceName": "greeting_id",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "path",
+            "wireName": "id"
+          }
+        },
+        {
+          "name": "message",
+          "sourceName": "message",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "message"
+          }
+        }
+      ],
+      "transport": {
+        "path": [
+          {
+            "name": "greeting_id",
+            "sourceName": "greeting_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "path",
+              "wireName": "id"
+            }
+          }
+        ],
+        "query": [],
+        "header": [],
+        "body": [
+          {
+            "name": "message",
+            "sourceName": "message",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "message"
+            }
+          }
+        ]
+      }
+    },
+    "responseContract": null
+  }
+}

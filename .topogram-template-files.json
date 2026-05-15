@@ -1,0 +1,163 @@
+{
+  "files": [
+    {
+      "path": "implementation/backend/reference.js",
+      "sha256": "2bb1fa31e110f6e093ca585e72addd0369d0370db3cda0cfe2fa7166d7552412",
+      "size": 1100
+    },
+    {
+      "path": "implementation/backend/repository-reference.js",
+      "sha256": "c5bd9d668365dd831ee87852bc016b78ace82c7ed60e63b507efd220c4794bc4",
+      "size": 956
+    },
+    {
+      "path": "implementation/backend/repository-renderers.js",
+      "sha256": "56b860e356880bd249e59e42f2c9bc215ff0827c281c1d21b7f696a9b052ad6a",
+      "size": 3226
+    },
+    {
+      "path": "implementation/index.js",
+      "sha256": "c6041f0155a4f912574a55f12411a497379fd476c4239bf19910792f451eeda6",
+      "size": 1826
+    },
+    {
+      "path": "implementation/README.md",
+      "sha256": "0bb658bd7cd36df61d568ae8b22db511a45a6b7310d12eaaac7d15fb8bf65ef0",
+      "size": 243
+    },
+    {
+      "path": "implementation/runtime/check-renderers.js",
+      "sha256": "bb13ff1565cfce1fff3b4fe6ff2e0b54b2f1d75fe24f6f47da6757d0484c70a5",
+      "size": 4440
+    },
+    {
+      "path": "implementation/runtime/checks.js",
+      "sha256": "13f1a06bc1ea537cbf650f570cccd6fa8fd25e4c20a40f5dbb54738e9df8aeee",
+      "size": 2668
+    },
+    {
+      "path": "implementation/runtime/reference.js",
+      "sha256": "b6a2869f67cd24d06b0421a653f73ec49be8b6766a896ab4140d5c34a17e8e83",
+      "size": 2372
+    },
+    {
+      "path": "implementation/web/reference.js",
+      "sha256": "607560d82c698446005a783ac5ae2e3d513eb0ece82fc9512a423dabafaa218d",
+      "size": 1385
+    },
+    {
+      "path": "implementation/web/renderers.js",
+      "sha256": "7560b96c76520445aaf4fa2056e43cc21b01a6cfbd5b99e35d5f82286f561dcb",
+      "size": 1091
+    },
+    {
+      "path": "implementation/web/screens-reference.js",
+      "sha256": "251ce6f8ebd884a3a0571250d6fd30661d3cff38b36e57fc39b577c226c62e4c",
+      "size": 200
+    },
+    {
+      "path": "topo/actors/actor-operator.tg",
+      "sha256": "461854abf0fac0b737e774efbfce36c34ea2ea1b40a68fe0cfc6cdbdd878b777",
+      "size": 113
+    },
+    {
+      "path": "topo/capabilities/cap-create-greeting.tg",
+      "sha256": "0c7de5b2a6ad1d4dec26f6e8dd8250295e3fe91ec4e5bf133e983b396a17737e",
+      "size": 245
+    },
+    {
+      "path": "topo/capabilities/cap-get-greeting.tg",
+      "sha256": "91d795ccd5cf76569573123497ea7858fb27a900dca16aa8898121bee79a1dd6",
+      "size": 236
+    },
+    {
+      "path": "topo/capabilities/cap-list-greetings.tg",
+      "sha256": "41ce3af65444c04eec09717f55bfe3fdaa4df87f028bcc37c421052f1c24629b",
+      "size": 237
+    },
+    {
+      "path": "topo/capabilities/cap-update-greeting.tg",
+      "sha256": "4e2a12dbc1bdc962fc39bd32ec4d2c8654d7d903b98fd2ac30a82bf1f57e7a52",
+      "size": 273
+    },
+    {
+      "path": "topo/entities/entity-greeting.tg",
+      "sha256": "ac5f2d0cddefc0e388c646a1e06d46f23d0c218c07ddfbf0fee20c4d3fda6d29",
+      "size": 321
+    },
+    {
+      "path": "topo/projections/proj-api.tg",
+      "sha256": "f6d8e76216c67a5b9f99b9ffa9433f6c8fe2bb562a750ed7d70119746aea84a9",
+      "size": 1197
+    },
+    {
+      "path": "topo/projections/proj-db-postgres.tg",
+      "sha256": "5264f71ec192e5822c996c76dec1b07f73dd3804b06eb32230bc2982dc7f7c88",
+      "size": 555
+    },
+    {
+      "path": "topo/projections/proj-ui-contract.tg",
+      "sha256": "f3513544bb503fb7369ee7034637b604d9fe3f99c08fe6b44e2a268c1e08ccf0",
+      "size": 2219
+    },
+    {
+      "path": "topo/projections/proj-web-surface.tg",
+      "sha256": "fde2dadf5368f9f9b2c237b5254b55ad669f4d1b4dc0858263f15e6dba89724e",
+      "size": 993
+    },
+    {
+      "path": "topo/shapes/shape-input-create-greeting.tg",
+      "sha256": "4a081d394dbf0d24adf4fdbe5eb12549bced449ce2c5c664da496364ffb0b3bc",
+      "size": 184
+    },
+    {
+      "path": "topo/shapes/shape-input-get-greeting.tg",
+      "sha256": "8896c7c07913286296e3d4e0d636175eb71c449862de4f543a3d608e3f2b66f2",
+      "size": 174
+    },
+    {
+      "path": "topo/shapes/shape-input-list-greetings.tg",
+      "sha256": "7b9cd5e1bb49f6fa32f1b14c78804b45f4e7c52259ae285f751a586305624830",
+      "size": 206
+    },
+    {
+      "path": "topo/shapes/shape-input-update-greeting.tg",
+      "sha256": "48a29af504b96cc417fc8ab5ca8b1894d9d39e5b5db13404cdbf449ef061e5f0",
+      "size": 204
+    },
+    {
+      "path": "topo/shapes/shape-output-greeting-card.tg",
+      "sha256": "2a26f7ee1a0dac40acf24aecb747e1b8b0b5f25a36075a8b9dba1c30ee51a217",
+      "size": 182
+    },
+    {
+      "path": "topo/shapes/shape-output-greeting-detail.tg",
+      "sha256": "3cde51fcde6bd050108fae464da8c8345984d767ee1c84e2ea101a7570bb82a2",
+      "size": 187
+    },
+    {
+      "path": "topo/verifications/verification-runtime-flow.tg",
+      "sha256": "1febb78b80d56fd3a6c7a36f5cdb907a9d991759fc8e11fdd20c650c128d99d7",
+      "size": 391
+    },
+    {
+      "path": "topo/verifications/verification-runtime-smoke.tg",
+      "sha256": "b2749f75ec423e7ec748e62e393ecbccdc82bd01060163a1704f7946cab48698",
+      "size": 377
+    },
+    {
+      "path": "topogram.project.json",
+      "sha256": "47fce7fe6085fd8fdf73c5a2fbb01919c2339c7377f77b51607db761babdfcf8",
+      "size": 1601
+    }
+  ],
+  "template": {
+    "catalog": null,
+    "id": "@topogram/starter-web-api-db",
+    "requested": "@topogram/starter-web-api-db@0.1.14",
+    "source": "package",
+    "sourceSpec": "@topogram/starter-web-api-db@0.1.14",
+    "version": "0.1.14"
+  },
+  "version": "0.1"
+}
