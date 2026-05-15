@@ -1,0 +1,8 @@
+verification verification_review_workflow_ui {
+  name "Review Workflow UI Verification"
+  description "Runs Topogram check, widget contract emission, widget conformance, widget behavior reporting, app generation, and generated app compile verification for the review workflow UI checkpoint."
+  validates [cap_list_submissions, cap_get_submission, cap_submit_content, cap_approve_submission, cap_request_changes]
+  method runtime
+  scenarios [topogram_check_widget_reports_generate_verify]
+  status active
+}

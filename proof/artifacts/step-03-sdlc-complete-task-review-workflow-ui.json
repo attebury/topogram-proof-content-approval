@@ -1,0 +1,42 @@
+{
+  "dryRun": false,
+  "link": {
+    "after": [
+      "verification_review_workflow_ui"
+    ],
+    "before": [
+      "verification_review_workflow_ui"
+    ],
+    "dryRun": false,
+    "field": "verification_refs",
+    "file": "<repo>/topo/sdlc/tasks/review-workflow-ui.tg",
+    "from": {
+      "id": "task_review_workflow_ui",
+      "kind": "task"
+    },
+    "ok": true,
+    "to": {
+      "id": "verification_review_workflow_ui",
+      "kind": "verification"
+    },
+    "written": true
+  },
+  "ok": true,
+  "taskId": "task_review_workflow_ui",
+  "transition": {
+    "archivable": true,
+    "dod": {
+      "errors": [],
+      "satisfied": true,
+      "warnings": []
+    },
+    "dryRun": false,
+    "file": "<repo>/topo/sdlc/tasks/review-workflow-ui.tg",
+    "from": "in-progress",
+    "id": "task_review_workflow_ui",
+    "kind": "task",
+    "ok": true,
+    "to": "done"
+  },
+  "verificationId": "verification_review_workflow_ui"
+}

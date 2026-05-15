@@ -13,9 +13,9 @@ See [`proof/README.md`](proof/README.md) for the checkpoint map.
 
 ## Current Step
 
-This branch is `step/02-content-approval-domain`. It replaces the neutral
-starter greeting model with a content approval domain while keeping the app
-output generated-owned.
+This branch is `step/03-review-workflow-ui`. It adds reusable widget
+contracts, shared UI widget bindings, behavior evidence, and regenerated
+generated-owned app output for the review workflow.
 
 ## Template
 

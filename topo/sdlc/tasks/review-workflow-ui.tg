@@ -1,0 +1,14 @@
+task task_review_workflow_ui {
+  name "Review Workflow UI"
+  description "Add reusable widgets, widget bindings, behavior evidence, proof artifacts, and regenerated app output for the content approval review workflow."
+  satisfies [req_review_workflow_ui]
+  acceptance_refs [ac_review_workflow_ui]
+  verification_refs [verification_review_workflow_ui]
+  affects [cap_list_submissions, cap_get_submission, cap_submit_content, cap_approve_submission, cap_request_changes]
+  blocked_by []
+  disposition active
+  priority medium
+  work_type implementation
+  claimed_by [actor_operator]
+  status done
+}

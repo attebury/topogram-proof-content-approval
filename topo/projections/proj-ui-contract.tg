@@ -35,6 +35,21 @@ projection proj_ui_contract {
     screen submission_create kind form title "Submit Content" input_shape shape_input_submit_content submit cap_submit_content success_navigate submission_detail success_state banner
   }
 
+  collection_views {
+    screen submission_queue view table
+    screen submission_queue filter status
+    screen submission_queue pagination cursor
+    screen submission_queue sort submitted_at desc
+    screen submission_queue refresh manual
+  }
+
+  screen_actions {
+    screen submission_queue action cap_submit_content prominence primary placement toolbar
+    screen submission_detail action cap_approve_submission prominence primary placement toolbar
+    screen submission_detail action cap_request_changes prominence secondary placement toolbar
+    screen submission_create action cap_submit_content prominence primary placement footer
+  }
+
   navigation {
     group review label "Review" placement primary pattern primary
     screen submission_queue group review label "Queue" order 10 visible true default true sitemap include pattern primary
@@ -45,7 +60,15 @@ projection proj_ui_contract {
   screen_regions {
     screen submission_queue region hero pattern summary_stats placement primary
     screen submission_queue region results pattern resource_table placement primary
-    screen submission_detail region summary pattern detail_panel placement primary
+    screen submission_detail region summary pattern summary_stats placement primary
+    screen submission_create region summary pattern summary_stats placement primary
+  }
+
+  widget_bindings {
+    screen submission_queue region hero widget widget_submission_summary data rows from cap_list_submissions
+    screen submission_queue region results widget widget_submission_queue data rows from cap_list_submissions event row_select navigate submission_detail
+    screen submission_detail region summary widget widget_review_actions data submission from cap_get_submission event approve action cap_approve_submission event request_changes action cap_request_changes
+    screen submission_create region summary widget widget_submission_form event submit action cap_submit_content
   }
 
   status active

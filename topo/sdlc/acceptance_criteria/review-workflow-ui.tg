@@ -1,0 +1,6 @@
+acceptance_criterion ac_review_workflow_ui {
+  name "Review Workflow UI"
+  description "Given the content approval proof app remains generated-owned, when reusable widgets and widget bindings are added for queue, detail, review action, and submission form workflows, then Topogram validates widget conformance and behavior reports, regenerates the app, and the generated app compile gate passes."
+  requirement req_review_workflow_ui
+  status approved
+}

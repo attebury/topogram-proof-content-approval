@@ -1,0 +1,297 @@
+{
+  "widget_review_actions": {
+    "approvals": [],
+    "behavior": [
+      "optimistic_update",
+      "keyboard_navigation"
+    ],
+    "behaviors": [
+      {
+        "directives": {
+          "actions": [
+            "cap_approve_submission",
+            "cap_request_changes"
+          ],
+          "rollback": "manual"
+        },
+        "kind": "optimistic_update",
+        "source": "structured"
+      },
+      {
+        "directives": {
+          "scope": "widget",
+          "shortcuts": [
+            "approve",
+            "request_changes"
+          ]
+        },
+        "kind": "keyboard_navigation",
+        "source": "structured"
+      }
+    ],
+    "category": "feedback",
+    "dependencies": [],
+    "description": "Reusable review action widget for approving or requesting changes.",
+    "events": [
+      {
+        "id": "approve",
+        "shape": {
+          "id": "shape_input_approve_submission",
+          "kind": "shape"
+        }
+      },
+      {
+        "id": "request_changes",
+        "shape": {
+          "id": "shape_input_request_changes",
+          "kind": "shape"
+        }
+      }
+    ],
+    "id": "widget_review_actions",
+    "lookups": [],
+    "name": "Review Actions",
+    "patterns": [
+      "summary_stats"
+    ],
+    "props": [
+      {
+        "defaultValue": null,
+        "name": "submission",
+        "requiredness": "optional",
+        "type": "object"
+      }
+    ],
+    "regions": [
+      "summary",
+      "footer_actions"
+    ],
+    "slots": [],
+    "status": "active",
+    "type": "ui_widget_contract",
+    "version": "1.0"
+  },
+  "widget_submission_form": {
+    "approvals": [],
+    "behavior": [
+      "optimistic_update",
+      "keyboard_navigation"
+    ],
+    "behaviors": [
+      {
+        "directives": {
+          "actions": [
+            "cap_submit_content"
+          ],
+          "rollback": "manual"
+        },
+        "kind": "optimistic_update",
+        "source": "structured"
+      },
+      {
+        "directives": {
+          "scope": "form",
+          "shortcuts": [
+            "submit"
+          ]
+        },
+        "kind": "keyboard_navigation",
+        "source": "structured"
+      }
+    ],
+    "category": "form",
+    "dependencies": [],
+    "description": "Reusable form widget for creating content submissions.",
+    "events": [
+      {
+        "id": "submit",
+        "shape": {
+          "id": "shape_input_submit_content",
+          "kind": "shape"
+        }
+      }
+    ],
+    "id": "widget_submission_form",
+    "lookups": [],
+    "name": "Submission Form",
+    "patterns": [
+      "summary_stats"
+    ],
+    "props": [
+      {
+        "defaultValue": null,
+        "name": "draft",
+        "requiredness": "optional",
+        "type": "object"
+      }
+    ],
+    "regions": [
+      "summary"
+    ],
+    "slots": [],
+    "status": "active",
+    "type": "ui_widget_contract",
+    "version": "1.0"
+  },
+  "widget_submission_queue": {
+    "approvals": [],
+    "behavior": [
+      "selection",
+      "sorting",
+      "filtering",
+      "search",
+      "pagination"
+    ],
+    "behaviors": [
+      {
+        "directives": {
+          "emits": "row_select",
+          "mode": "single",
+          "state": "selected_id"
+        },
+        "kind": "selection",
+        "source": "structured"
+      },
+      {
+        "directives": {
+          "default": [
+            "submitted_at",
+            "desc"
+          ],
+          "fields": [
+            "submitted_at",
+            "status",
+            "title"
+          ]
+        },
+        "kind": "sorting",
+        "source": "structured"
+      },
+      {
+        "directives": {
+          "fields": [
+            "status"
+          ]
+        },
+        "kind": "filtering",
+        "source": "structured"
+      },
+      {
+        "directives": {
+          "fields": [
+            "title",
+            "author_name"
+          ]
+        },
+        "kind": "search",
+        "source": "structured"
+      },
+      {
+        "directives": {
+          "mode": "cursor",
+          "page_size": 25
+        },
+        "kind": "pagination",
+        "source": "structured"
+      }
+    ],
+    "category": "collection",
+    "dependencies": [],
+    "description": "Reusable review queue widget for content submissions.",
+    "events": [
+      {
+        "id": "row_select",
+        "shape": {
+          "id": "shape_output_submission_card",
+          "kind": "shape"
+        }
+      }
+    ],
+    "id": "widget_submission_queue",
+    "lookups": [],
+    "name": "Submission Queue",
+    "patterns": [
+      "resource_table",
+      "data_grid_view"
+    ],
+    "props": [
+      {
+        "defaultValue": null,
+        "name": "rows",
+        "requiredness": "required",
+        "type": "array"
+      },
+      {
+        "defaultValue": null,
+        "name": "selected_id",
+        "requiredness": "optional",
+        "type": "uuid"
+      },
+      {
+        "defaultValue": false,
+        "name": "loading",
+        "requiredness": "optional",
+        "type": "boolean"
+      }
+    ],
+    "regions": [
+      "results"
+    ],
+    "slots": [
+      {
+        "description": "Review queue actions and filters",
+        "id": "toolbar"
+      },
+      {
+        "description": "Empty queue messaging",
+        "id": "empty_state"
+      }
+    ],
+    "status": "active",
+    "type": "ui_widget_contract",
+    "version": "1.0"
+  },
+  "widget_submission_summary": {
+    "approvals": [],
+    "behavior": [
+      "grouping"
+    ],
+    "behaviors": [
+      {
+        "directives": {
+          "fields": [
+            "status"
+          ]
+        },
+        "kind": "grouping",
+        "source": "structured"
+      }
+    ],
+    "category": "display",
+    "dependencies": [],
+    "description": "Reusable summary widget for submission counts and field coverage.",
+    "events": [],
+    "id": "widget_submission_summary",
+    "lookups": [],
+    "name": "Submission Summary",
+    "patterns": [
+      "summary_stats"
+    ],
+    "props": [
+      {
+        "defaultValue": null,
+        "name": "rows",
+        "requiredness": "required",
+        "type": "array"
+      }
+    ],
+    "regions": [
+      "hero",
+      "summary"
+    ],
+    "slots": [],
+    "status": "active",
+    "type": "ui_widget_contract",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "changedFiles": [
+    "README.md",
+    "app/app-bundle-plan.json",
+    "app/apps/web/app_sveltekit/src/lib/topogram/generation-coverage.json",
+    "app/apps/web/app_sveltekit/src/lib/topogram/ui-surface-contract.json",
+    "app/apps/web/app_sveltekit/src/routes/submissions/+page.svelte",
+    "app/apps/web/app_sveltekit/src/routes/submissions/[id]/+page.svelte",
+    "app/apps/web/app_sveltekit/src/routes/submissions/new/+page.svelte",
+    "app/compile/web/app_sveltekit/src/lib/topogram/generation-coverage.json",
+    "app/compile/web/app_sveltekit/src/lib/topogram/ui-surface-contract.json",
+    "app/compile/web/app_sveltekit/src/routes/submissions/+page.svelte",
+    "app/compile/web/app_sveltekit/src/routes/submissions/[id]/+page.svelte",
+    "app/compile/web/app_sveltekit/src/routes/submissions/new/+page.svelte",
+    "app/deploy/web/app_sveltekit/src/lib/topogram/generation-coverage.json",
+    "app/deploy/web/app_sveltekit/src/lib/topogram/ui-surface-contract.json",
+    "app/deploy/web/app_sveltekit/src/routes/submissions/+page.svelte",
+    "app/deploy/web/app_sveltekit/src/routes/submissions/[id]/+page.svelte",
+    "app/deploy/web/app_sveltekit/src/routes/submissions/new/+page.svelte",
+    "app/runtime-check/README.md",
+    "app/runtime-check/runtime-check-plan.json",
+    "proof/STEP.md",
+    "topo/projections/proj-ui-contract.tg",
+    "topo/sdlc/.topogram-sdlc-history.json",
+    "proof/artifacts/step-03-agent-brief.json",
+    "proof/artifacts/step-03-check.json",
+    "proof/artifacts/step-03-sdlc-complete-task-review-workflow-ui.json",
+    "proof/artifacts/step-03-sdlc-prep-commit.json",
+    "proof/artifacts/step-03-sdlc-start-task-review-workflow-ui.json",
+    "proof/artifacts/step-03-task-slice.json",
+    "proof/artifacts/step-03-ui-surface-contract.json",
+    "proof/artifacts/step-03-ui-widget-contract.json",
+    "proof/artifacts/step-03-widget-behavior-report.json",
+    "proof/artifacts/step-03-widget-check.json",
+    "proof/artifacts/step-03-widget-conformance-report.json",
+    "topo/sdlc/acceptance_criteria/review-workflow-ui.tg",
+    "topo/sdlc/requirements/review-workflow-ui.tg",
+    "topo/sdlc/tasks/review-workflow-ui.tg",
+    "topo/verifications/review-workflow-ui.tg",
+    "topo/widgets/widget-review-actions.tg",
+    "topo/widgets/widget-submission-form.tg",
+    "topo/widgets/widget-submission-queue.tg",
+    "topo/widgets/widget-submission-summary.tg"
+  ],
+  "changedTasks": [
+    {
+      "disposition": "active",
+      "explicitDisposition": true,
+      "file": "topo/sdlc/tasks/review-workflow-ui.tg",
+      "id": "task_review_workflow_ui",
+      "priority": "medium",
+      "requiresDisposition": false,
+      "status": "done"
+    }
+  ],
+  "errors": [],
+  "nextCommands": [
+    "topogram sdlc explain <task-id> --json",
+    "topogram query slice ./topo --task <task-id> --json",
+    "topogram sdlc gate . --base <ref> --head <ref> --require-adopted"
+  ],
+  "ok": true,
+  "openTasks": [],
+  "projectRoot": "<repo>",
+  "taskFiles": [
+    "topo/sdlc/tasks/review-workflow-ui.tg"
+  ],
+  "topogramRoot": "<repo>/topo",
+  "type": "sdlc_commit_prep",
+  "version": "1",
+  "warnings": []
+}

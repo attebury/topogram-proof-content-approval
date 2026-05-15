@@ -25,20 +25,17 @@
       <p>This SvelteKit page was generated from <code>submission_queue</code>.</p>
     </section>
 
-        <section class="card">
-      <h2>Sample rows</h2>
-      <ul class="resource-list">
-        {#each items as item}
-          <li>
-            <div class="resource-meta">
-              <strong>{item.title}</strong>
-              <span class="muted">{item.description}</span>
-            </div>
-            <span class="badge">{Object.keys(item).length} fields</span>
-          </li>
-        {/each}
-      </ul>
-    </section>
+    <section class="widget-card widget-generic" data-topogram-widget="widget_submission_summary">
+  <p class="widget-eyebrow">hero widget</p>
+  <h2>Submission Summary</h2>
+  <p class="muted">Rendered from the Topogram widget contract.</p>
+</section>
+
+<section class="widget-card widget-generic" data-topogram-widget="widget_submission_queue">
+  <p class="widget-eyebrow">results widget</p>
+  <h2>Submission Queue</h2>
+  <p class="muted">Rendered from the Topogram widget contract.</p>
+</section>
   </div>
 </main>
 

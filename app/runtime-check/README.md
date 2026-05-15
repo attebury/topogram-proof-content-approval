@@ -25,5 +25,5 @@ Use it when you want more than a quick smoke test. It goes beyond the lightweigh
 
 ## Canonical Verification
 
-- Sources: `ver_runtime_flow`, `ver_runtime_smoke`, `verification_content_approval_domain`, `verification_generated_baseline`
-- Scenarios: submit content runtime, get created submission runtime, list submissions runtime, approve submission runtime, request changes runtime, submit content smoke, get submission smoke, list submissions smoke, topogram check generate verify
+- Sources: `ver_runtime_flow`, `ver_runtime_smoke`, `verification_content_approval_domain`, `verification_generated_baseline`, `verification_review_workflow_ui`
+- Scenarios: submit content runtime, get created submission runtime, list submissions runtime, approve submission runtime, request changes runtime, submit content smoke, get submission smoke, list submissions smoke, topogram check generate verify, topogram check widget reports generate verify

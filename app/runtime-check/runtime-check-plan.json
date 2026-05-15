@@ -92,6 +92,18 @@
           "cap_approve_submission",
           "cap_request_changes"
         ]
+      },
+      {
+        "id": "verification_review_workflow_ui",
+        "name": "Review Workflow UI Verification",
+        "method": "runtime",
+        "validates": [
+          "cap_list_submissions",
+          "cap_get_submission",
+          "cap_submit_content",
+          "cap_approve_submission",
+          "cap_request_changes"
+        ]
       }
     ],
     "scenarios": [
@@ -130,6 +142,10 @@
       {
         "id": "topogram_check_generate_verify",
         "label": "topogram check generate verify"
+      },
+      {
+        "id": "topogram_check_widget_reports_generate_verify",
+        "label": "topogram check widget reports generate verify"
       }
     ]
   },

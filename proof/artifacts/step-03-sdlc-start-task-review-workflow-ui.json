@@ -1,0 +1,131 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "ac_review_workflow_ui",
+      "kind": "acceptance_criterion",
+      "name": "Review Workflow UI",
+      "status": "approved"
+    }
+  ],
+  "actor": "actor_operator",
+  "blockers": [],
+  "can_start": true,
+  "decisions": [],
+  "dryRun": false,
+  "next_commands": [
+    "topogram query slice ./topo --task task_review_workflow_ui --json",
+    "topogram query single-agent-plan ./topo --mode implementation --task task_review_workflow_ui --json",
+    "topogram query sdlc-proof-gaps ./topo --task task_review_workflow_ui --json",
+    "topogram query verification-targets ./topo --task task_review_workflow_ui --json",
+    "topogram sdlc complete task_review_workflow_ui . --verification <verification-id> --actor actor_operator --write"
+  ],
+  "ok": true,
+  "plans": [],
+  "proof_gaps": {
+    "errors": [],
+    "missing": {
+      "acceptance_refs": false,
+      "satisfies": false,
+      "verification_refs": false
+    },
+    "ready_for_done": true,
+    "task": {
+      "acceptance_refs": [
+        "ac_review_workflow_ui"
+      ],
+      "blocked_by": [],
+      "claimed_by": [
+        "actor_operator"
+      ],
+      "disposition": "active",
+      "id": "task_review_workflow_ui",
+      "kind": "task",
+      "name": "Review Workflow UI",
+      "priority": "medium",
+      "satisfies": [
+        "req_review_workflow_ui"
+      ],
+      "status": "in-progress",
+      "verification_refs": [
+        "verification_review_workflow_ui"
+      ],
+      "work_type": "implementation"
+    },
+    "warnings": []
+  },
+  "refusal_reasons": [],
+  "requirements": [
+    {
+      "id": "req_review_workflow_ui",
+      "kind": "requirement",
+      "name": "Review Workflow UI",
+      "status": "approved"
+    }
+  ],
+  "rules": [],
+  "task": {
+    "acceptance_refs": [
+      "ac_review_workflow_ui"
+    ],
+    "blocked_by": [],
+    "claimed_by": [
+      "actor_operator"
+    ],
+    "disposition": "active",
+    "id": "task_review_workflow_ui",
+    "kind": "task",
+    "name": "Review Workflow UI",
+    "priority": "medium",
+    "satisfies": [
+      "req_review_workflow_ui"
+    ],
+    "status": "in-progress",
+    "verification_refs": [
+      "verification_review_workflow_ui"
+    ],
+    "work_type": "implementation"
+  },
+  "transitions": [
+    {
+      "archivable": false,
+      "dod": {
+        "errors": [],
+        "satisfied": true,
+        "warnings": []
+      },
+      "dryRun": false,
+      "file": "<repo>/topo/sdlc/tasks/review-workflow-ui.tg",
+      "from": "unclaimed",
+      "id": "task_review_workflow_ui",
+      "kind": "task",
+      "ok": true,
+      "to": "claimed"
+    },
+    {
+      "archivable": false,
+      "dod": {
+        "errors": [],
+        "satisfied": true,
+        "warnings": []
+      },
+      "dryRun": false,
+      "file": "<repo>/topo/sdlc/tasks/review-workflow-ui.tg",
+      "from": "claimed",
+      "id": "task_review_workflow_ui",
+      "kind": "task",
+      "ok": true,
+      "to": "in-progress"
+    }
+  ],
+  "type": "sdlc_start_packet",
+  "verifications": [
+    {
+      "id": "verification_review_workflow_ui",
+      "kind": "verification",
+      "name": "Review Workflow UI Verification",
+      "status": "active"
+    }
+  ],
+  "version": 1,
+  "written": true
+}
