@@ -22,6 +22,12 @@ Generated-owned checkpoints use `npm run generate`. Maintained-owned checkpoints
 use `topogram emit`, `topogram query ...`, and direct app verification; they keep
 generation-refusal artifacts under `proof/artifacts/`.
 
+## Public Proof Checks
+
+- `npm run proof:check-paths` fails if tracked files expose local home, temp, CI workspace, or Windows user paths.
+- `npm run proof:audit` checks the current `@topogram/cli` pin, expected proof tags, and `proof/artifacts/path-hygiene-audit.json`.
+- GitHub shows the same proof through the [Proof Verification workflow](https://github.com/attebury/topogram-proof-content-approval/actions/workflows/proof-verification.yml).
+
 ## Checkpoints
 
 | Step | Branch | Tag | Purpose |

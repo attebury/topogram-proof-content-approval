@@ -1,0 +1,44 @@
+name: Proof Verification
+
+on:
+  push:
+    branches:
+      - main
+      - "step/**"
+    tags:
+      - "proof-*"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    name: Proof Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Check proof path hygiene
+        run: npm run proof:check-paths
+      - name: Audit proof metadata
+        run: npm run proof:audit
+      - name: Verify proof
+        run: npm run verify
+      - name: Verify recreated stack
+        run: |
+          if [ -f ./recreated-app/package.json ]; then
+            npm run recreated:compile
+          else
+            echo "No recreated app present; skipping."
+          fi

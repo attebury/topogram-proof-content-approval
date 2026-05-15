@@ -40,7 +40,8 @@
     "app:check": "npm run app:compile",
     "app:probe": "npm run app:smoke && npm run app:runtime-check",
     "app:runtime": "npm --prefix ./app run runtime",
-    "proof:check-paths": "node ./scripts/check-no-local-paths.mjs"
+    "proof:check-paths": "node ./scripts/check-no-local-paths.mjs",
+    "proof:audit": "node ./scripts/proof-audit.mjs"
   },
   "devDependencies": {
     "@topogram/cli": "0.3.91",

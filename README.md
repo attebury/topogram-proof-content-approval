@@ -1,5 +1,7 @@
 # Topogram Proof: Content Approval
 
+[![Proof Verification](https://github.com/attebury/topogram-proof-content-approval/actions/workflows/proof-verification.yml/badge.svg)](https://github.com/attebury/topogram-proof-content-approval/actions/workflows/proof-verification.yml)
+
 This repository demonstrates a generated Topogram app becoming a maintained app
 without losing contract guidance. It uses a realistic Content Approval domain
 and public branch/tag checkpoints so humans and agents can inspect every step.
@@ -32,6 +34,10 @@ migration proposals, generation refusal output, and verification output.
 The app output is maintained-owned. Topogram is still used for `check`, `emit`,
 query packets, SDLC proof, and migration proposals, but `topogram generate` is
 expected to refuse overwriting the maintained app.
+
+## Public Verification
+
+The `Proof Verification` workflow runs on `main`, proof tags, step branches, pull requests, and manual dispatch. It installs dependencies, runs `npm run proof:check-paths`, runs `npm run proof:audit`, and then runs `npm run verify`.
 
 ## Verification
 
