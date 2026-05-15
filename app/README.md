@@ -1,4 +1,4 @@
-# Topogram Starter App Bundle
+# Content Approval App Bundle
 
 This is the polished generated app bundle for Topogram v0.1.
 
@@ -38,7 +38,7 @@ For the default generated bundle:
 2. Run `bash scripts/bootstrap.sh`
 3. Run `bash scripts/dev.sh`
 4. Open the web app at `http://localhost:5173/`
-5. Confirm the seeded "hello-from-topogram" and "hello-from-topogram" flow through the stack
+5. Confirm the seeded "Draft content waiting for editorial approval." and "Launch announcement" flow through the stack
 6. Run `bash scripts/compile-check.sh`
 7. Run `bash scripts/runtime.sh`
 

@@ -1,0 +1,8 @@
+verification verification_content_approval_domain {
+  name "Content Approval Domain Verification"
+  description "Runs Topogram check, app generation, generated app compile verification, and captures proof artifacts for the content approval domain checkpoint."
+  validates [cap_list_submissions, cap_get_submission, cap_submit_content, cap_approve_submission, cap_request_changes]
+  method runtime
+  scenarios [topogram_check_generate_verify]
+  status active
+}

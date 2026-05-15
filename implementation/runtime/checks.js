@@ -1,4 +1,4 @@
-export const HELLO_RUNTIME_CHECKS = {
+export const CONTENT_RUNTIME_CHECKS = {
   environmentStage: {
     id: "environment",
     name: "Environment Readiness",
@@ -38,11 +38,11 @@ export const HELLO_RUNTIME_CHECKS = {
         mutating: false
       },
       {
-        id: "api_seed_greeting_ready",
+        id: "api_seed_submission_ready",
         kind: "api_contract",
-        capabilityId: "cap_get_greeting",
+        capabilityId: "cap_get_submission",
         pathParams: {
-          greeting_id: "$env:TOPOGRAM_DEMO_PRIMARY_ID"
+          submission_id: "$env:TOPOGRAM_DEMO_PRIMARY_ID"
         },
         mandatory: true,
         mutating: false
@@ -53,18 +53,21 @@ export const HELLO_RUNTIME_CHECKS = {
     id: "api",
     name: "API Contract Checks",
     checks: [
-      { id: "create_greeting", kind: "api_contract", capabilityId: "cap_create_greeting", mutating: true, mandatory: true },
-      { id: "get_created_greeting", kind: "api_contract", capabilityId: "cap_get_greeting", mutating: false, mandatory: true },
-      { id: "list_greetings", kind: "api_contract", capabilityId: "cap_list_greetings", mutating: false, mandatory: true },
-      { id: "update_greeting", kind: "api_contract", capabilityId: "cap_update_greeting", mutating: true, mandatory: true },
-      { id: "invalid_create_returns_4xx", kind: "api_negative", capabilityId: "cap_create_greeting", expectStatusClass: 4, expectErrorCode: "cap_create_greeting_invalid_request", mutating: false, mandatory: true },
-      { id: "get_unknown_greeting_not_found", kind: "api_negative", capabilityId: "cap_get_greeting", expectStatus: 404, expectErrorCode: "cap_get_greeting_not_found", mutating: false, mandatory: true }
+      { id: "submit_content", kind: "api_contract", capabilityId: "cap_submit_content", mutating: true, mandatory: true },
+      { id: "get_created_submission", kind: "api_contract", capabilityId: "cap_get_submission", mutating: false, mandatory: true },
+      { id: "list_submissions", kind: "api_contract", capabilityId: "cap_list_submissions", mutating: false, mandatory: true },
+      { id: "approve_submission", kind: "api_contract", capabilityId: "cap_approve_submission", mutating: true, mandatory: true },
+      { id: "request_changes", kind: "api_contract", capabilityId: "cap_request_changes", mutating: true, mandatory: true },
+      { id: "invalid_submit_returns_4xx", kind: "api_negative", capabilityId: "cap_submit_content", expectStatusClass: 4, expectErrorCode: "cap_submit_content_invalid_request", mutating: false, mandatory: true },
+      { id: "get_unknown_submission_not_found", kind: "api_negative", capabilityId: "cap_get_submission", expectStatus: 404, expectErrorCode: "cap_get_submission_not_found", mutating: false, mandatory: true }
     ]
   },
   smokeChecks: [
     { id: "web_home_page", type: "web_get", path: "/", expectStatus: 200, expectText: "Topogram Starter" },
-    { id: "create_greeting", type: "api_post", path: "/greetings", expectStatus: 201, capabilityId: "cap_create_greeting" },
-    { id: "get_greeting", type: "api_get", path: "/greetings/:id", expectStatus: 200, capabilityId: "cap_get_greeting" },
-    { id: "list_greetings", type: "api_get", path: "/greetings", expectStatus: 200, capabilityId: "cap_list_greetings" }
+    { id: "submit_content", type: "api_post", path: "/submissions", expectStatus: 201, capabilityId: "cap_submit_content" },
+    { id: "get_submission", type: "api_get", path: "/submissions/:id", expectStatus: 200, capabilityId: "cap_get_submission" },
+    { id: "list_submissions", type: "api_get", path: "/submissions", expectStatus: 200, capabilityId: "cap_list_submissions" }
   ]
 };
+
+export const HELLO_RUNTIME_CHECKS = CONTENT_RUNTIME_CHECKS;

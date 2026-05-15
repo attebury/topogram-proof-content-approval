@@ -4,10 +4,10 @@
     {
       "type": "db_table_contract",
       "entity": {
-        "id": "entity_greeting",
-        "name": "Greeting"
+        "id": "entity_content_submission",
+        "name": "Content Submission"
       },
-      "table": "greetings",
+      "table": "content_submissions",
       "columns": [
         {
           "name": "id",
@@ -17,8 +17,29 @@
           "defaultValue": null
         },
         {
-          "name": "message",
-          "sourceField": "message",
+          "name": "title",
+          "sourceField": "title",
+          "fieldType": "text",
+          "requiredness": "required",
+          "defaultValue": null
+        },
+        {
+          "name": "body",
+          "sourceField": "body",
+          "fieldType": "text",
+          "requiredness": "required",
+          "defaultValue": null
+        },
+        {
+          "name": "status",
+          "sourceField": "status",
+          "fieldType": "text",
+          "requiredness": "required",
+          "defaultValue": null
+        },
+        {
+          "name": "author_name",
+          "sourceField": "author_name",
           "fieldType": "text",
           "requiredness": "required",
           "defaultValue": null
@@ -28,6 +49,27 @@
           "sourceField": "created_at",
           "fieldType": "datetime",
           "requiredness": "required",
+          "defaultValue": null
+        },
+        {
+          "name": "submitted_at",
+          "sourceField": "submitted_at",
+          "fieldType": "datetime",
+          "requiredness": "required",
+          "defaultValue": null
+        },
+        {
+          "name": "reviewed_at",
+          "sourceField": "reviewed_at",
+          "fieldType": "datetime",
+          "requiredness": "optional",
+          "defaultValue": null
+        },
+        {
+          "name": "reviewer_note",
+          "sourceField": "reviewer_note",
+          "fieldType": "text",
+          "requiredness": "optional",
           "defaultValue": null
         }
       ],
@@ -39,7 +81,13 @@
         {
           "type": "index",
           "fields": [
-            "created_at"
+            "status"
+          ]
+        },
+        {
+          "type": "index",
+          "fields": [
+            "submitted_at"
           ]
         }
       ],
@@ -48,7 +96,7 @@
         "softDelete": null,
         "timestamps": {
           "createdAt": "created_at",
-          "updatedAt": "created_at"
+          "updatedAt": "reviewed_at"
         }
       }
     }

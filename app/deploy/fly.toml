@@ -1,4 +1,4 @@
-app = "topogram-starter-deployment-stack"
+app = "content-approval-deployment-stack"
 primary_region = "ord"
 
 [build]

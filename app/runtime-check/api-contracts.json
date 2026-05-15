@@ -1,22 +1,22 @@
 {
-  "cap_create_greeting": {
+  "cap_approve_submission": {
     "type": "api_contract_graph",
     "capability": {
-      "id": "cap_create_greeting",
-      "name": "Create Greeting",
-      "description": "Creates a greeting"
+      "id": "cap_approve_submission",
+      "name": "Approve Submission",
+      "description": "Approves a content submission."
     },
     "endpoint": {
       "type": "api_endpoint",
-      "operationId": "cap_create_greeting",
+      "operationId": "cap_approve_submission",
       "method": "POST",
-      "path": "/greetings",
-      "successStatus": 201,
+      "path": "/submissions/:id/approve",
+      "successStatus": 200,
       "auth": "none",
       "requestPlacement": "body",
       "projection": {
         "id": "proj_api",
-        "name": "Starter API"
+        "name": "Content Approval API"
       },
       "preconditions": [],
       "idempotency": [],
@@ -39,57 +39,88 @@
     "requestContract": {
       "type": "api_request_contract",
       "shape": {
-        "id": "shape_input_create_greeting",
-        "name": "Create Greeting Input"
+        "id": "shape_input_approve_submission",
+        "name": "Approve Submission Input"
       },
       "fields": [
         {
-          "name": "message",
-          "sourceName": "message",
+          "name": "submission_id",
+          "sourceName": "submission_id",
           "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "transport": {
+            "location": "path",
+            "wireName": "id"
+          }
+        },
+        {
+          "name": "reviewer_note",
+          "sourceName": "reviewer_note",
+          "required": false,
           "schema": {
             "type": "string"
           },
           "transport": {
             "location": "body",
-            "wireName": "message"
+            "wireName": "reviewer_note"
           }
         }
       ],
       "required": [
-        "message"
+        "submission_id"
       ],
       "jsonSchema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "topogram:shape:shape_input_create_greeting",
-        "title": "Create Greeting Input",
-        "description": "Fields accepted when creating a greeting",
+        "$id": "topogram:shape:shape_input_approve_submission",
+        "title": "Approve Submission Input",
+        "description": "Review note captured when approving a submission.",
         "type": "object",
         "properties": {
-          "message": {
+          "submission_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "reviewer_note": {
             "type": "string"
           }
         },
         "additionalProperties": false,
         "required": [
-          "message"
+          "submission_id"
         ]
       },
       "transport": {
-        "path": [],
+        "path": [
+          {
+            "name": "submission_id",
+            "sourceName": "submission_id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "transport": {
+              "location": "path",
+              "wireName": "id"
+            }
+          }
+        ],
         "query": [],
         "header": [],
         "body": [
           {
-            "name": "message",
-            "sourceName": "message",
-            "required": true,
+            "name": "reviewer_note",
+            "sourceName": "reviewer_note",
+            "required": false,
             "schema": {
               "type": "string"
             },
             "transport": {
               "location": "body",
-              "wireName": "message"
+              "wireName": "reviewer_note"
             }
           }
         ]
@@ -98,8 +129,8 @@
     "responseContract": {
       "type": "api_response_contract",
       "shape": {
-        "id": "shape_output_greeting_detail",
-        "name": "Greeting Detail Output"
+        "id": "shape_output_submission_detail",
+        "name": "Submission Detail Output"
       },
       "fields": [
         {
@@ -116,20 +147,56 @@
           }
         },
         {
-          "name": "message",
-          "sourceName": "message",
+          "name": "title",
+          "sourceName": "title",
           "required": true,
           "schema": {
             "type": "string"
           },
           "transport": {
             "location": "body",
-            "wireName": "message"
+            "wireName": "title"
           }
         },
         {
-          "name": "created_at",
-          "sourceName": "created_at",
+          "name": "body",
+          "sourceName": "body",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "body"
+          }
+        },
+        {
+          "name": "status",
+          "sourceName": "status",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "status"
+          }
+        },
+        {
+          "name": "author_name",
+          "sourceName": "author_name",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "author_name"
+          }
+        },
+        {
+          "name": "submitted_at",
+          "sourceName": "submitted_at",
           "required": true,
           "schema": {
             "type": "string",
@@ -137,39 +204,86 @@
           },
           "transport": {
             "location": "body",
-            "wireName": "created_at"
+            "wireName": "submitted_at"
+          }
+        },
+        {
+          "name": "reviewed_at",
+          "sourceName": "reviewed_at",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "reviewed_at"
+          }
+        },
+        {
+          "name": "reviewer_note",
+          "sourceName": "reviewer_note",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "reviewer_note"
           }
         }
       ],
       "required": [
         "id",
-        "message",
-        "created_at"
+        "title",
+        "body",
+        "status",
+        "author_name",
+        "submitted_at"
       ],
       "jsonSchema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "topogram:shape:shape_output_greeting_detail",
-        "title": "Greeting Detail Output",
-        "description": "Detailed greeting payload",
+        "$id": "topogram:shape:shape_output_submission_detail",
+        "title": "Submission Detail Output",
+        "description": "Detailed submission payload for editorial review.",
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "format": "uuid"
           },
-          "message": {
+          "title": {
             "type": "string"
           },
-          "created_at": {
+          "body": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "author_name": {
+            "type": "string"
+          },
+          "submitted_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "reviewed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewer_note": {
+            "type": "string"
           }
         },
         "additionalProperties": false,
         "required": [
           "id",
-          "message",
-          "created_at"
+          "title",
+          "body",
+          "status",
+          "author_name",
+          "submitted_at"
         ]
       },
       "mode": "item",
@@ -195,20 +309,56 @@
             }
           },
           {
-            "name": "message",
-            "sourceName": "message",
+            "name": "title",
+            "sourceName": "title",
             "required": true,
             "schema": {
               "type": "string"
             },
             "transport": {
               "location": "body",
-              "wireName": "message"
+              "wireName": "title"
             }
           },
           {
-            "name": "created_at",
-            "sourceName": "created_at",
+            "name": "body",
+            "sourceName": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "body"
+            }
+          },
+          {
+            "name": "status",
+            "sourceName": "status",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "status"
+            }
+          },
+          {
+            "name": "author_name",
+            "sourceName": "author_name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "author_name"
+            }
+          },
+          {
+            "name": "submitted_at",
+            "sourceName": "submitted_at",
             "required": true,
             "schema": {
               "type": "string",
@@ -216,7 +366,32 @@
             },
             "transport": {
               "location": "body",
-              "wireName": "created_at"
+              "wireName": "submitted_at"
+            }
+          },
+          {
+            "name": "reviewed_at",
+            "sourceName": "reviewed_at",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "reviewed_at"
+            }
+          },
+          {
+            "name": "reviewer_note",
+            "sourceName": "reviewer_note",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "reviewer_note"
             }
           }
         ]
@@ -226,30 +401,30 @@
     "errors": [
       {
         "type": "api_error_case",
-        "code": "cap_create_greeting_invalid_request",
+        "code": "cap_approve_submission_invalid_request",
         "status": 400,
         "source": "request_contract"
       }
     ]
   },
-  "cap_get_greeting": {
+  "cap_get_submission": {
     "type": "api_contract_graph",
     "capability": {
-      "id": "cap_get_greeting",
-      "name": "Get Greeting",
-      "description": "Fetches one greeting"
+      "id": "cap_get_submission",
+      "name": "Get Submission",
+      "description": "Fetches one content submission for review."
     },
     "endpoint": {
       "type": "api_endpoint",
-      "operationId": "cap_get_greeting",
+      "operationId": "cap_get_submission",
       "method": "GET",
-      "path": "/greetings/:id",
+      "path": "/submissions/:id",
       "successStatus": 200,
       "auth": "none",
       "requestPlacement": "path",
       "projection": {
         "id": "proj_api",
-        "name": "Starter API"
+        "name": "Content Approval API"
       },
       "preconditions": [],
       "idempotency": [],
@@ -272,13 +447,13 @@
     "requestContract": {
       "type": "api_request_contract",
       "shape": {
-        "id": "shape_input_get_greeting",
-        "name": "Get Greeting Input"
+        "id": "shape_input_get_submission",
+        "name": "Get Submission Input"
       },
       "fields": [
         {
-          "name": "greeting_id",
-          "sourceName": "greeting_id",
+          "name": "submission_id",
+          "sourceName": "submission_id",
           "required": true,
           "schema": {
             "type": "string",
@@ -291,30 +466,30 @@
         }
       ],
       "required": [
-        "greeting_id"
+        "submission_id"
       ],
       "jsonSchema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "topogram:shape:shape_input_get_greeting",
-        "title": "Get Greeting Input",
-        "description": "Input for fetching one greeting",
+        "$id": "topogram:shape:shape_input_get_submission",
+        "title": "Get Submission Input",
+        "description": "Identifier for a single submission.",
         "type": "object",
         "properties": {
-          "greeting_id": {
+          "submission_id": {
             "type": "string",
             "format": "uuid"
           }
         },
         "additionalProperties": false,
         "required": [
-          "greeting_id"
+          "submission_id"
         ]
       },
       "transport": {
         "path": [
           {
-            "name": "greeting_id",
-            "sourceName": "greeting_id",
+            "name": "submission_id",
+            "sourceName": "submission_id",
             "required": true,
             "schema": {
               "type": "string",
@@ -334,8 +509,8 @@
     "responseContract": {
       "type": "api_response_contract",
       "shape": {
-        "id": "shape_output_greeting_detail",
-        "name": "Greeting Detail Output"
+        "id": "shape_output_submission_detail",
+        "name": "Submission Detail Output"
       },
       "fields": [
         {
@@ -352,20 +527,56 @@
           }
         },
         {
-          "name": "message",
-          "sourceName": "message",
+          "name": "title",
+          "sourceName": "title",
           "required": true,
           "schema": {
             "type": "string"
           },
           "transport": {
             "location": "body",
-            "wireName": "message"
+            "wireName": "title"
           }
         },
         {
-          "name": "created_at",
-          "sourceName": "created_at",
+          "name": "body",
+          "sourceName": "body",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "body"
+          }
+        },
+        {
+          "name": "status",
+          "sourceName": "status",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "status"
+          }
+        },
+        {
+          "name": "author_name",
+          "sourceName": "author_name",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "author_name"
+          }
+        },
+        {
+          "name": "submitted_at",
+          "sourceName": "submitted_at",
           "required": true,
           "schema": {
             "type": "string",
@@ -373,39 +584,86 @@
           },
           "transport": {
             "location": "body",
-            "wireName": "created_at"
+            "wireName": "submitted_at"
+          }
+        },
+        {
+          "name": "reviewed_at",
+          "sourceName": "reviewed_at",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "reviewed_at"
+          }
+        },
+        {
+          "name": "reviewer_note",
+          "sourceName": "reviewer_note",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "reviewer_note"
           }
         }
       ],
       "required": [
         "id",
-        "message",
-        "created_at"
+        "title",
+        "body",
+        "status",
+        "author_name",
+        "submitted_at"
       ],
       "jsonSchema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "topogram:shape:shape_output_greeting_detail",
-        "title": "Greeting Detail Output",
-        "description": "Detailed greeting payload",
+        "$id": "topogram:shape:shape_output_submission_detail",
+        "title": "Submission Detail Output",
+        "description": "Detailed submission payload for editorial review.",
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "format": "uuid"
           },
-          "message": {
+          "title": {
             "type": "string"
           },
-          "created_at": {
+          "body": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "author_name": {
+            "type": "string"
+          },
+          "submitted_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "reviewed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewer_note": {
+            "type": "string"
           }
         },
         "additionalProperties": false,
         "required": [
           "id",
-          "message",
-          "created_at"
+          "title",
+          "body",
+          "status",
+          "author_name",
+          "submitted_at"
         ]
       },
       "mode": "item",
@@ -431,20 +689,56 @@
             }
           },
           {
-            "name": "message",
-            "sourceName": "message",
+            "name": "title",
+            "sourceName": "title",
             "required": true,
             "schema": {
               "type": "string"
             },
             "transport": {
               "location": "body",
-              "wireName": "message"
+              "wireName": "title"
             }
           },
           {
-            "name": "created_at",
-            "sourceName": "created_at",
+            "name": "body",
+            "sourceName": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "body"
+            }
+          },
+          {
+            "name": "status",
+            "sourceName": "status",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "status"
+            }
+          },
+          {
+            "name": "author_name",
+            "sourceName": "author_name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "author_name"
+            }
+          },
+          {
+            "name": "submitted_at",
+            "sourceName": "submitted_at",
             "required": true,
             "schema": {
               "type": "string",
@@ -452,7 +746,32 @@
             },
             "transport": {
               "location": "body",
-              "wireName": "created_at"
+              "wireName": "submitted_at"
+            }
+          },
+          {
+            "name": "reviewed_at",
+            "sourceName": "reviewed_at",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "reviewed_at"
+            }
+          },
+          {
+            "name": "reviewer_note",
+            "sourceName": "reviewer_note",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "reviewer_note"
             }
           }
         ]
@@ -462,30 +781,30 @@
     "errors": [
       {
         "type": "api_error_case",
-        "code": "cap_get_greeting_invalid_request",
+        "code": "cap_get_submission_invalid_request",
         "status": 400,
         "source": "request_contract"
       }
     ]
   },
-  "cap_list_greetings": {
+  "cap_list_submissions": {
     "type": "api_contract_graph",
     "capability": {
-      "id": "cap_list_greetings",
-      "name": "List Greetings",
-      "description": "Lists greetings"
+      "id": "cap_list_submissions",
+      "name": "List Submissions",
+      "description": "Lists submitted content in review order."
     },
     "endpoint": {
       "type": "api_endpoint",
-      "operationId": "cap_list_greetings",
+      "operationId": "cap_list_submissions",
       "method": "GET",
-      "path": "/greetings",
+      "path": "/submissions",
       "successStatus": 200,
       "auth": "none",
       "requestPlacement": "query",
       "projection": {
         "id": "proj_api",
-        "name": "Starter API"
+        "name": "Content Approval API"
       },
       "preconditions": [],
       "idempotency": [],
@@ -508,10 +827,22 @@
     "requestContract": {
       "type": "api_request_contract",
       "shape": {
-        "id": "shape_input_list_greetings",
-        "name": "List Greetings Input"
+        "id": "shape_input_list_submissions",
+        "name": "List Submissions Input"
       },
       "fields": [
+        {
+          "name": "status",
+          "sourceName": "status",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "query",
+            "wireName": "status"
+          }
+        },
         {
           "name": "after",
           "sourceName": "after",
@@ -529,8 +860,7 @@
           "sourceName": "limit",
           "required": false,
           "schema": {
-            "type": "integer",
-            "default": 25
+            "type": "number"
           },
           "transport": {
             "location": "query",
@@ -541,17 +871,19 @@
       "required": [],
       "jsonSchema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "topogram:shape:shape_input_list_greetings",
-        "title": "List Greetings Input",
-        "description": "Input for listing greetings",
+        "$id": "topogram:shape:shape_input_list_submissions",
+        "title": "List Submissions Input",
+        "description": "Optional filters for the review queue.",
         "type": "object",
         "properties": {
+          "status": {
+            "type": "string"
+          },
           "after": {
             "type": "string"
           },
           "limit": {
-            "type": "integer",
-            "default": 25
+            "type": "number"
           }
         },
         "additionalProperties": false
@@ -559,6 +891,18 @@
       "transport": {
         "path": [],
         "query": [
+          {
+            "name": "status",
+            "sourceName": "status",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "query",
+              "wireName": "status"
+            }
+          },
           {
             "name": "after",
             "sourceName": "after",
@@ -576,8 +920,7 @@
             "sourceName": "limit",
             "required": false,
             "schema": {
-              "type": "integer",
-              "default": 25
+              "type": "number"
             },
             "transport": {
               "location": "query",
@@ -592,8 +935,8 @@
     "responseContract": {
       "type": "api_response_contract",
       "shape": {
-        "id": "shape_output_greeting_detail",
-        "name": "Greeting Detail Output"
+        "id": "shape_output_submission_detail",
+        "name": "Submission Detail Output"
       },
       "fields": [
         {
@@ -610,20 +953,56 @@
           }
         },
         {
-          "name": "message",
-          "sourceName": "message",
+          "name": "title",
+          "sourceName": "title",
           "required": true,
           "schema": {
             "type": "string"
           },
           "transport": {
             "location": "body",
-            "wireName": "message"
+            "wireName": "title"
           }
         },
         {
-          "name": "created_at",
-          "sourceName": "created_at",
+          "name": "body",
+          "sourceName": "body",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "body"
+          }
+        },
+        {
+          "name": "status",
+          "sourceName": "status",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "status"
+          }
+        },
+        {
+          "name": "author_name",
+          "sourceName": "author_name",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "author_name"
+          }
+        },
+        {
+          "name": "submitted_at",
+          "sourceName": "submitted_at",
           "required": true,
           "schema": {
             "type": "string",
@@ -631,14 +1010,42 @@
           },
           "transport": {
             "location": "body",
-            "wireName": "created_at"
+            "wireName": "submitted_at"
+          }
+        },
+        {
+          "name": "reviewed_at",
+          "sourceName": "reviewed_at",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "reviewed_at"
+          }
+        },
+        {
+          "name": "reviewer_note",
+          "sourceName": "reviewer_note",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "reviewer_note"
           }
         }
       ],
       "required": [
         "id",
-        "message",
-        "created_at"
+        "title",
+        "body",
+        "status",
+        "author_name",
+        "submitted_at"
       ],
       "jsonSchema": {
         "type": "object",
@@ -652,28 +1059,47 @@
             "type": "array",
             "items": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "$id": "topogram:shape:shape_output_greeting_detail",
-              "title": "Greeting Detail Output",
-              "description": "Detailed greeting payload",
+              "$id": "topogram:shape:shape_output_submission_detail",
+              "title": "Submission Detail Output",
+              "description": "Detailed submission payload for editorial review.",
               "type": "object",
               "properties": {
                 "id": {
                   "type": "string",
                   "format": "uuid"
                 },
-                "message": {
+                "title": {
                   "type": "string"
                 },
-                "created_at": {
+                "body": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "author_name": {
+                  "type": "string"
+                },
+                "submitted_at": {
                   "type": "string",
                   "format": "date-time"
+                },
+                "reviewed_at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "reviewer_note": {
+                  "type": "string"
                 }
               },
               "additionalProperties": false,
               "required": [
                 "id",
-                "message",
-                "created_at"
+                "title",
+                "body",
+                "status",
+                "author_name",
+                "submitted_at"
               ]
             }
           },
@@ -686,37 +1112,56 @@
       "collection": true,
       "itemJsonSchema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "topogram:shape:shape_output_greeting_detail",
-        "title": "Greeting Detail Output",
-        "description": "Detailed greeting payload",
+        "$id": "topogram:shape:shape_output_submission_detail",
+        "title": "Submission Detail Output",
+        "description": "Detailed submission payload for editorial review.",
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "format": "uuid"
           },
-          "message": {
+          "title": {
             "type": "string"
           },
-          "created_at": {
+          "body": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "author_name": {
+            "type": "string"
+          },
+          "submitted_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "reviewed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewer_note": {
+            "type": "string"
           }
         },
         "additionalProperties": false,
         "required": [
           "id",
-          "message",
-          "created_at"
+          "title",
+          "body",
+          "status",
+          "author_name",
+          "submitted_at"
         ]
       },
       "pagination": null,
       "itemShape": {
-        "id": "shape_output_greeting_detail",
-        "name": "Greeting Detail Output"
+        "id": "shape_output_submission_detail",
+        "name": "Submission Detail Output"
       },
       "ordering": {
-        "field": "created_at",
+        "field": "submitted_at",
         "direction": "desc"
       },
       "cursor": {
@@ -751,20 +1196,56 @@
             }
           },
           {
-            "name": "message",
-            "sourceName": "message",
+            "name": "title",
+            "sourceName": "title",
             "required": true,
             "schema": {
               "type": "string"
             },
             "transport": {
               "location": "body",
-              "wireName": "message"
+              "wireName": "title"
             }
           },
           {
-            "name": "created_at",
-            "sourceName": "created_at",
+            "name": "body",
+            "sourceName": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "body"
+            }
+          },
+          {
+            "name": "status",
+            "sourceName": "status",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "status"
+            }
+          },
+          {
+            "name": "author_name",
+            "sourceName": "author_name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "author_name"
+            }
+          },
+          {
+            "name": "submitted_at",
+            "sourceName": "submitted_at",
             "required": true,
             "schema": {
               "type": "string",
@@ -772,7 +1253,32 @@
             },
             "transport": {
               "location": "body",
-              "wireName": "created_at"
+              "wireName": "submitted_at"
+            }
+          },
+          {
+            "name": "reviewed_at",
+            "sourceName": "reviewed_at",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "reviewed_at"
+            }
+          },
+          {
+            "name": "reviewer_note",
+            "sourceName": "reviewer_note",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "reviewer_note"
             }
           }
         ]
@@ -782,42 +1288,42 @@
     "errors": [
       {
         "type": "api_error_case",
-        "code": "cap_list_greetings_invalid_request",
+        "code": "cap_list_submissions_invalid_request",
         "status": 400,
         "source": "request_contract"
       },
       {
         "type": "api_error_case",
-        "code": "cap_list_greetings_invalid_cursor",
+        "code": "cap_list_submissions_invalid_cursor",
         "status": 400,
         "source": "cursor_contract"
       },
       {
         "type": "api_error_case",
-        "code": "cap_list_greetings_invalid_limit",
+        "code": "cap_list_submissions_invalid_limit",
         "status": 400,
         "source": "cursor_contract"
       }
     ]
   },
-  "cap_update_greeting": {
+  "cap_request_changes": {
     "type": "api_contract_graph",
     "capability": {
-      "id": "cap_update_greeting",
-      "name": "Update Greeting",
-      "description": "Updates one greeting"
+      "id": "cap_request_changes",
+      "name": "Request Changes",
+      "description": "Returns a content submission to the author with review notes."
     },
     "endpoint": {
       "type": "api_endpoint",
-      "operationId": "cap_update_greeting",
-      "method": "PATCH",
-      "path": "/greetings/:id",
+      "operationId": "cap_request_changes",
+      "method": "POST",
+      "path": "/submissions/:id/request-changes",
       "successStatus": 200,
       "auth": "none",
       "requestPlacement": "body",
       "projection": {
         "id": "proj_api",
-        "name": "Starter API"
+        "name": "Content Approval API"
       },
       "preconditions": [],
       "idempotency": [],
@@ -840,13 +1346,13 @@
     "requestContract": {
       "type": "api_request_contract",
       "shape": {
-        "id": "shape_input_update_greeting",
-        "name": "Update Greeting Input"
+        "id": "shape_input_request_changes",
+        "name": "Request Changes Input"
       },
       "fields": [
         {
-          "name": "greeting_id",
-          "sourceName": "greeting_id",
+          "name": "submission_id",
+          "sourceName": "submission_id",
           "required": true,
           "schema": {
             "type": "string",
@@ -858,46 +1364,48 @@
           }
         },
         {
-          "name": "message",
-          "sourceName": "message",
-          "required": false,
+          "name": "reviewer_note",
+          "sourceName": "reviewer_note",
+          "required": true,
           "schema": {
             "type": "string"
           },
           "transport": {
             "location": "body",
-            "wireName": "message"
+            "wireName": "reviewer_note"
           }
         }
       ],
       "required": [
-        "greeting_id"
+        "submission_id",
+        "reviewer_note"
       ],
       "jsonSchema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "topogram:shape:shape_input_update_greeting",
-        "title": "Update Greeting Input",
-        "description": "Input for updating a greeting",
+        "$id": "topogram:shape:shape_input_request_changes",
+        "title": "Request Changes Input",
+        "description": "Review note required when requesting changes.",
         "type": "object",
         "properties": {
-          "greeting_id": {
+          "submission_id": {
             "type": "string",
             "format": "uuid"
           },
-          "message": {
+          "reviewer_note": {
             "type": "string"
           }
         },
         "additionalProperties": false,
         "required": [
-          "greeting_id"
+          "submission_id",
+          "reviewer_note"
         ]
       },
       "transport": {
         "path": [
           {
-            "name": "greeting_id",
-            "sourceName": "greeting_id",
+            "name": "submission_id",
+            "sourceName": "submission_id",
             "required": true,
             "schema": {
               "type": "string",
@@ -913,15 +1421,15 @@
         "header": [],
         "body": [
           {
-            "name": "message",
-            "sourceName": "message",
-            "required": false,
+            "name": "reviewer_note",
+            "sourceName": "reviewer_note",
+            "required": true,
             "schema": {
               "type": "string"
             },
             "transport": {
               "location": "body",
-              "wireName": "message"
+              "wireName": "reviewer_note"
             }
           }
         ]
@@ -930,8 +1438,8 @@
     "responseContract": {
       "type": "api_response_contract",
       "shape": {
-        "id": "shape_output_greeting_detail",
-        "name": "Greeting Detail Output"
+        "id": "shape_output_submission_detail",
+        "name": "Submission Detail Output"
       },
       "fields": [
         {
@@ -948,20 +1456,56 @@
           }
         },
         {
-          "name": "message",
-          "sourceName": "message",
+          "name": "title",
+          "sourceName": "title",
           "required": true,
           "schema": {
             "type": "string"
           },
           "transport": {
             "location": "body",
-            "wireName": "message"
+            "wireName": "title"
           }
         },
         {
-          "name": "created_at",
-          "sourceName": "created_at",
+          "name": "body",
+          "sourceName": "body",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "body"
+          }
+        },
+        {
+          "name": "status",
+          "sourceName": "status",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "status"
+          }
+        },
+        {
+          "name": "author_name",
+          "sourceName": "author_name",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "author_name"
+          }
+        },
+        {
+          "name": "submitted_at",
+          "sourceName": "submitted_at",
           "required": true,
           "schema": {
             "type": "string",
@@ -969,39 +1513,86 @@
           },
           "transport": {
             "location": "body",
-            "wireName": "created_at"
+            "wireName": "submitted_at"
+          }
+        },
+        {
+          "name": "reviewed_at",
+          "sourceName": "reviewed_at",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "reviewed_at"
+          }
+        },
+        {
+          "name": "reviewer_note",
+          "sourceName": "reviewer_note",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "reviewer_note"
           }
         }
       ],
       "required": [
         "id",
-        "message",
-        "created_at"
+        "title",
+        "body",
+        "status",
+        "author_name",
+        "submitted_at"
       ],
       "jsonSchema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "topogram:shape:shape_output_greeting_detail",
-        "title": "Greeting Detail Output",
-        "description": "Detailed greeting payload",
+        "$id": "topogram:shape:shape_output_submission_detail",
+        "title": "Submission Detail Output",
+        "description": "Detailed submission payload for editorial review.",
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "format": "uuid"
           },
-          "message": {
+          "title": {
             "type": "string"
           },
-          "created_at": {
+          "body": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "author_name": {
+            "type": "string"
+          },
+          "submitted_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "reviewed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewer_note": {
+            "type": "string"
           }
         },
         "additionalProperties": false,
         "required": [
           "id",
-          "message",
-          "created_at"
+          "title",
+          "body",
+          "status",
+          "author_name",
+          "submitted_at"
         ]
       },
       "mode": "item",
@@ -1027,20 +1618,56 @@
             }
           },
           {
-            "name": "message",
-            "sourceName": "message",
+            "name": "title",
+            "sourceName": "title",
             "required": true,
             "schema": {
               "type": "string"
             },
             "transport": {
               "location": "body",
-              "wireName": "message"
+              "wireName": "title"
             }
           },
           {
-            "name": "created_at",
-            "sourceName": "created_at",
+            "name": "body",
+            "sourceName": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "body"
+            }
+          },
+          {
+            "name": "status",
+            "sourceName": "status",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "status"
+            }
+          },
+          {
+            "name": "author_name",
+            "sourceName": "author_name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "author_name"
+            }
+          },
+          {
+            "name": "submitted_at",
+            "sourceName": "submitted_at",
             "required": true,
             "schema": {
               "type": "string",
@@ -1048,7 +1675,32 @@
             },
             "transport": {
               "location": "body",
-              "wireName": "created_at"
+              "wireName": "submitted_at"
+            }
+          },
+          {
+            "name": "reviewed_at",
+            "sourceName": "reviewed_at",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "reviewed_at"
+            }
+          },
+          {
+            "name": "reviewer_note",
+            "sourceName": "reviewer_note",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "reviewer_note"
             }
           }
         ]
@@ -1058,7 +1710,442 @@
     "errors": [
       {
         "type": "api_error_case",
-        "code": "cap_update_greeting_invalid_request",
+        "code": "cap_request_changes_invalid_request",
+        "status": 400,
+        "source": "request_contract"
+      }
+    ]
+  },
+  "cap_submit_content": {
+    "type": "api_contract_graph",
+    "capability": {
+      "id": "cap_submit_content",
+      "name": "Submit Content",
+      "description": "Submits new content for editorial review."
+    },
+    "endpoint": {
+      "type": "api_endpoint",
+      "operationId": "cap_submit_content",
+      "method": "POST",
+      "path": "/submissions",
+      "successStatus": 201,
+      "auth": "none",
+      "requestPlacement": "body",
+      "projection": {
+        "id": "proj_api",
+        "name": "Content Approval API"
+      },
+      "preconditions": [],
+      "idempotency": [],
+      "cache": [],
+      "delete": [],
+      "async": [],
+      "status": [],
+      "download": [],
+      "authz": [],
+      "callbacks": [],
+      "actors": [
+        {
+          "type": "api_actor",
+          "id": "actor_operator",
+          "kind": "actor",
+          "order": 0
+        }
+      ]
+    },
+    "requestContract": {
+      "type": "api_request_contract",
+      "shape": {
+        "id": "shape_input_submit_content",
+        "name": "Submit Content Input"
+      },
+      "fields": [
+        {
+          "name": "title",
+          "sourceName": "title",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "title"
+          }
+        },
+        {
+          "name": "body",
+          "sourceName": "body",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "body"
+          }
+        },
+        {
+          "name": "author_name",
+          "sourceName": "author_name",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "author_name"
+          }
+        }
+      ],
+      "required": [
+        "title",
+        "body",
+        "author_name"
+      ],
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "topogram:shape:shape_input_submit_content",
+        "title": "Submit Content Input",
+        "description": "Fields required to submit content for review.",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "author_name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "body",
+          "author_name"
+        ]
+      },
+      "transport": {
+        "path": [],
+        "query": [],
+        "header": [],
+        "body": [
+          {
+            "name": "title",
+            "sourceName": "title",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "title"
+            }
+          },
+          {
+            "name": "body",
+            "sourceName": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "body"
+            }
+          },
+          {
+            "name": "author_name",
+            "sourceName": "author_name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "author_name"
+            }
+          }
+        ]
+      }
+    },
+    "responseContract": {
+      "type": "api_response_contract",
+      "shape": {
+        "id": "shape_output_submission_detail",
+        "name": "Submission Detail Output"
+      },
+      "fields": [
+        {
+          "name": "id",
+          "sourceName": "id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "id"
+          }
+        },
+        {
+          "name": "title",
+          "sourceName": "title",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "title"
+          }
+        },
+        {
+          "name": "body",
+          "sourceName": "body",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "body"
+          }
+        },
+        {
+          "name": "status",
+          "sourceName": "status",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "status"
+          }
+        },
+        {
+          "name": "author_name",
+          "sourceName": "author_name",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "author_name"
+          }
+        },
+        {
+          "name": "submitted_at",
+          "sourceName": "submitted_at",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "submitted_at"
+          }
+        },
+        {
+          "name": "reviewed_at",
+          "sourceName": "reviewed_at",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "reviewed_at"
+          }
+        },
+        {
+          "name": "reviewer_note",
+          "sourceName": "reviewer_note",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "reviewer_note"
+          }
+        }
+      ],
+      "required": [
+        "id",
+        "title",
+        "body",
+        "status",
+        "author_name",
+        "submitted_at"
+      ],
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "topogram:shape:shape_output_submission_detail",
+        "title": "Submission Detail Output",
+        "description": "Detailed submission payload for editorial review.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "author_name": {
+            "type": "string"
+          },
+          "submitted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewer_note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "body",
+          "status",
+          "author_name",
+          "submitted_at"
+        ]
+      },
+      "mode": "item",
+      "collection": false,
+      "itemJsonSchema": null,
+      "pagination": null,
+      "transport": {
+        "path": [],
+        "query": [],
+        "header": [],
+        "body": [
+          {
+            "name": "id",
+            "sourceName": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "id"
+            }
+          },
+          {
+            "name": "title",
+            "sourceName": "title",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "title"
+            }
+          },
+          {
+            "name": "body",
+            "sourceName": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "body"
+            }
+          },
+          {
+            "name": "status",
+            "sourceName": "status",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "status"
+            }
+          },
+          {
+            "name": "author_name",
+            "sourceName": "author_name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "author_name"
+            }
+          },
+          {
+            "name": "submitted_at",
+            "sourceName": "submitted_at",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "submitted_at"
+            }
+          },
+          {
+            "name": "reviewed_at",
+            "sourceName": "reviewed_at",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "reviewed_at"
+            }
+          },
+          {
+            "name": "reviewer_note",
+            "sourceName": "reviewer_note",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "reviewer_note"
+            }
+          }
+        ]
+      }
+    },
+    "policy": [],
+    "errors": [
+      {
+        "type": "api_error_case",
+        "code": "cap_submit_content_invalid_request",
         "status": 400,
         "source": "request_contract"
       }

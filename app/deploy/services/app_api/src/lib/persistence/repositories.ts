@@ -1,17 +1,20 @@
 import type {
-  CreateGreetingInput,
-  CreateGreetingResult,
-  GetGreetingInput,
-  GetGreetingResult,
-  ListGreetingsInput,
-  ListGreetingsResult,
-  UpdateGreetingInput,
-  UpdateGreetingResult,
+  ApproveSubmissionInput,
+  ApproveSubmissionResult,
+  GetSubmissionInput,
+  GetSubmissionResult,
+  ListSubmissionsInput,
+  ListSubmissionsResult,
+  RequestChangesInput,
+  RequestChangesResult,
+  SubmitContentInput,
+  SubmitContentResult,
 } from "./types";
 
 export interface StarterRepository {
-  createGreeting(input: CreateGreetingInput): Promise<CreateGreetingResult>;
-  getGreeting(input: GetGreetingInput): Promise<GetGreetingResult>;
-  listGreetings(input: ListGreetingsInput): Promise<ListGreetingsResult>;
-  updateGreeting(input: UpdateGreetingInput): Promise<UpdateGreetingResult>;
+  submitContent(input: SubmitContentInput): Promise<SubmitContentResult>;
+  getSubmission(input: GetSubmissionInput): Promise<GetSubmissionResult>;
+  listSubmissions(input: ListSubmissionsInput): Promise<ListSubmissionsResult>;
+  approveSubmission(input: ApproveSubmissionInput): Promise<ApproveSubmissionResult>;
+  requestChanges(input: RequestChangesInput): Promise<RequestChangesResult>;
 }

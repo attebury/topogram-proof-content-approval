@@ -3,15 +3,15 @@
 </script>
 
 <svelte:head>
-  <title>Topogram Starter</title>
+  <title>Content Approval</title>
 </svelte:head>
 
 <div class="app-shell">
   <header class="app-nav">
-    <a class="brand" href="/">Topogram Starter</a>
+    <a class="brand" href="/">Content Approval</a>
     <nav>
-    <a href="/greetings">Greetings</a>
-    <a href="/greetings/new">Create Greeting</a>
+    <a href="/submissions">Review Queue</a>
+    <a href="/submissions/new">Submit Content</a>
     </nav>
   </header>
   <slot />

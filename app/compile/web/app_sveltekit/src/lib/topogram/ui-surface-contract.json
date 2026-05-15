@@ -2,12 +2,12 @@
   "type": "ui_surface_contract",
   "projection": {
     "id": "proj_web_surface",
-    "name": "Starter Web UI",
+    "name": "Content Approval Web UI",
     "type": "web_surface"
   },
   "uiContract": {
     "id": "proj_ui_contract",
-    "name": "Starter Shared UI",
+    "name": "Content Approval UI Contract",
     "type": "ui_contract"
   },
   "generatorDefaults": {
@@ -42,7 +42,7 @@
     }
   },
   "appShell": {
-    "brand": "Topogram Starter",
+    "brand": "Content Approval",
     "shell": "topbar",
     "primaryNav": "primary",
     "secondaryNav": "secondary",
@@ -57,8 +57,8 @@
   "navigation": {
     "groups": [
       {
-        "id": "starter",
-        "label": "Starter",
+        "id": "review",
+        "label": "Review",
         "placement": "primary",
         "pattern": "primary",
         "icon": null,
@@ -69,13 +69,13 @@
       "primary",
       "stack_navigation"
     ],
-    "defaultScreenId": "greeting_list",
+    "defaultScreenId": "submission_queue",
     "items": [
       {
-        "screenId": "greeting_list",
-        "route": "/greetings",
-        "label": "Greetings",
-        "groupId": "starter",
+        "screenId": "submission_queue",
+        "route": "/submissions",
+        "label": "Queue",
+        "groupId": "review",
         "placement": "primary",
         "pattern": "primary",
         "visible": true,
@@ -85,23 +85,23 @@
         "order": "10"
       },
       {
-        "screenId": "greeting_detail",
-        "route": "/greetings/:id",
-        "label": "Greeting Details",
-        "groupId": "starter",
+        "screenId": "submission_detail",
+        "route": "/submissions/:id",
+        "label": "Submission Details",
+        "groupId": "review",
         "placement": "primary",
         "pattern": "stack_navigation",
         "visible": false,
         "default": false,
-        "breadcrumb": "greeting_list",
+        "breadcrumb": "submission_queue",
         "sitemap": "exclude",
         "order": null
       },
       {
-        "screenId": "greeting_create",
-        "route": "/greetings/new",
-        "label": "Create",
-        "groupId": "starter",
+        "screenId": "submission_create",
+        "route": "/submissions/new",
+        "label": "Submit",
+        "groupId": "review",
         "placement": "primary",
         "pattern": "primary",
         "visible": true,
@@ -115,27 +115,27 @@
   "screens": [
     {
       "type": "ui_screen_contract",
-      "id": "greeting_list",
+      "id": "submission_queue",
       "kind": "list",
-      "title": "Greetings",
+      "title": "Review Queue",
       "loadCapability": {
-        "id": "cap_list_greetings",
+        "id": "cap_list_submissions",
         "kind": "capability"
       },
       "submitCapability": null,
       "detailCapability": {
-        "id": "cap_get_greeting",
+        "id": "cap_get_submission",
         "kind": "capability"
       },
       "inputShape": null,
       "viewShape": null,
       "itemShape": {
-        "id": "shape_output_greeting_card",
+        "id": "shape_output_submission_card",
         "kind": "shape"
       },
       "emptyState": {
-        "title": "No greetings yet",
-        "body": "Create a greeting to verify the generated stack"
+        "title": "No submissions waiting",
+        "body": "Submit content to start the approval workflow"
       },
       "navigation": {
         "successNavigate": null,
@@ -151,7 +151,7 @@
       },
       "actions": {
         "primary": {
-          "id": "cap_create_greeting",
+          "id": "cap_submit_content",
           "kind": "capability"
         },
         "secondary": null,
@@ -193,7 +193,7 @@
         "summary_stats",
         "resource_table"
       ],
-      "route": "/greetings",
+      "route": "/submissions",
       "surfaceHints": {
         "shell": "topbar",
         "layout": "responsive_collection",
@@ -202,7 +202,7 @@
         "collection": "table"
       },
       "actionSurfaceHints": {
-        "cap_create_greeting": {
+        "cap_submit_content": {
           "present": "button",
           "placement": "toolbar"
         }
@@ -210,18 +210,18 @@
     },
     {
       "type": "ui_screen_contract",
-      "id": "greeting_detail",
+      "id": "submission_detail",
       "kind": "detail",
-      "title": "Greeting Details",
+      "title": "Submission Details",
       "loadCapability": {
-        "id": "cap_get_greeting",
+        "id": "cap_get_submission",
         "kind": "capability"
       },
       "submitCapability": null,
       "detailCapability": null,
       "inputShape": null,
       "viewShape": {
-        "id": "shape_output_greeting_detail",
+        "id": "shape_output_submission_detail",
         "kind": "shape"
       },
       "itemShape": null,
@@ -240,10 +240,13 @@
       },
       "actions": {
         "primary": {
-          "id": "cap_update_greeting",
+          "id": "cap_approve_submission",
           "kind": "capability"
         },
-        "secondary": null,
+        "secondary": {
+          "id": "cap_request_changes",
+          "kind": "capability"
+        },
         "destructive": null,
         "terminal": null,
         "screen": []
@@ -273,34 +276,39 @@
       "patterns": [
         "detail_panel"
       ],
-      "route": "/greetings/:id",
+      "route": "/submissions/:id",
       "surfaceHints": {
         "layout": "detail_page"
       },
       "actionSurfaceHints": {
-        "cap_update_greeting": {}
+        "cap_approve_submission": {
+          "present": "button"
+        },
+        "cap_request_changes": {
+          "present": "button"
+        }
       }
     },
     {
       "type": "ui_screen_contract",
-      "id": "greeting_create",
+      "id": "submission_create",
       "kind": "form",
-      "title": "Create Greeting",
+      "title": "Submit Content",
       "loadCapability": null,
       "submitCapability": {
-        "id": "cap_create_greeting",
+        "id": "cap_submit_content",
         "kind": "capability"
       },
       "detailCapability": null,
       "inputShape": {
-        "id": "shape_input_create_greeting",
+        "id": "shape_input_submit_content",
         "kind": "shape"
       },
       "viewShape": null,
       "itemShape": null,
       "emptyState": null,
       "navigation": {
-        "successNavigate": "greeting_detail",
+        "successNavigate": "submission_detail",
         "successRefresh": null
       },
       "states": {
@@ -334,7 +342,7 @@
       "patterns": [
         "edit_form"
       ],
-      "route": "/greetings/new",
+      "route": "/submissions/new",
       "surfaceHints": {
         "present": "page"
       },
@@ -343,21 +351,21 @@
   ],
   "sitemap": [
     {
-      "screenId": "greeting_list",
-      "label": "Greetings",
-      "route": "/greetings",
+      "screenId": "submission_queue",
+      "label": "Queue",
+      "route": "/submissions",
       "include": true
     },
     {
-      "screenId": "greeting_detail",
-      "label": "Greeting Details",
-      "route": "/greetings/:id",
+      "screenId": "submission_detail",
+      "label": "Submission Details",
+      "route": "/submissions/:id",
       "include": false
     },
     {
-      "screenId": "greeting_create",
-      "label": "Create",
-      "route": "/greetings/new",
+      "screenId": "submission_create",
+      "label": "Submit",
+      "route": "/submissions/new",
       "include": true
     }
   ]

@@ -1,6 +1,6 @@
 {
   "type": "runtime_smoke_plan",
-  "name": "Starter Runtime Smoke Plan",
+  "name": "Content Approval Runtime Smoke Plan",
   "projections": {
     "api": "proj_api",
     "ui": "proj_web_surface"
@@ -39,41 +39,6 @@
       }
     ]
   },
-  "verification": {
-    "methods": [
-      "smoke"
-    ],
-    "sources": [
-      {
-        "id": "ver_runtime_smoke",
-        "name": "Starter runtime smoke",
-        "method": "smoke",
-        "validates": [
-          "cap_create_greeting",
-          "cap_get_greeting",
-          "cap_list_greetings"
-        ]
-      }
-    ],
-    "scenarios": [
-      {
-        "id": "home_page_responds",
-        "label": "home page responds"
-      },
-      {
-        "id": "create_greeting_smoke",
-        "label": "create greeting smoke"
-      },
-      {
-        "id": "get_created_greeting_smoke",
-        "label": "get created greeting smoke"
-      },
-      {
-        "id": "list_greetings_smoke",
-        "label": "list greetings smoke"
-      }
-    ]
-  },
   "env": {
     "apiBase": "TOPOGRAM_API_BASE_URL",
     "webBase": "TOPOGRAM_WEB_BASE_URL"
@@ -87,25 +52,25 @@
       "expectText": "Topogram Starter"
     },
     {
-      "id": "create_greeting",
+      "id": "submit_content",
       "type": "api_post",
-      "path": "/greetings",
+      "path": "/submissions",
       "expectStatus": 201,
-      "capabilityId": "cap_create_greeting"
+      "capabilityId": "cap_submit_content"
     },
     {
-      "id": "get_greeting",
+      "id": "get_submission",
       "type": "api_get",
-      "path": "/greetings/:id",
+      "path": "/submissions/:id",
       "expectStatus": 200,
-      "capabilityId": "cap_get_greeting"
+      "capabilityId": "cap_get_submission"
     },
     {
-      "id": "list_greetings",
+      "id": "list_submissions",
       "type": "api_get",
-      "path": "/greetings",
+      "path": "/submissions",
       "expectStatus": 200,
-      "capabilityId": "cap_list_greetings"
+      "capabilityId": "cap_list_submissions"
     }
   ]
 }

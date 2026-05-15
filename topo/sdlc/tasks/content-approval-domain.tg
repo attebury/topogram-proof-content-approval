@@ -1,0 +1,14 @@
+task task_content_approval_domain {
+  name "Content Approval Domain"
+  description "Replace greeting starter records with content approval entities, capabilities, shapes, projections, verification, proof artifacts, and regenerated app output."
+  satisfies [req_content_approval_domain]
+  acceptance_refs [ac_content_approval_domain]
+  verification_refs [verification_content_approval_domain]
+  affects [cap_list_submissions, cap_get_submission, cap_submit_content, cap_approve_submission, cap_request_changes]
+  blocked_by []
+  disposition active
+  priority medium
+  work_type implementation
+  claimed_by [actor_operator]
+  status done
+}

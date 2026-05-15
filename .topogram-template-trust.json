@@ -1,7 +1,7 @@
 {
   "version": "1",
   "trustPolicy": "topogram-template-executable-implementation-v1",
-  "trustedAt": "2026-05-15T01:53:24.014Z",
+  "trustedAt": "2026-05-15T04:46:46.133Z",
   "template": {
     "id": "@topogram/starter-web-api-db",
     "version": "0.1.14",
@@ -19,27 +19,27 @@
   "content": {
     "algorithm": "sha256",
     "root": "implementation",
-    "digest": "b8d7680d495fade6f1eec5367dd6d49cabea90788979b9894fcb6352fc7b1973",
+    "digest": "6b7295ce0f27bce8e0338fe1bc7984c890382caaf7854c78fcdb4a295367d976",
     "files": [
       {
         "path": "backend/reference.js",
-        "sha256": "2bb1fa31e110f6e093ca585e72addd0369d0370db3cda0cfe2fa7166d7552412",
-        "size": 1100
+        "sha256": "cb9f630211b33487c065f687eb08497338ee2367ee82d95964ed8352adf29170",
+        "size": 1695
       },
       {
         "path": "backend/repository-reference.js",
-        "sha256": "c5bd9d668365dd831ee87852bc016b78ace82c7ed60e63b507efd220c4794bc4",
-        "size": 956
+        "sha256": "bc6b572d1c653704d0ba9e9eec27656e4b99a6fb0c2ac92be11a4c23fd0e16a3",
+        "size": 1009
       },
       {
         "path": "backend/repository-renderers.js",
-        "sha256": "56b860e356880bd249e59e42f2c9bc215ff0827c281c1d21b7f696a9b052ad6a",
-        "size": 3226
+        "sha256": "3708d556b48970f7e9804eee03f6ef80e09be54591f8e38cc5cefbba8290f48a",
+        "size": 4700
       },
       {
         "path": "index.js",
-        "sha256": "c6041f0155a4f912574a55f12411a497379fd476c4239bf19910792f451eeda6",
-        "size": 1826
+        "sha256": "1db9906c9831eb3a82e76d51490dc9e2cad590b7459f5f0ee6767eba39b44ffd",
+        "size": 1462
       },
       {
         "path": "README.md",
@@ -48,33 +48,18 @@
       },
       {
         "path": "runtime/check-renderers.js",
-        "sha256": "bb13ff1565cfce1fff3b4fe6ff2e0b54b2f1d75fe24f6f47da6757d0484c70a5",
-        "size": 4440
+        "sha256": "9d8282fd84d627e5f476d48a720806132e0d1e4cf129f70435d8f10cfd2635a1",
+        "size": 5724
       },
       {
         "path": "runtime/checks.js",
-        "sha256": "13f1a06bc1ea537cbf650f570cccd6fa8fd25e4c20a40f5dbb54738e9df8aeee",
-        "size": 2668
+        "sha256": "d443622d19f45e0dbda969e8c6a51900d5329394e772b45a346437c87f9586cc",
+        "size": 2890
       },
       {
         "path": "runtime/reference.js",
-        "sha256": "b6a2869f67cd24d06b0421a653f73ec49be8b6766a896ab4140d5c34a17e8e83",
-        "size": 2372
-      },
-      {
-        "path": "web/reference.js",
-        "sha256": "607560d82c698446005a783ac5ae2e3d513eb0ece82fc9512a423dabafaa218d",
-        "size": 1385
-      },
-      {
-        "path": "web/renderers.js",
-        "sha256": "7560b96c76520445aaf4fa2056e43cc21b01a6cfbd5b99e35d5f82286f561dcb",
-        "size": 1091
-      },
-      {
-        "path": "web/screens-reference.js",
-        "sha256": "251ce6f8ebd884a3a0571250d6fd30661d3cff38b36e57fc39b577c226c62e4c",
-        "size": 200
+        "sha256": "57ac1a152563c14a8fa83ec40389407b11cd56fd98e358a9c23d6369188c2cb3",
+        "size": 2616
       }
     ]
   }

@@ -2,23 +2,23 @@
   "files": [
     {
       "path": "implementation/backend/reference.js",
-      "sha256": "2bb1fa31e110f6e093ca585e72addd0369d0370db3cda0cfe2fa7166d7552412",
-      "size": 1100
+      "sha256": "cb9f630211b33487c065f687eb08497338ee2367ee82d95964ed8352adf29170",
+      "size": 1695
     },
     {
       "path": "implementation/backend/repository-reference.js",
-      "sha256": "c5bd9d668365dd831ee87852bc016b78ace82c7ed60e63b507efd220c4794bc4",
-      "size": 956
+      "sha256": "bc6b572d1c653704d0ba9e9eec27656e4b99a6fb0c2ac92be11a4c23fd0e16a3",
+      "size": 1009
     },
     {
       "path": "implementation/backend/repository-renderers.js",
-      "sha256": "56b860e356880bd249e59e42f2c9bc215ff0827c281c1d21b7f696a9b052ad6a",
-      "size": 3226
+      "sha256": "3708d556b48970f7e9804eee03f6ef80e09be54591f8e38cc5cefbba8290f48a",
+      "size": 4700
     },
     {
       "path": "implementation/index.js",
-      "sha256": "c6041f0155a4f912574a55f12411a497379fd476c4239bf19910792f451eeda6",
-      "size": 1826
+      "sha256": "1db9906c9831eb3a82e76d51490dc9e2cad590b7459f5f0ee6767eba39b44ffd",
+      "size": 1462
     },
     {
       "path": "implementation/README.md",
@@ -27,33 +27,18 @@
     },
     {
       "path": "implementation/runtime/check-renderers.js",
-      "sha256": "bb13ff1565cfce1fff3b4fe6ff2e0b54b2f1d75fe24f6f47da6757d0484c70a5",
-      "size": 4440
+      "sha256": "9d8282fd84d627e5f476d48a720806132e0d1e4cf129f70435d8f10cfd2635a1",
+      "size": 5724
     },
     {
       "path": "implementation/runtime/checks.js",
-      "sha256": "13f1a06bc1ea537cbf650f570cccd6fa8fd25e4c20a40f5dbb54738e9df8aeee",
-      "size": 2668
+      "sha256": "d443622d19f45e0dbda969e8c6a51900d5329394e772b45a346437c87f9586cc",
+      "size": 2890
     },
     {
       "path": "implementation/runtime/reference.js",
-      "sha256": "b6a2869f67cd24d06b0421a653f73ec49be8b6766a896ab4140d5c34a17e8e83",
-      "size": 2372
-    },
-    {
-      "path": "implementation/web/reference.js",
-      "sha256": "607560d82c698446005a783ac5ae2e3d513eb0ece82fc9512a423dabafaa218d",
-      "size": 1385
-    },
-    {
-      "path": "implementation/web/renderers.js",
-      "sha256": "7560b96c76520445aaf4fa2056e43cc21b01a6cfbd5b99e35d5f82286f561dcb",
-      "size": 1091
-    },
-    {
-      "path": "implementation/web/screens-reference.js",
-      "sha256": "251ce6f8ebd884a3a0571250d6fd30661d3cff38b36e57fc39b577c226c62e4c",
-      "size": 200
+      "sha256": "57ac1a152563c14a8fa83ec40389407b11cd56fd98e358a9c23d6369188c2cb3",
+      "size": 2616
     },
     {
       "path": "topo/actors/actor-operator.tg",
@@ -61,89 +46,144 @@
       "size": 113
     },
     {
-      "path": "topo/capabilities/cap-create-greeting.tg",
-      "sha256": "0c7de5b2a6ad1d4dec26f6e8dd8250295e3fe91ec4e5bf133e983b396a17737e",
-      "size": 245
+      "path": "topo/capabilities/cap-approve-submission.tg",
+      "sha256": "83c647ba9c56b2bb7e1552b0f1734506d822bff953ff16cbc2317f90d960d262",
+      "size": 314
     },
     {
-      "path": "topo/capabilities/cap-get-greeting.tg",
-      "sha256": "91d795ccd5cf76569573123497ea7858fb27a900dca16aa8898121bee79a1dd6",
-      "size": 236
+      "path": "topo/capabilities/cap-get-submission.tg",
+      "sha256": "c47a1a10bf561289a2f2760c5fc3989cdcc70b46ca38334e58fbfd5f707883fc",
+      "size": 276
     },
     {
-      "path": "topo/capabilities/cap-list-greetings.tg",
-      "sha256": "41ce3af65444c04eec09717f55bfe3fdaa4df87f028bcc37c421052f1c24629b",
-      "size": 237
+      "path": "topo/capabilities/cap-list-submissions.tg",
+      "sha256": "c4321c1c645b38b8e298f8389f64f4ddc78f8632520e6b9e1388b3b870efaee3",
+      "size": 278
     },
     {
-      "path": "topo/capabilities/cap-update-greeting.tg",
-      "sha256": "4e2a12dbc1bdc962fc39bd32ec4d2c8654d7d903b98fd2ac30a82bf1f57e7a52",
-      "size": 273
+      "path": "topo/capabilities/cap-request-changes.tg",
+      "sha256": "26213dced943b6616518ce66e82222fcb684224a746f2dd95c76c3da1ae56abe",
+      "size": 336
     },
     {
-      "path": "topo/entities/entity-greeting.tg",
-      "sha256": "ac5f2d0cddefc0e388c646a1e06d46f23d0c218c07ddfbf0fee20c4d3fda6d29",
-      "size": 321
+      "path": "topo/capabilities/cap-submit-content.tg",
+      "sha256": "6a5fe63952c6b4e58d18ca083a6ea5fb0e1fd8f6f25b5bc4aac450c4a926c6dc",
+      "size": 277
+    },
+    {
+      "path": "topo/entities/entity-content-submission.tg",
+      "sha256": "76e4e1c9eeb673bcf536f53d18bf8b710388efb946eb5953c719a5f052e29c46",
+      "size": 578
     },
     {
       "path": "topo/projections/proj-api.tg",
-      "sha256": "f6d8e76216c67a5b9f99b9ffa9433f6c8fe2bb562a750ed7d70119746aea84a9",
-      "size": 1197
+      "sha256": "3a4529f8d2b98b97fa9dea6466c6c7d4c2f9368773637ae5dd2a4b6a19966d25",
+      "size": 1552
     },
     {
       "path": "topo/projections/proj-db-postgres.tg",
-      "sha256": "5264f71ec192e5822c996c76dec1b07f73dd3804b06eb32230bc2982dc7f7c88",
-      "size": 555
+      "sha256": "172a7404ab914dcb4f5ea55316a8b85bc565698e32091e38cb80b09e393ff49a",
+      "size": 670
     },
     {
       "path": "topo/projections/proj-ui-contract.tg",
-      "sha256": "f3513544bb503fb7369ee7034637b604d9fe3f99c08fe6b44e2a268c1e08ccf0",
-      "size": 2219
+      "sha256": "ebb5944f796c657bdb86c0934dbace7385b22b8ec5f45af68a1384311ca02c4b",
+      "size": 2339
     },
     {
       "path": "topo/projections/proj-web-surface.tg",
-      "sha256": "fde2dadf5368f9f9b2c237b5254b55ad669f4d1b4dc0858263f15e6dba89724e",
-      "size": 993
+      "sha256": "d69e593cc4d9eb2598a6bc278a42281f9f11cd06009063f721de1ab3e0cb6a52",
+      "size": 1136
     },
     {
-      "path": "topo/shapes/shape-input-create-greeting.tg",
-      "sha256": "4a081d394dbf0d24adf4fdbe5eb12549bced449ce2c5c664da496364ffb0b3bc",
+      "path": "topo/sdlc/.topogram-sdlc-history.json",
+      "sha256": "f1f50f58926fbc77756fb7ab0ddf518d9f0db050f2c66ac651f3667cdcbf34ec",
+      "size": 1032
+    },
+    {
+      "path": "topo/sdlc/acceptance_criteria/content-approval-domain.tg",
+      "sha256": "6681dd9a9478468c17399a764798b0f45d90a841e458fa3b4c1f3b69b2561abf",
+      "size": 465
+    },
+    {
+      "path": "topo/sdlc/acceptance_criteria/generated_baseline.tg",
+      "sha256": "0dc4fbdc7bac72e697b4e04981ded49fdd262501f4121be8d4d19107db0d3b76",
+      "size": 386
+    },
+    {
+      "path": "topo/sdlc/requirements/content-approval-domain.tg",
+      "sha256": "75b0e06e6c60b55ccc591f79d7ce5813f9451ec4f372284fca3befe1c6fca02c",
+      "size": 443
+    },
+    {
+      "path": "topo/sdlc/requirements/generated_baseline.tg",
+      "sha256": "71b6f631044a3f4d958b6cccb8b6a1832b77ef5fe037e1b949e80a86580f3f6f",
+      "size": 442
+    },
+    {
+      "path": "topo/sdlc/tasks/content-approval-domain.tg",
+      "sha256": "1736996f764b0f13cafeedf771c6994240fbca8945975919b3faba131ee5dfe7",
+      "size": 638
+    },
+    {
+      "path": "topo/sdlc/tasks/generated_baseline.tg",
+      "sha256": "9305beee77059388585124681096aed2d82f579e3f51e14487f410a3f7dcd958",
+      "size": 616
+    },
+    {
+      "path": "topo/shapes/shape-input-approve-submission.tg",
+      "sha256": "c7ef8e32e470c51eb84c45f1cd82b4e8dce8728722fc94401609fef38cd15f53",
+      "size": 238
+    },
+    {
+      "path": "topo/shapes/shape-input-get-submission.tg",
+      "sha256": "8b350a48873657e6304ff0d084263f8073566d33b35c3386b2cef86d4db37416",
       "size": 184
     },
     {
-      "path": "topo/shapes/shape-input-get-greeting.tg",
-      "sha256": "8896c7c07913286296e3d4e0d636175eb71c449862de4f543a3d608e3f2b66f2",
-      "size": 174
+      "path": "topo/shapes/shape-input-list-submissions.tg",
+      "sha256": "bf8ffe029aca12604927aa8743f70abd79bab9483ea83ceffcbf3dfab049d4fb",
+      "size": 234
     },
     {
-      "path": "topo/shapes/shape-input-list-greetings.tg",
-      "sha256": "7b9cd5e1bb49f6fa32f1b14c78804b45f4e7c52259ae285f751a586305624830",
-      "size": 206
+      "path": "topo/shapes/shape-input-request-changes.tg",
+      "sha256": "6619c1d76869725516a5dfdbd98f6afc3b930746bfc1cb69134f2e18cf1d74a9",
+      "size": 228
     },
     {
-      "path": "topo/shapes/shape-input-update-greeting.tg",
-      "sha256": "48a29af504b96cc417fc8ab5ca8b1894d9d39e5b5db13404cdbf449ef061e5f0",
-      "size": 204
+      "path": "topo/shapes/shape-input-submit-content.tg",
+      "sha256": "000953708408ec69045808fdf390cacd65ed0a59b0a92ea3b6e4184e2b7afb50",
+      "size": 239
     },
     {
-      "path": "topo/shapes/shape-output-greeting-card.tg",
-      "sha256": "2a26f7ee1a0dac40acf24aecb747e1b8b0b5f25a36075a8b9dba1c30ee51a217",
-      "size": 182
+      "path": "topo/shapes/shape-output-submission-card.tg",
+      "sha256": "5e042368fbf1cc87585680bf103dc80d60502a8b493f9ca225cdfecd314d56a6",
+      "size": 238
     },
     {
-      "path": "topo/shapes/shape-output-greeting-detail.tg",
-      "sha256": "3cde51fcde6bd050108fae464da8c8345984d767ee1c84e2ea101a7570bb82a2",
-      "size": 187
+      "path": "topo/shapes/shape-output-submission-detail.tg",
+      "sha256": "91308d8f676198fee6518dd92a3ad0a8615be8d6fde1fa585c6a1639dcc1e791",
+      "size": 280
+    },
+    {
+      "path": "topo/verifications/content-approval-domain.tg",
+      "sha256": "4cf639c6028a0a02a3f252e5efefab824f8a2c3e3be18d229b4d32485a9204a0",
+      "size": 460
+    },
+    {
+      "path": "topo/verifications/generated-baseline.tg",
+      "sha256": "636fb81fa70bd42bc227f767971a7b826299ee60dbe099dc9b704ea839fa644b",
+      "size": 442
     },
     {
       "path": "topo/verifications/verification-runtime-flow.tg",
-      "sha256": "1febb78b80d56fd3a6c7a36f5cdb907a9d991759fc8e11fdd20c650c128d99d7",
-      "size": 391
+      "sha256": "03cab6a6db8242149cbdcfb4cf113266787d1739a4d9bfa7a9d0888e306ccc99",
+      "size": 470
     },
     {
       "path": "topo/verifications/verification-runtime-smoke.tg",
-      "sha256": "b2749f75ec423e7ec748e62e393ecbccdc82bd01060163a1704f7946cab48698",
-      "size": 377
+      "sha256": "607064de95057f9192343619eb39eebca05e732f2dcf53bd09e0f3d9e1918c2e",
+      "size": 413
     },
     {
       "path": "topogram.project.json",

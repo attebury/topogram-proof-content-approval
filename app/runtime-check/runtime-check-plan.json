@@ -1,6 +1,6 @@
 {
   "type": "runtime_check_plan",
-  "name": "Starter Runtime Check Plan",
+  "name": "Content Approval Runtime Check Plan",
   "projections": {
     "api": "proj_api",
     "ui": "proj_web_surface",
@@ -47,13 +47,38 @@
     "sources": [
       {
         "id": "ver_runtime_flow",
-        "name": "Starter runtime flow",
+        "name": "Content approval runtime flow",
         "method": "runtime",
         "validates": [
-          "cap_create_greeting",
-          "cap_get_greeting",
-          "cap_list_greetings",
-          "cap_update_greeting"
+          "cap_submit_content",
+          "cap_get_submission",
+          "cap_list_submissions",
+          "cap_approve_submission",
+          "cap_request_changes"
+        ]
+      },
+      {
+        "id": "ver_runtime_smoke",
+        "name": "Starter runtime smoke",
+        "method": "runtime",
+        "validates": [
+          "cap_submit_content",
+          "cap_get_submission",
+          "cap_list_submissions",
+          "cap_approve_submission",
+          "cap_request_changes"
+        ]
+      },
+      {
+        "id": "verification_content_approval_domain",
+        "name": "Content Approval Domain Verification",
+        "method": "runtime",
+        "validates": [
+          "cap_list_submissions",
+          "cap_get_submission",
+          "cap_submit_content",
+          "cap_approve_submission",
+          "cap_request_changes"
         ]
       },
       {
@@ -61,29 +86,46 @@
         "name": "Generated Baseline Verification",
         "method": "runtime",
         "validates": [
-          "cap_list_greetings",
-          "cap_get_greeting",
-          "cap_create_greeting",
-          "cap_update_greeting"
+          "cap_list_submissions",
+          "cap_get_submission",
+          "cap_submit_content",
+          "cap_approve_submission",
+          "cap_request_changes"
         ]
       }
     ],
     "scenarios": [
       {
-        "id": "create_greeting_runtime",
-        "label": "create greeting runtime"
+        "id": "submit_content_runtime",
+        "label": "submit content runtime"
       },
       {
-        "id": "get_created_greeting_runtime",
-        "label": "get created greeting runtime"
+        "id": "get_created_submission_runtime",
+        "label": "get created submission runtime"
       },
       {
-        "id": "list_greetings_runtime",
-        "label": "list greetings runtime"
+        "id": "list_submissions_runtime",
+        "label": "list submissions runtime"
       },
       {
-        "id": "update_greeting_runtime",
-        "label": "update greeting runtime"
+        "id": "approve_submission_runtime",
+        "label": "approve submission runtime"
+      },
+      {
+        "id": "request_changes_runtime",
+        "label": "request changes runtime"
+      },
+      {
+        "id": "submit_content_smoke",
+        "label": "submit content smoke"
+      },
+      {
+        "id": "get_submission_smoke",
+        "label": "get submission smoke"
+      },
+      {
+        "id": "list_submissions_smoke",
+        "label": "list submissions smoke"
       },
       {
         "id": "topogram_check_generate_verify",
@@ -99,7 +141,7 @@
     ],
     "apiBase": "TOPOGRAM_API_BASE_URL",
     "webBase": "TOPOGRAM_WEB_BASE_URL",
-    "demoContainerId": "TOPOGRAM_DEMO_MESSAGE",
+    "demoContainerId": "TOPOGRAM_DEMO_BODY",
     "demoPrimaryId": "TOPOGRAM_DEMO_PRIMARY_ID",
     "demoUserId": "TOPOGRAM_DEMO_USER_ID"
   },
@@ -146,11 +188,11 @@
           "mutating": false
         },
         {
-          "id": "api_seed_greeting_ready",
+          "id": "api_seed_submission_ready",
           "kind": "api_contract",
-          "capabilityId": "cap_get_greeting",
+          "capabilityId": "cap_get_submission",
           "pathParams": {
-            "greeting_id": "$env:TOPOGRAM_DEMO_PRIMARY_ID"
+            "submission_id": "$env:TOPOGRAM_DEMO_PRIMARY_ID"
           },
           "mandatory": true,
           "mutating": false
@@ -162,48 +204,55 @@
       "name": "API Contract Checks",
       "checks": [
         {
-          "id": "create_greeting",
+          "id": "submit_content",
           "kind": "api_contract",
-          "capabilityId": "cap_create_greeting",
+          "capabilityId": "cap_submit_content",
           "mutating": true,
           "mandatory": true
         },
         {
-          "id": "get_created_greeting",
+          "id": "get_created_submission",
           "kind": "api_contract",
-          "capabilityId": "cap_get_greeting",
+          "capabilityId": "cap_get_submission",
           "mutating": false,
           "mandatory": true
         },
         {
-          "id": "list_greetings",
+          "id": "list_submissions",
           "kind": "api_contract",
-          "capabilityId": "cap_list_greetings",
+          "capabilityId": "cap_list_submissions",
           "mutating": false,
           "mandatory": true
         },
         {
-          "id": "update_greeting",
+          "id": "approve_submission",
           "kind": "api_contract",
-          "capabilityId": "cap_update_greeting",
+          "capabilityId": "cap_approve_submission",
           "mutating": true,
           "mandatory": true
         },
         {
-          "id": "invalid_create_returns_4xx",
+          "id": "request_changes",
+          "kind": "api_contract",
+          "capabilityId": "cap_request_changes",
+          "mutating": true,
+          "mandatory": true
+        },
+        {
+          "id": "invalid_submit_returns_4xx",
           "kind": "api_negative",
-          "capabilityId": "cap_create_greeting",
+          "capabilityId": "cap_submit_content",
           "expectStatusClass": 4,
-          "expectErrorCode": "cap_create_greeting_invalid_request",
+          "expectErrorCode": "cap_submit_content_invalid_request",
           "mutating": false,
           "mandatory": true
         },
         {
-          "id": "get_unknown_greeting_not_found",
+          "id": "get_unknown_submission_not_found",
           "kind": "api_negative",
-          "capabilityId": "cap_get_greeting",
+          "capabilityId": "cap_get_submission",
           "expectStatus": 404,
-          "expectErrorCode": "cap_get_greeting_not_found",
+          "expectErrorCode": "cap_get_submission_not_found",
           "mutating": false,
           "mandatory": true
         }

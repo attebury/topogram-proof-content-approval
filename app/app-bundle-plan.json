@@ -1,6 +1,6 @@
 {
   "type": "app_bundle_plan",
-  "name": "Topogram Starter App Bundle",
+  "name": "Content Approval App Bundle",
   "projections": {
     "api": "proj_api",
     "ui": "proj_web_surface",
@@ -53,93 +53,59 @@
   },
   "runtimeReference": {
     "localDbProjectionId": "proj_db_postgres",
-    "serviceName": "topogram-starter-server",
+    "serviceName": "content-approval-server",
     "ports": {
       "server": 3000,
       "web": 5173
     },
     "environment": {
-      "name": "Starter Local Runtime Stack",
-      "databaseName": "topogram_starter",
-      "envExample": "PUBLIC_TOPOGRAM_DEMO_PRIMARY_ID=33333333-3333-4333-8333-333333333333\nTOPOGRAM_DEMO_PRIMARY_ID=33333333-3333-4333-8333-333333333333\nTOPOGRAM_DEMO_MESSAGE=hello-from-topogram"
+      "name": "Content Approval Local Runtime Stack",
+      "databaseName": "topogram_content_approval",
+      "envExample": "PUBLIC_TOPOGRAM_DEMO_PRIMARY_ID=33333333-3333-4333-8333-333333333333\nTOPOGRAM_DEMO_PRIMARY_ID=33333333-3333-4333-8333-333333333333\nTOPOGRAM_DEMO_BODY=\"Draft content waiting for editorial approval.\""
     },
     "compileCheck": {
-      "name": "Starter Generated Compile Checks"
+      "name": "Content Approval Generated Compile Checks"
     },
     "smoke": {
-      "name": "Starter Runtime Smoke Plan",
-      "bundleTitle": "Starter Runtime Smoke Bundle",
-      "defaultContainerEnvVar": "TOPOGRAM_DEMO_MESSAGE",
+      "name": "Content Approval Runtime Smoke Plan",
+      "bundleTitle": "Content Approval Runtime Smoke Bundle",
+      "defaultContainerEnvVar": "TOPOGRAM_DEMO_BODY",
       "webPath": "/",
       "expectText": "Topogram Starter",
-      "createPath": "/greetings",
-      "getPathPrefix": "/greetings/",
-      "listPath": "/greetings",
+      "createPath": "/submissions",
+      "getPathPrefix": "/submissions/",
+      "listPath": "/submissions",
       "createPayload": {
-        "title": "Smoke Test Greeting",
-        "containerField": "message"
-      },
-      "verification": {
-        "methods": [
-          "smoke"
-        ],
-        "sources": [
-          {
-            "id": "ver_runtime_smoke",
-            "name": "Starter runtime smoke",
-            "method": "smoke",
-            "validates": [
-              "cap_create_greeting",
-              "cap_get_greeting",
-              "cap_list_greetings"
-            ]
-          }
-        ],
-        "scenarios": [
-          {
-            "id": "home_page_responds",
-            "label": "home page responds"
-          },
-          {
-            "id": "create_greeting_smoke",
-            "label": "create greeting smoke"
-          },
-          {
-            "id": "get_created_greeting_smoke",
-            "label": "get created greeting smoke"
-          },
-          {
-            "id": "list_greetings_smoke",
-            "label": "list greetings smoke"
-          }
-        ]
+        "title": "Smoke Test Submission",
+        "author_name": "Smoke Author",
+        "containerField": "body"
       }
     },
     "runtimeCheck": {
-      "name": "Starter Runtime Check Plan",
-      "bundleTitle": "Starter Runtime Check Bundle",
+      "name": "Content Approval Runtime Check Plan",
+      "bundleTitle": "Content Approval Runtime Check Bundle",
       "requiredEnv": [
         "TOPOGRAM_API_BASE_URL",
         "TOPOGRAM_WEB_BASE_URL",
         "TOPOGRAM_DEMO_PRIMARY_ID"
       ],
-      "demoContainerEnvVar": "TOPOGRAM_DEMO_MESSAGE",
+      "demoContainerEnvVar": "TOPOGRAM_DEMO_BODY",
       "demoPrimaryEnvVar": "TOPOGRAM_DEMO_PRIMARY_ID",
       "lookupPaths": {},
       "stageNotes": [
         {
           "id": "environment",
-          "summary": "required env, web readiness, API health, API readiness, and seeded greeting lookup"
+          "summary": "required env, web readiness, API health, API readiness, and seeded content submission lookup"
         },
         {
           "id": "api",
-          "summary": "core greeting create, get, list, and update paths"
+          "summary": "core content submission create, get, list, approve, and request-changes paths"
         }
       ],
       "notes": [
-        "Mutating checks create and update a runtime-check greeting.",
+        "Mutating checks create, approve, and request changes on a runtime-check content submission.",
         "Later stages are skipped if environment readiness fails.",
-        "The generated server exposes both `/health` and `/ready`.",
+        "The generated server exposes both /health and /ready.",
         "Use the smoke bundle for a faster minimal confidence check.",
         "Use this runtime-check bundle for staged verification and JSON reporting."
       ],
@@ -150,13 +116,38 @@
         "sources": [
           {
             "id": "ver_runtime_flow",
-            "name": "Starter runtime flow",
+            "name": "Content approval runtime flow",
             "method": "runtime",
             "validates": [
-              "cap_create_greeting",
-              "cap_get_greeting",
-              "cap_list_greetings",
-              "cap_update_greeting"
+              "cap_submit_content",
+              "cap_get_submission",
+              "cap_list_submissions",
+              "cap_approve_submission",
+              "cap_request_changes"
+            ]
+          },
+          {
+            "id": "ver_runtime_smoke",
+            "name": "Starter runtime smoke",
+            "method": "runtime",
+            "validates": [
+              "cap_submit_content",
+              "cap_get_submission",
+              "cap_list_submissions",
+              "cap_approve_submission",
+              "cap_request_changes"
+            ]
+          },
+          {
+            "id": "verification_content_approval_domain",
+            "name": "Content Approval Domain Verification",
+            "method": "runtime",
+            "validates": [
+              "cap_list_submissions",
+              "cap_get_submission",
+              "cap_submit_content",
+              "cap_approve_submission",
+              "cap_request_changes"
             ]
           },
           {
@@ -164,29 +155,46 @@
             "name": "Generated Baseline Verification",
             "method": "runtime",
             "validates": [
-              "cap_list_greetings",
-              "cap_get_greeting",
-              "cap_create_greeting",
-              "cap_update_greeting"
+              "cap_list_submissions",
+              "cap_get_submission",
+              "cap_submit_content",
+              "cap_approve_submission",
+              "cap_request_changes"
             ]
           }
         ],
         "scenarios": [
           {
-            "id": "create_greeting_runtime",
-            "label": "create greeting runtime"
+            "id": "submit_content_runtime",
+            "label": "submit content runtime"
           },
           {
-            "id": "get_created_greeting_runtime",
-            "label": "get created greeting runtime"
+            "id": "get_created_submission_runtime",
+            "label": "get created submission runtime"
           },
           {
-            "id": "list_greetings_runtime",
-            "label": "list greetings runtime"
+            "id": "list_submissions_runtime",
+            "label": "list submissions runtime"
           },
           {
-            "id": "update_greeting_runtime",
-            "label": "update greeting runtime"
+            "id": "approve_submission_runtime",
+            "label": "approve submission runtime"
+          },
+          {
+            "id": "request_changes_runtime",
+            "label": "request changes runtime"
+          },
+          {
+            "id": "submit_content_smoke",
+            "label": "submit content smoke"
+          },
+          {
+            "id": "get_submission_smoke",
+            "label": "get submission smoke"
+          },
+          {
+            "id": "list_submissions_smoke",
+            "label": "list submissions smoke"
           },
           {
             "id": "topogram_check_generate_verify",
@@ -196,13 +204,13 @@
       }
     },
     "appBundle": {
-      "name": "Topogram Starter App Bundle",
-      "demoContainerName": "hello-from-topogram",
-      "demoPrimaryTitle": "hello-from-topogram"
+      "name": "Content Approval App Bundle",
+      "demoContainerName": "Draft content waiting for editorial approval.",
+      "demoPrimaryTitle": "Launch announcement"
     },
     "demoEnv": {
       "userId": "",
-      "containerId": "hello-from-topogram",
+      "containerId": "Draft content waiting for editorial approval.",
       "primaryId": "33333333-3333-4333-8333-333333333333"
     }
   },

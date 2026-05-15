@@ -1,13 +1,13 @@
 projection proj_ui_contract {
-  name "Starter Shared UI"
-  description "Platform-neutral UI semantics for the neutral starter"
+  name "Content Approval UI Contract"
+  description "Platform-neutral UI semantics for content submission review."
   type ui_contract
 
-  realizes [cap_list_greetings, cap_get_greeting, cap_create_greeting, cap_update_greeting]
+  realizes [cap_list_submissions, cap_get_submission, cap_submit_content, cap_approve_submission, cap_request_changes]
   outputs [ui_contract]
 
   app_shell {
-    brand "Topogram Starter"
+    brand "Content Approval"
     shell topbar
     global_search false
     notifications false
@@ -30,22 +30,22 @@ projection proj_ui_contract {
   }
 
   screens {
-    screen greeting_list kind list title "Greetings" load cap_list_greetings item_shape shape_output_greeting_card detail_capability cap_get_greeting primary_action cap_create_greeting empty_title "No greetings yet" empty_body "Create a greeting to verify the generated stack" loading_state skeleton error_state inline
-    screen greeting_detail kind detail title "Greeting Details" load cap_get_greeting view_shape shape_output_greeting_detail primary_action cap_update_greeting loading_state skeleton
-    screen greeting_create kind form title "Create Greeting" input_shape shape_input_create_greeting submit cap_create_greeting success_navigate greeting_detail success_state banner
+    screen submission_queue kind list title "Review Queue" load cap_list_submissions item_shape shape_output_submission_card detail_capability cap_get_submission primary_action cap_submit_content empty_title "No submissions waiting" empty_body "Submit content to start the approval workflow" loading_state skeleton error_state inline
+    screen submission_detail kind detail title "Submission Details" load cap_get_submission view_shape shape_output_submission_detail primary_action cap_approve_submission secondary_action cap_request_changes loading_state skeleton
+    screen submission_create kind form title "Submit Content" input_shape shape_input_submit_content submit cap_submit_content success_navigate submission_detail success_state banner
   }
 
   navigation {
-    group starter label "Starter" placement primary pattern primary
-    screen greeting_list group starter label "Greetings" order 10 visible true default true sitemap include pattern primary
-    screen greeting_create group starter label "Create" order 20 visible true sitemap include pattern primary
-    screen greeting_detail group starter label "Greeting Details" visible false breadcrumb greeting_list sitemap exclude pattern stack_navigation
+    group review label "Review" placement primary pattern primary
+    screen submission_queue group review label "Queue" order 10 visible true default true sitemap include pattern primary
+    screen submission_create group review label "Submit" order 20 visible true sitemap include pattern primary
+    screen submission_detail group review label "Submission Details" visible false breadcrumb submission_queue sitemap exclude pattern stack_navigation
   }
 
   screen_regions {
-    screen greeting_list region hero pattern summary_stats placement primary
-    screen greeting_list region results pattern resource_table placement primary
-    screen greeting_detail region summary pattern detail_panel placement primary
+    screen submission_queue region hero pattern summary_stats placement primary
+    screen submission_queue region results pattern resource_table placement primary
+    screen submission_detail region summary pattern detail_panel placement primary
   }
 
   status active

@@ -19,7 +19,7 @@ const ports = [
     "port": 5173
   }
 ];
-const expectedService = "topogram-starter-server";
+const expectedService = "content-approval-server";
 
 function effectivePort(entry) {
   return Number(process.env[entry.env] || (entry.fallbackEnv ? process.env[entry.fallbackEnv] : "") || entry.port);

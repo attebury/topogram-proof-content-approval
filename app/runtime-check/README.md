@@ -1,4 +1,4 @@
-# Starter Runtime Check Bundle
+# Content Approval Runtime Check Bundle
 
 This bundle gives you richer staged runtime verification for the generated stack.
 
@@ -6,8 +6,8 @@ Use it when you want more than a quick smoke test. It goes beyond the lightweigh
 
 ## Stages
 
-- `environment`: required env, web readiness, API health, API readiness, and seeded greeting lookup
-- `api`: core greeting create, get, list, and update paths
+- `environment`: required env, web readiness, API health, API readiness, and seeded content submission lookup
+- `api`: core content submission create, get, list, approve, and request-changes paths
 
 ## Usage
 
@@ -17,13 +17,13 @@ Use it when you want more than a quick smoke test. It goes beyond the lightweigh
 
 ## Notes
 
-- Mutating checks create and update a runtime-check greeting.
+- Mutating checks create, approve, and request changes on a runtime-check content submission.
 - Later stages are skipped if environment readiness fails.
-- The generated server exposes both `/health` and `/ready`.
+- The generated server exposes both /health and /ready.
 - Use the smoke bundle for a faster minimal confidence check.
 - Use this runtime-check bundle for staged verification and JSON reporting.
 
 ## Canonical Verification
 
-- Sources: `ver_runtime_flow`, `verification_generated_baseline`
-- Scenarios: create greeting runtime, get created greeting runtime, list greetings runtime, update greeting runtime, topogram check generate verify
+- Sources: `ver_runtime_flow`, `ver_runtime_smoke`, `verification_content_approval_domain`, `verification_generated_baseline`
+- Scenarios: submit content runtime, get created submission runtime, list submissions runtime, approve submission runtime, request changes runtime, submit content smoke, get submission smoke, list submissions smoke, topogram check generate verify

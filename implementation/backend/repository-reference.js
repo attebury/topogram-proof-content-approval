@@ -1,16 +1,17 @@
-export const HELLO_BACKEND_REPOSITORY_REFERENCE = {
+export const CONTENT_BACKEND_REPOSITORY_REFERENCE = {
   capabilityIds: [
-    "cap_get_greeting",
-    "cap_list_greetings",
-    "cap_create_greeting",
-    "cap_update_greeting"
+    "cap_submit_content",
+    "cap_get_submission",
+    "cap_list_submissions",
+    "cap_approve_submission",
+    "cap_request_changes"
   ],
   preconditionCapabilityIds: [],
   preconditionResource: {
-    variableName: "currentGreeting",
-    repositoryMethod: "getGreeting",
-    inputField: "greeting_id",
-    versionField: "created_at"
+    variableName: "currentSubmission",
+    repositoryMethod: "getSubmission",
+    inputField: "submission_id",
+    versionField: "reviewed_at"
   },
   downloadCapabilityId: "",
   repositoryInterfaceName: "StarterRepository",
@@ -19,11 +20,11 @@ export const HELLO_BACKEND_REPOSITORY_REFERENCE = {
   dependencyName: "starterRepository",
   lookupBindings: [],
   export: {
-    filename: "starter-export.json",
+    filename: "submissions-export.json",
     contentType: "application/json"
   },
-  drizzleHint: "Fill in Drizzle query logic if you switch this starter to a Drizzle runtime.",
-  drizzleSchemaImports: ["greetingsTable"],
+  drizzleHint: "Fill in Drizzle query logic if you switch this proof to a Drizzle runtime.",
+  drizzleSchemaImports: ["contentSubmissionsTable"],
   additionalTypeNames: [],
   additionalTypeDeclarations: [],
   additionalInterfaceMethods: []

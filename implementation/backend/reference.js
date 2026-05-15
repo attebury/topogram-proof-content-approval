@@ -1,34 +1,46 @@
-export const HELLO_BACKEND_REFERENCE = {
-  serviceName: "topogram-starter-server",
+export const CONTENT_BACKEND_REFERENCE = {
+  serviceName: "content-approval-server",
   renderSeedScript() {
-    const reference = HELLO_BACKEND_REFERENCE;
+    const reference = CONTENT_BACKEND_REFERENCE;
     return `import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const demoGreetingId = process.env.TOPOGRAM_DEMO_PRIMARY_ID || "${reference.demo.greetingId}";
-const demoMessage = process.env.TOPOGRAM_DEMO_MESSAGE || "${reference.demo.message}";
+const demoSubmissionId = process.env.TOPOGRAM_DEMO_PRIMARY_ID || "${reference.demo.submissionId}";
+const demoTitle = process.env.TOPOGRAM_DEMO_TITLE || "${reference.demo.title}";
+const demoBody = process.env.TOPOGRAM_DEMO_BODY || "${reference.demo.body}";
+const demoAuthor = process.env.TOPOGRAM_DEMO_AUTHOR || "${reference.demo.authorName}";
 
 async function main() {
   const now = new Date();
 
-  await prisma.greeting.upsert({
-    where: { id: demoGreetingId },
+  await prisma.contentSubmission.upsert({
+    where: { id: demoSubmissionId },
     update: {
-      message: demoMessage,
-      created_at: now
+      title: demoTitle,
+      body: demoBody,
+      author_name: demoAuthor,
+      status: "submitted",
+      created_at: now,
+      submitted_at: now,
+      reviewed_at: null,
+      reviewer_note: null
     },
     create: {
-      id: demoGreetingId,
-      message: demoMessage,
-      created_at: now
+      id: demoSubmissionId,
+      title: demoTitle,
+      body: demoBody,
+      author_name: demoAuthor,
+      status: "submitted",
+      created_at: now,
+      submitted_at: now
     }
   });
 
   console.log(JSON.stringify({
     ok: true,
-    demoGreetingId,
-    seededGreetingCount: 1
+    demoSubmissionId,
+    seededSubmissionCount: 1
   }, null, 2));
 }
 
@@ -43,7 +55,11 @@ main()
 `;
   },
   demo: {
-    greetingId: "33333333-3333-4333-8333-333333333333",
-    message: "hello-from-topogram"
+    submissionId: "33333333-3333-4333-8333-333333333333",
+    title: "Launch announcement",
+    body: "Draft content waiting for editorial approval.",
+    authorName: "Avery Author"
   }
 };
+
+export const HELLO_BACKEND_REFERENCE = CONTENT_BACKEND_REFERENCE;

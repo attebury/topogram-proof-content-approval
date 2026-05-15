@@ -11,6 +11,12 @@ not required to use Topogram; for smaller projects, omit `--with-sdlc` and use
 
 See [`proof/README.md`](proof/README.md) for the checkpoint map.
 
+## Current Step
+
+This branch is `step/02-content-approval-domain`. It replaces the neutral
+starter greeting model with a content approval domain while keeping the app
+output generated-owned.
+
 ## Template
 
 - Template: `@topogram/starter-web-api-db@0.1.14`

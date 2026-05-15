@@ -1,4 +1,4 @@
-# Starter Runtime Smoke Bundle
+# Content Approval Runtime Smoke Bundle
 
 This bundle gives you lightweight runtime verification for the generated stack.
 
@@ -18,8 +18,3 @@ The smoke test will:
 - confirm the list endpoint responds
 
 If you want staged readiness checks, richer API verification, and a machine-readable report, use the runtime-check bundle instead.
-
-## Canonical Verification
-
-- Sources: `ver_runtime_smoke`
-- Scenarios: home page responds, create greeting smoke, get created greeting smoke, list greetings smoke

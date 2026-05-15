@@ -12,7 +12,7 @@ required to use Topogram; smaller projects can omit `--with-sdlc` and use
 | Step | Branch | Tag | Purpose |
 | --- | --- | --- | --- |
 | 01 | `step/01-generated-baseline` | `proof-01-generated-baseline` | Copy `web-api-db`, enable SDLC, generate the app, and verify the generated output. |
-| 02 | `step/02-content-approval-domain` | `proof-02-content-approval-domain` | Replace the starter greeting model with content approval domain records. |
+| 02 | `step/02-content-approval-domain` | `proof-02-content-approval-domain` | Replace the starter greeting model with content approval domain records and regenerate. |
 | 03 | `step/03-review-workflow-ui` | `proof-03-review-workflow-ui` | Add review workflow screens, widgets, behavior, and UI contract evidence. |
 | 04 | `step/04-generated-db-migration` | `proof-04-generated-db-migration` | Prove generated-owned DB lifecycle and migration bundle output. |
 | 05 | `step/05-graduate-maintained` | `proof-05-graduate-maintained` | Switch the app output to maintained ownership and prove generation no longer overwrites it. |

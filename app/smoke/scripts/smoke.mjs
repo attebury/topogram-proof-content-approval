@@ -8,7 +8,7 @@ process.on("unhandledRejection", reportFatal);
 
 const apiBase = process.env.TOPOGRAM_API_BASE_URL || "";
 const webBase = process.env.TOPOGRAM_WEB_BASE_URL || "";
-const demoContainerId = process.env.TOPOGRAM_DEMO_MESSAGE || "hello-from-topogram";
+const demoContainerId = process.env.TOPOGRAM_DEMO_BODY || "Draft content waiting for editorial approval.";
 const demoUserId = process.env.TOPOGRAM_AUTH_USER_ID || process.env.TOPOGRAM_DEMO_USER_ID || "";
 const authToken = process.env.TOPOGRAM_AUTH_TOKEN || "";
 
@@ -52,7 +52,7 @@ if (!webText.includes("Topogram Starter")) {
   throw new Error("web page did not include expected page text");
 }
 
-const createResponse = await fetchWithStackHint(new URL("/greetings", apiBase), {
+const createResponse = await fetchWithStackHint(new URL("/submissions", apiBase), {
   method: "POST",
   headers: {
     "content-type": "application/json",
@@ -60,8 +60,8 @@ const createResponse = await fetchWithStackHint(new URL("/greetings", apiBase), 
     ...(authToken ? { Authorization: `Bearer ${authToken}` } : {})
   },
   body: JSON.stringify({
-    title: "Smoke Test Greeting",
-    message: demoContainerId
+    title: "Smoke Test Submission",
+    body: demoContainerId
   })
 }, "api service");
 await expectStatus(createResponse, 201, "create resource");
@@ -70,12 +70,12 @@ if (!created.id) {
   throw new Error("create resource response did not include id");
 }
 
-const getResponse = await fetchWithStackHint(new URL(`/greetings/${created.id}`, apiBase), {
+const getResponse = await fetchWithStackHint(new URL(`/submissions/${created.id}`, apiBase), {
   headers: authToken ? { Authorization: `Bearer ${authToken}` } : undefined
 }, "api service");
 await expectStatus(getResponse, 200, "get resource");
 
-const listResponse = await fetchWithStackHint(new URL("/greetings", apiBase), {
+const listResponse = await fetchWithStackHint(new URL("/submissions", apiBase), {
   headers: authToken ? { Authorization: `Bearer ${authToken}` } : undefined
 }, "api service");
 await expectStatus(listResponse, 200, "list resources");

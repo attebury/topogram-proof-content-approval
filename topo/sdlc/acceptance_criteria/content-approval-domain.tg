@@ -1,0 +1,6 @@
+acceptance_criterion ac_content_approval_domain {
+  name "Content Approval Domain"
+  description "Given the generated proof app starts from the neutral web-api-db template, when the Topogram source is changed to the content approval domain and the app is regenerated, then Topogram validates the content approval contracts, writes generated-owned app output, and the generated app compile gate passes."
+  requirement req_content_approval_domain
+  status approved
+}

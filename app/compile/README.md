@@ -1,4 +1,4 @@
-# Starter Generated Compile Checks
+# Content Approval Generated Compile Checks
 
 This bundle verifies that generated server, web, and native projects compile.
 

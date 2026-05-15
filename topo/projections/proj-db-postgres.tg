@@ -1,25 +1,26 @@
 projection proj_db_postgres {
-  name "Starter Postgres DB"
-  description "Postgres persistence realization for the neutral starter"
+  name "Content Approval Postgres DB"
+  description "Postgres persistence contract for content submissions."
   type db_contract
 
-  realizes [entity_greeting]
+  realizes [entity_content_submission]
   outputs [db_contract, sql_schema]
 
   tables {
-    entity_greeting table greetings
+    entity_content_submission table content_submissions
   }
 
   keys {
-    entity_greeting primary [id]
+    entity_content_submission primary [id]
   }
 
   indexes {
-    entity_greeting index [created_at]
+    entity_content_submission index [status]
+    entity_content_submission index [submitted_at]
   }
 
   lifecycle {
-    entity_greeting timestamps created_at created_at updated_at created_at
+    entity_content_submission timestamps created_at created_at updated_at reviewed_at
   }
 
   generator_defaults {

@@ -26,4 +26,4 @@ const app = createServer();
 const port = Number(process.env.PORT || 3000);
 
 serve({ fetch: app.fetch, port });
-console.log(`topogram-starter-server listening on http://localhost:${port}`);
+console.log(`content-approval-server listening on http://localhost:${port}`);

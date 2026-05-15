@@ -4,7 +4,7 @@ task task_generated_baseline {
   satisfies [req_generated_baseline]
   acceptance_refs [ac_generated_baseline]
   verification_refs [verification_generated_baseline]
-  affects [cap_list_greetings, cap_get_greeting, cap_create_greeting, cap_update_greeting]
+  affects [cap_list_submissions, cap_get_submission, cap_submit_content, cap_approve_submission, cap_request_changes]
   blocked_by []
   disposition active
   priority medium

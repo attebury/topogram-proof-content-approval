@@ -1,4 +1,4 @@
-export function renderHelloPrismaRepositoryBody({
+export function renderContentPrismaRepositoryBody({
   repositoryInterfaceName,
   prismaRepositoryClassName
 }) {
@@ -8,72 +8,106 @@ function iso(value: Date | string | null | undefined): string | undefined {
   return value instanceof Date ? value.toISOString() : value;
 }
 
-function nextCursor<T extends { created_at: Date | string }>(items: T[]): string {
-  return items.length > 0 ? iso(items[items.length - 1]!.created_at) || "" : "";
+function nextCursor<T extends { submitted_at: Date | string }>(items: T[]): string {
+  return items.length > 0 ? iso(items[items.length - 1]!.submitted_at) || "" : "";
 }
 
-function mapGreetingRecord(greeting: {
+function mapSubmissionRecord(submission: {
   id: string;
-  message: string;
-  created_at: Date | string;
-}): GetGreetingResult {
+  title: string;
+  body: string;
+  status: string;
+  author_name: string;
+  submitted_at: Date | string;
+  reviewed_at?: Date | string | null;
+  reviewer_note?: string | null;
+}): GetSubmissionResult {
   return {
-    id: greeting.id,
-    message: greeting.message,
-    created_at: iso(greeting.created_at)!
+    id: submission.id,
+    title: submission.title,
+    body: submission.body,
+    status: submission.status,
+    author_name: submission.author_name,
+    submitted_at: iso(submission.submitted_at)!,
+    ...(submission.reviewed_at ? { reviewed_at: iso(submission.reviewed_at) } : {}),
+    ...(submission.reviewer_note ? { reviewer_note: submission.reviewer_note } : {})
   };
 }
 
 export class ${prismaRepositoryClassName} implements ${repositoryInterfaceName} {
   constructor(private readonly prisma: PrismaClient) {}
 
-  async getGreeting(input: GetGreetingInput): Promise<GetGreetingResult> {
-    const greeting = await this.prisma.greeting.findUnique({ where: { id: input.greeting_id } });
-    if (!greeting) throw new HttpError(404, "cap_get_greeting_not_found", "Greeting not found");
-    return mapGreetingRecord(greeting);
+  async submitContent(input: SubmitContentInput): Promise<SubmitContentResult> {
+    const now = new Date();
+    const submission = await this.prisma.contentSubmission.create({
+      data: {
+        id: crypto.randomUUID(),
+        title: input.title,
+        body: input.body,
+        author_name: input.author_name,
+        status: "submitted",
+        created_at: now,
+        submitted_at: now
+      }
+    });
+    return mapSubmissionRecord(submission);
   }
 
-  async listGreetings(input: ListGreetingsInput): Promise<ListGreetingsResult> {
+  async getSubmission(input: GetSubmissionInput): Promise<GetSubmissionResult> {
+    const submission = await this.prisma.contentSubmission.findUnique({ where: { id: input.submission_id } });
+    if (!submission) throw new HttpError(404, "cap_get_submission_not_found", "Submission not found");
+    return mapSubmissionRecord(submission);
+  }
+
+  async listSubmissions(input: ListSubmissionsInput): Promise<ListSubmissionsResult> {
     const take = Math.min(input.limit ?? 25, 100);
-    const greetings = await this.prisma.greeting.findMany({
-      where: { ...(input.after ? { created_at: { lt: new Date(input.after) } } : {}) },
-      orderBy: [{ created_at: "desc" }],
+    const submissions = await this.prisma.contentSubmission.findMany({
+      where: {
+        ...(input.status ? { status: input.status } : {}),
+        ...(input.after ? { submitted_at: { lt: new Date(input.after) } } : {})
+      },
+      orderBy: [{ submitted_at: "desc" }],
       take: take + 1
     });
-    const page = greetings.slice(0, take).map(mapGreetingRecord);
+    const page = submissions.slice(0, take).map(mapSubmissionRecord);
     return {
       items: page,
-      next_cursor: nextCursor(greetings.slice(0, take))
+      next_cursor: nextCursor(submissions.slice(0, take))
     };
   }
 
-  async createGreeting(input: CreateGreetingInput): Promise<CreateGreetingResult> {
-    const greeting = await this.prisma.greeting.create({
+  async approveSubmission(input: ApproveSubmissionInput): Promise<ApproveSubmissionResult> {
+    const submission = await this.prisma.contentSubmission.update({
+      where: { id: input.submission_id },
       data: {
-        id: crypto.randomUUID(),
-        message: input.message,
-        created_at: new Date()
+        status: "approved",
+        reviewed_at: new Date(),
+        ...(input.reviewer_note !== undefined ? { reviewer_note: input.reviewer_note } : {})
       }
+    }).catch((error: unknown) => {
+      throw new HttpError(404, "cap_get_submission_not_found", error instanceof Error ? error.message : "Submission not found");
     });
-    return mapGreetingRecord(greeting);
+    return mapSubmissionRecord(submission);
   }
 
-  async updateGreeting(input: UpdateGreetingInput): Promise<UpdateGreetingResult> {
-    const greeting = await this.prisma.greeting.update({
-      where: { id: input.greeting_id },
+  async requestChanges(input: RequestChangesInput): Promise<RequestChangesResult> {
+    const submission = await this.prisma.contentSubmission.update({
+      where: { id: input.submission_id },
       data: {
-        ...(input.message !== undefined ? { message: input.message } : {})
+        status: "changes_requested",
+        reviewed_at: new Date(),
+        reviewer_note: input.reviewer_note
       }
-    }).catch((error) => {
-      throw new HttpError(404, "cap_get_greeting_not_found", error instanceof Error ? error.message : "Greeting not found");
+    }).catch((error: unknown) => {
+      throw new HttpError(404, "cap_get_submission_not_found", error instanceof Error ? error.message : "Submission not found");
     });
-    return mapGreetingRecord(greeting);
+    return mapSubmissionRecord(submission);
   }
 }
 `;
 }
 
-export function renderHelloDrizzleRepositoryBody({
+export function renderContentDrizzleRepositoryBody({
   repositoryInterfaceName,
   drizzleRepositoryClassName,
   drizzleHint
@@ -84,23 +118,27 @@ export class ${drizzleRepositoryClassName} implements ${repositoryInterfaceName}
 
   private unsupported(): never {
     void this.db;
-    void greetingsTable;
+    void contentSubmissionsTable;
     throw new Error(${JSON.stringify(drizzleHint)});
   }
 
-  async getGreeting(): Promise<GetGreetingResult> {
+  async submitContent(): Promise<SubmitContentResult> {
     this.unsupported();
   }
 
-  async listGreetings(): Promise<ListGreetingsResult> {
+  async getSubmission(): Promise<GetSubmissionResult> {
     this.unsupported();
   }
 
-  async createGreeting(): Promise<CreateGreetingResult> {
+  async listSubmissions(): Promise<ListSubmissionsResult> {
     this.unsupported();
   }
 
-  async updateGreeting(): Promise<UpdateGreetingResult> {
+  async approveSubmission(): Promise<ApproveSubmissionResult> {
+    this.unsupported();
+  }
+
+  async requestChanges(): Promise<RequestChangesResult> {
     this.unsupported();
   }
 }

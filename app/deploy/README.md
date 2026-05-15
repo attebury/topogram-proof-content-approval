@@ -1,4 +1,4 @@
-# Topogram Starter Deployment Stack
+# Content Approval Deployment Stack
 
 This bundle packages deployment helpers for the generated runtime.
 

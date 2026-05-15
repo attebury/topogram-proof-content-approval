@@ -21,5 +21,28 @@
       "by": "actor_operator",
       "note": null
     }
+  ],
+  "task_content_approval_domain": [
+    {
+      "from": "unclaimed",
+      "to": "claimed",
+      "at": "2026-05-15T04:20:09.630Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "claimed",
+      "to": "in-progress",
+      "at": "2026-05-15T04:20:09.637Z",
+      "by": "actor_operator",
+      "note": "task started"
+    },
+    {
+      "from": "in-progress",
+      "to": "done",
+      "at": "2026-05-15T04:40:50.281Z",
+      "by": "actor_operator",
+      "note": null
+    }
   ]
 }

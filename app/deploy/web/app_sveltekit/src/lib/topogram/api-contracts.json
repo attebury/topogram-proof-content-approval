@@ -1,11 +1,11 @@
 {
-  "cap_create_greeting": {
+  "cap_submit_content": {
     "capability": {
-      "id": "cap_create_greeting"
+      "id": "cap_submit_content"
     },
     "endpoint": {
       "method": "POST",
-      "path": "/greetings",
+      "path": "/submissions",
       "successStatus": 201
     },
     "requestContract": {
@@ -19,20 +19,20 @@
     },
     "responseContract": null
   },
-  "cap_get_greeting": {
+  "cap_get_submission": {
     "capability": {
-      "id": "cap_get_greeting"
+      "id": "cap_get_submission"
     },
     "endpoint": {
       "method": "GET",
-      "path": "/greetings/:id",
+      "path": "/submissions/:id",
       "successStatus": 200
     },
     "requestContract": {
       "fields": [
         {
-          "name": "greeting_id",
-          "sourceName": "greeting_id",
+          "name": "submission_id",
+          "sourceName": "submission_id",
           "required": false,
           "schema": {
             "type": "string"
@@ -46,8 +46,8 @@
       "transport": {
         "path": [
           {
-            "name": "greeting_id",
-            "sourceName": "greeting_id",
+            "name": "submission_id",
+            "sourceName": "submission_id",
             "required": false,
             "schema": {
               "type": "string"
@@ -65,17 +65,29 @@
     },
     "responseContract": null
   },
-  "cap_list_greetings": {
+  "cap_list_submissions": {
     "capability": {
-      "id": "cap_list_greetings"
+      "id": "cap_list_submissions"
     },
     "endpoint": {
       "method": "GET",
-      "path": "/greetings",
+      "path": "/submissions",
       "successStatus": 200
     },
     "requestContract": {
       "fields": [
+        {
+          "name": "status",
+          "sourceName": "status",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "query",
+            "wireName": "status"
+          }
+        },
         {
           "name": "after",
           "sourceName": "after",
@@ -104,6 +116,18 @@
       "transport": {
         "path": [],
         "query": [
+          {
+            "name": "status",
+            "sourceName": "status",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "query",
+              "wireName": "status"
+            }
+          },
           {
             "name": "after",
             "sourceName": "after",
@@ -135,20 +159,20 @@
     },
     "responseContract": null
   },
-  "cap_update_greeting": {
+  "cap_approve_submission": {
     "capability": {
-      "id": "cap_update_greeting"
+      "id": "cap_approve_submission"
     },
     "endpoint": {
-      "method": "PATCH",
-      "path": "/greetings/:id",
+      "method": "POST",
+      "path": "/submissions/:id/approve",
       "successStatus": 200
     },
     "requestContract": {
       "fields": [
         {
-          "name": "greeting_id",
-          "sourceName": "greeting_id",
+          "name": "submission_id",
+          "sourceName": "submission_id",
           "required": false,
           "schema": {
             "type": "string"
@@ -159,23 +183,23 @@
           }
         },
         {
-          "name": "message",
-          "sourceName": "message",
+          "name": "reviewer_note",
+          "sourceName": "reviewer_note",
           "required": false,
           "schema": {
             "type": "string"
           },
           "transport": {
             "location": "body",
-            "wireName": "message"
+            "wireName": "reviewer_note"
           }
         }
       ],
       "transport": {
         "path": [
           {
-            "name": "greeting_id",
-            "sourceName": "greeting_id",
+            "name": "submission_id",
+            "sourceName": "submission_id",
             "required": false,
             "schema": {
               "type": "string"
@@ -190,15 +214,86 @@
         "header": [],
         "body": [
           {
-            "name": "message",
-            "sourceName": "message",
+            "name": "reviewer_note",
+            "sourceName": "reviewer_note",
             "required": false,
             "schema": {
               "type": "string"
             },
             "transport": {
               "location": "body",
-              "wireName": "message"
+              "wireName": "reviewer_note"
+            }
+          }
+        ]
+      }
+    },
+    "responseContract": null
+  },
+  "cap_request_changes": {
+    "capability": {
+      "id": "cap_request_changes"
+    },
+    "endpoint": {
+      "method": "POST",
+      "path": "/submissions/:id/request-changes",
+      "successStatus": 200
+    },
+    "requestContract": {
+      "fields": [
+        {
+          "name": "submission_id",
+          "sourceName": "submission_id",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "path",
+            "wireName": "id"
+          }
+        },
+        {
+          "name": "reviewer_note",
+          "sourceName": "reviewer_note",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "transport": {
+            "location": "body",
+            "wireName": "reviewer_note"
+          }
+        }
+      ],
+      "transport": {
+        "path": [
+          {
+            "name": "submission_id",
+            "sourceName": "submission_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "path",
+              "wireName": "id"
+            }
+          }
+        ],
+        "query": [],
+        "header": [],
+        "body": [
+          {
+            "name": "reviewer_note",
+            "sourceName": "reviewer_note",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "transport": {
+              "location": "body",
+              "wireName": "reviewer_note"
             }
           }
         ]

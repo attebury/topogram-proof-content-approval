@@ -4,7 +4,7 @@
   "generator": "@topogram/generator-sveltekit-web",
   "projection": {
     "id": "proj_web_surface",
-    "name": "Starter Web UI",
+    "name": "Content Approval Web UI",
     "type": "web_surface"
   },
   "summary": {
@@ -114,25 +114,25 @@
   },
   "screens": [
     {
-      "id": "greeting_list",
-      "route": "/greetings",
-      "page": "src/routes/greetings/+page.svelte",
+      "id": "submission_queue",
+      "route": "/submissions",
+      "page": "src/routes/submissions/+page.svelte",
       "rendered": true,
       "renderer": "generator",
       "widget_usages": []
     },
     {
-      "id": "greeting_detail",
-      "route": "/greetings/:id",
-      "page": "src/routes/greetings/[id]/+page.svelte",
+      "id": "submission_detail",
+      "route": "/submissions/:id",
+      "page": "src/routes/submissions/[id]/+page.svelte",
       "rendered": true,
       "renderer": "generator",
       "widget_usages": []
     },
     {
-      "id": "greeting_create",
-      "route": "/greetings/new",
-      "page": "src/routes/greetings/new/+page.svelte",
+      "id": "submission_create",
+      "route": "/submissions/new",
+      "page": "src/routes/submissions/new/+page.svelte",
       "rendered": true,
       "renderer": "generator",
       "widget_usages": []

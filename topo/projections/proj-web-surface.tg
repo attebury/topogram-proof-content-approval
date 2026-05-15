@@ -1,27 +1,29 @@
 projection proj_web_surface {
-  name "Starter Web UI"
-  description "Web realization for the neutral starter using a SvelteKit profile"
+  name "Content Approval Web UI"
+  description "Web realization for the content approval proof."
   type web_surface
 
-  realizes [proj_ui_contract, cap_list_greetings, cap_get_greeting, cap_create_greeting, cap_update_greeting]
+  realizes [proj_ui_contract, cap_list_submissions, cap_get_submission, cap_submit_content, cap_approve_submission, cap_request_changes]
   outputs [ui_contract, web_app]
 
   screen_routes {
-    screen greeting_list path /greetings
-    screen greeting_detail path /greetings/:id
-    screen greeting_create path /greetings/new
+    screen submission_queue path /submissions
+    screen submission_detail path /submissions/:id
+    screen submission_create path /submissions/new
   }
 
   web_hints {
-    screen greeting_list shell topbar
-    screen greeting_list layout responsive_collection
-    screen greeting_list desktop_variant table
-    screen greeting_list mobile_variant cards
-    screen greeting_list collection table
-    screen greeting_detail layout detail_page
-    screen greeting_create present page
-    action cap_create_greeting present button
-    action cap_create_greeting placement toolbar
+    screen submission_queue shell topbar
+    screen submission_queue layout responsive_collection
+    screen submission_queue desktop_variant table
+    screen submission_queue mobile_variant cards
+    screen submission_queue collection table
+    screen submission_detail layout detail_page
+    screen submission_create present page
+    action cap_submit_content present button
+    action cap_submit_content placement toolbar
+    action cap_approve_submission present button
+    action cap_request_changes present button
   }
 
   generator_defaults {

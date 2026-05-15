@@ -1,0 +1,579 @@
+{
+  "depends_on": {
+    "acceptance_refs": [
+      "ac_content_approval_domain"
+    ],
+    "affects": [
+      "cap_approve_submission",
+      "cap_get_submission",
+      "cap_list_submissions",
+      "cap_request_changes",
+      "cap_submit_content"
+    ],
+    "blocked_by": [],
+    "blocks": [],
+    "plans": [],
+    "satisfies": [
+      "req_content_approval_domain"
+    ],
+    "verification_refs": [
+      "verification_content_approval_domain"
+    ],
+    "verifications": [
+      "ver_runtime_flow",
+      "ver_runtime_smoke",
+      "verification_content_approval_domain",
+      "verification_generated_baseline"
+    ]
+  },
+  "focus": {
+    "id": "task_content_approval_domain",
+    "kind": "task"
+  },
+  "ownership_boundary": {
+    "canonical_topogram": {
+      "agent_mode": "propose_review_adopt",
+      "owner": "human"
+    },
+    "generated_artifacts": {
+      "agent_mode": "regenerate_or_compare",
+      "owner": "engine"
+    },
+    "maintained_code": {
+      "agent_mode": "bounded_edit_only",
+      "owner": "human"
+    },
+    "proposal_surfaces": {
+      "agent_mode": "stage_map_customize_reject",
+      "owner": "human"
+    }
+  },
+  "related": {
+    "acceptance_refs": [
+      {
+        "description": "Given the generated proof app starts from the neutral web-api-db template, when the Topogram source is changed to the content approval domain and the app is regenerated, then Topogram validates the content approval contracts, writes generated-owned app output, and the generated app compile gate passes.",
+        "id": "ac_content_approval_domain",
+        "kind": "acceptance_criterion",
+        "name": "Content Approval Domain",
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        }
+      }
+    ],
+    "affects": [
+      {
+        "actors": [
+          "actor_operator"
+        ],
+        "creates": [],
+        "deletes": [],
+        "description": "Approves a content submission.",
+        "id": "cap_approve_submission",
+        "input": [
+          "shape_input_approve_submission"
+        ],
+        "kind": "capability",
+        "name": "Approve Submission",
+        "output": [
+          "shape_output_submission_detail"
+        ],
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        },
+        "reads": [
+          "entity_content_submission"
+        ],
+        "reviewBoundary": {
+          "automation_class": "review_required",
+          "reasons": [
+            "writes_modeled_state"
+          ]
+        },
+        "roles": [],
+        "updates": [
+          "entity_content_submission"
+        ]
+      },
+      {
+        "actors": [
+          "actor_operator"
+        ],
+        "creates": [],
+        "deletes": [],
+        "description": "Fetches one content submission for review.",
+        "id": "cap_get_submission",
+        "input": [
+          "shape_input_get_submission"
+        ],
+        "kind": "capability",
+        "name": "Get Submission",
+        "output": [
+          "shape_output_submission_detail"
+        ],
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        },
+        "reads": [
+          "entity_content_submission"
+        ],
+        "reviewBoundary": {
+          "automation_class": "safe",
+          "reasons": [
+            "read_only_surface"
+          ]
+        },
+        "roles": [],
+        "updates": []
+      },
+      {
+        "actors": [
+          "actor_operator"
+        ],
+        "creates": [],
+        "deletes": [],
+        "description": "Lists submitted content in review order.",
+        "id": "cap_list_submissions",
+        "input": [
+          "shape_input_list_submissions"
+        ],
+        "kind": "capability",
+        "name": "List Submissions",
+        "output": [
+          "shape_output_submission_card"
+        ],
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        },
+        "reads": [
+          "entity_content_submission"
+        ],
+        "reviewBoundary": {
+          "automation_class": "safe",
+          "reasons": [
+            "read_only_surface"
+          ]
+        },
+        "roles": [],
+        "updates": []
+      },
+      {
+        "actors": [
+          "actor_operator"
+        ],
+        "creates": [],
+        "deletes": [],
+        "description": "Returns a content submission to the author with review notes.",
+        "id": "cap_request_changes",
+        "input": [
+          "shape_input_request_changes"
+        ],
+        "kind": "capability",
+        "name": "Request Changes",
+        "output": [
+          "shape_output_submission_detail"
+        ],
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        },
+        "reads": [
+          "entity_content_submission"
+        ],
+        "reviewBoundary": {
+          "automation_class": "review_required",
+          "reasons": [
+            "writes_modeled_state"
+          ]
+        },
+        "roles": [],
+        "updates": [
+          "entity_content_submission"
+        ]
+      },
+      {
+        "actors": [
+          "actor_operator"
+        ],
+        "creates": [
+          "entity_content_submission"
+        ],
+        "deletes": [],
+        "description": "Submits new content for editorial review.",
+        "id": "cap_submit_content",
+        "input": [
+          "shape_input_submit_content"
+        ],
+        "kind": "capability",
+        "name": "Submit Content",
+        "output": [
+          "shape_output_submission_detail"
+        ],
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        },
+        "reads": [],
+        "reviewBoundary": {
+          "automation_class": "review_required",
+          "reasons": [
+            "writes_modeled_state"
+          ]
+        },
+        "roles": [],
+        "updates": []
+      }
+    ],
+    "blocked_by": [],
+    "plans": [],
+    "satisfies": [
+      {
+        "description": "The proof project must replace the neutral starter greeting model with a content approval domain while keeping app output generated-owned and verifiable.",
+        "id": "req_content_approval_domain",
+        "kind": "requirement",
+        "name": "Content Approval Domain",
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        }
+      }
+    ],
+    "verification_refs": [
+      {
+        "description": "Runs Topogram check, app generation, generated app compile verification, and captures proof artifacts for the content approval domain checkpoint.",
+        "id": "verification_content_approval_domain",
+        "kind": "verification",
+        "method": "runtime",
+        "name": "Content Approval Domain Verification",
+        "ownership_boundary": {
+          "canonical_topogram": {
+            "agent_mode": "propose_review_adopt",
+            "owner": "human"
+          },
+          "generated_artifacts": {
+            "agent_mode": "regenerate_or_compare",
+            "owner": "engine"
+          },
+          "maintained_code": {
+            "agent_mode": "bounded_edit_only",
+            "owner": "human"
+          },
+          "proposal_surfaces": {
+            "agent_mode": "stage_map_customize_reject",
+            "owner": "human"
+          }
+        },
+        "scenarios": [
+          "topogram_check_generate_verify"
+        ],
+        "validates": [
+          "cap_approve_submission",
+          "cap_get_submission",
+          "cap_list_submissions",
+          "cap_request_changes",
+          "cap_submit_content"
+        ]
+      }
+    ]
+  },
+  "review_boundary": {
+    "automation_class": "review_required",
+    "reasons": [
+      "task_scope"
+    ]
+  },
+  "summary": {
+    "claimed_by": [
+      "actor_operator"
+    ],
+    "disposition": "active",
+    "domain": null,
+    "id": "task_content_approval_domain",
+    "name": "Content Approval Domain",
+    "priority": "medium",
+    "status": "in-progress",
+    "work_type": "implementation"
+  },
+  "type": "context_slice",
+  "verification": [
+    {
+      "description": "Verifies the core content approval runtime behavior.",
+      "id": "ver_runtime_flow",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Content approval runtime flow",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "approve_submission_runtime",
+        "get_created_submission_runtime",
+        "list_submissions_runtime",
+        "request_changes_runtime",
+        "submit_content_runtime"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_get_submission",
+        "cap_list_submissions",
+        "cap_request_changes",
+        "cap_submit_content"
+      ]
+    },
+    {
+      "description": "Verifies the generated content approval service through runtime smoke checks.",
+      "id": "ver_runtime_smoke",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Starter runtime smoke",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "get_submission_smoke",
+        "list_submissions_smoke",
+        "submit_content_smoke"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_get_submission",
+        "cap_list_submissions",
+        "cap_request_changes",
+        "cap_submit_content"
+      ]
+    },
+    {
+      "description": "Runs Topogram check, app generation, generated app compile verification, and captures proof artifacts for the content approval domain checkpoint.",
+      "id": "verification_content_approval_domain",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Content Approval Domain Verification",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "topogram_check_generate_verify"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_get_submission",
+        "cap_list_submissions",
+        "cap_request_changes",
+        "cap_submit_content"
+      ]
+    },
+    {
+      "description": "Runs Topogram check, app generation, generated app compile verification, and captures proof artifacts for the first generated checkpoint.",
+      "id": "verification_generated_baseline",
+      "kind": "verification",
+      "method": "runtime",
+      "name": "Generated Baseline Verification",
+      "ownership_boundary": {
+        "canonical_topogram": {
+          "agent_mode": "propose_review_adopt",
+          "owner": "human"
+        },
+        "generated_artifacts": {
+          "agent_mode": "regenerate_or_compare",
+          "owner": "engine"
+        },
+        "maintained_code": {
+          "agent_mode": "bounded_edit_only",
+          "owner": "human"
+        },
+        "proposal_surfaces": {
+          "agent_mode": "stage_map_customize_reject",
+          "owner": "human"
+        }
+      },
+      "scenarios": [
+        "topogram_check_generate_verify"
+      ],
+      "validates": [
+        "cap_approve_submission",
+        "cap_get_submission",
+        "cap_list_submissions",
+        "cap_request_changes",
+        "cap_submit_content"
+      ]
+    }
+  ],
+  "verification_targets": {
+    "generated_checks": [
+      "compile-check",
+      "runtime-check"
+    ],
+    "maintained_app_checks": [],
+    "rationale": "Task slice points at verification covering the surfaces this task touches.",
+    "verification_ids": [
+      "ver_runtime_flow",
+      "ver_runtime_smoke",
+      "verification_content_approval_domain",
+      "verification_generated_baseline"
+    ]
+  },
+  "version": 1,
+  "write_scope": {
+    "generator_owned": [
+      "artifacts/**",
+      "apps/**"
+    ],
+    "human_owned_review_required": [
+      "examples/maintained/proof-app/**"
+    ],
+    "out_of_bounds": [
+      ".git/**",
+      "node_modules/**"
+    ],
+    "safe_to_edit": [
+      "topo/**",
+      "candidates/**"
+    ]
+  }
+}

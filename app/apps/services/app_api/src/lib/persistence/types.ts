@@ -1,46 +1,85 @@
-export interface CreateGreetingInput {
-  message: string;
+export interface SubmitContentInput {
+  title: string;
+  body: string;
+  author_name: string;
 }
 
-export interface CreateGreetingResult {
+export interface SubmitContentResult {
   id: string;
-  message: string;
-  created_at: string;
+  title: string;
+  body: string;
+  status: string;
+  author_name: string;
+  submitted_at: string;
+  reviewed_at?: string;
+  reviewer_note?: string;
 }
 
-export interface GetGreetingInput {
-  greeting_id: string;
+export interface GetSubmissionInput {
+  submission_id: string;
 }
 
-export interface GetGreetingResult {
+export interface GetSubmissionResult {
   id: string;
-  message: string;
-  created_at: string;
+  title: string;
+  body: string;
+  status: string;
+  author_name: string;
+  submitted_at: string;
+  reviewed_at?: string;
+  reviewer_note?: string;
 }
 
-export interface ListGreetingsInput {
+export interface ListSubmissionsInput {
+  status?: string;
   after?: string;
   limit?: number;
 }
 
-export interface ListGreetingsResultItem {
+export interface ListSubmissionsResultItem {
   id: string;
-  message: string;
-  created_at: string;
+  title: string;
+  body: string;
+  status: string;
+  author_name: string;
+  submitted_at: string;
+  reviewed_at?: string;
+  reviewer_note?: string;
 }
 
-export interface ListGreetingsResult {
-  items: ListGreetingsResultItem[];
+export interface ListSubmissionsResult {
+  items: ListSubmissionsResultItem[];
   next_cursor: string;
 }
 
-export interface UpdateGreetingInput {
-  greeting_id: string;
-  message?: string;
+export interface ApproveSubmissionInput {
+  submission_id: string;
+  reviewer_note?: string;
 }
 
-export interface UpdateGreetingResult {
+export interface ApproveSubmissionResult {
   id: string;
-  message: string;
-  created_at: string;
+  title: string;
+  body: string;
+  status: string;
+  author_name: string;
+  submitted_at: string;
+  reviewed_at?: string;
+  reviewer_note?: string;
+}
+
+export interface RequestChangesInput {
+  submission_id: string;
+  reviewer_note: string;
+}
+
+export interface RequestChangesResult {
+  id: string;
+  title: string;
+  body: string;
+  status: string;
+  author_name: string;
+  submitted_at: string;
+  reviewed_at?: string;
+  reviewer_note?: string;
 }

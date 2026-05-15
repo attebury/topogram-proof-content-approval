@@ -1,4 +1,4 @@
-# Starter Local Runtime Stack
+# Content Approval Local Runtime Stack
 
 This bundle packages the generated runtime into one local environment:
 
